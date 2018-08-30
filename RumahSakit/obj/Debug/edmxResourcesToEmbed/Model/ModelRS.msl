@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_RS_SINGGIHModelStoreContainer" CdmEntityContainer="DB_RS_SINGGIHEntities1">
+    <EntitySetMapping Name="ADMINs">
+      <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.ADMIN">
+        <MappingFragment StoreEntitySet="ADMIN">
+          <ScalarProperty Name="ADMIN_ID" ColumnName="ADMIN_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DOCTORs">
+      <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.DOCTOR">
+        <MappingFragment StoreEntitySet="DOCTOR">
+          <ScalarProperty Name="DOCTOR_ID" ColumnName="DOCTOR_ID" />
+          <ScalarProperty Name="POLY_ID" ColumnName="POLY_ID" />
+          <ScalarProperty Name="SPECIALIST_ID" ColumnName="SPECIALIST_ID" />
+          <ScalarProperty Name="SCHEDULE_ID" ColumnName="SCHEDULE_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MEDICAL_RECORD">
+      <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.MEDICAL_RECORD">
+        <MappingFragment StoreEntitySet="MEDICAL_RECORD">
+          <ScalarProperty Name="MEDICAL_RECORD_ID" ColumnName="MEDICAL_RECORD_ID" />
+          <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
+          <ScalarProperty Name="DATE" ColumnName="DATE" />
+          <ScalarProperty Name="COMPLAINT" ColumnName="COMPLAINT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MEDICINEs">
+      <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.MEDICINE">
+        <MappingFragment StoreEntitySet="MEDICINE">
+          <ScalarProperty Name="MEDICINE_ID" ColumnName="MEDICINE_ID" />
+          <ScalarProperty Name="TYPE_MEDICINE_ID" ColumnName="TYPE_MEDICINE_ID" />
+          <ScalarProperty Name="ADMIN_ID" ColumnName="ADMIN_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="EXP" ColumnName="EXP" />
+          <ScalarProperty Name="STOCK" ColumnName="STOCK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NURSEs">
+      <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.NURSE">
+        <MappingFragment StoreEntitySet="NURSE">
+          <ScalarProperty Name="NURSE_ID" ColumnName="NURSE_ID" />
+          <ScalarProperty Name="SCHEDULE_NURSE_ID" ColumnName="SCHEDULE_NURSE_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PATIENTs">
+      <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.PATIENT">
+        <MappingFragment StoreEntitySet="PATIENT">
+          <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
+          <ScalarProperty Name="ADMIN_ID" ColumnName="ADMIN_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="BIRTH" ColumnName="BIRTH" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="AGE" ColumnName="AGE" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POLies">
+      <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.POLY">
+        <MappingFragment StoreEntitySet="POLY">
+          <ScalarProperty Name="POLY_ID" ColumnName="POLY_ID" />
+          <ScalarProperty Name="TYPE_POLY_ID" ColumnName="TYPE_POLY_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROOMs">
+      <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.ROOM">
+        <MappingFragment StoreEntitySet="ROOM">
+          <ScalarProperty Name="ROOM_ID" ColumnName="ROOM_ID" />
+          <ScalarProperty Name="TYPE_ROOM_ID" ColumnName="TYPE_ROOM_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="CAPACITY" ColumnName="CAPACITY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCHEDULEs">
+      <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.SCHEDULE">
+        <MappingFragment StoreEntitySet="SCHEDULE">
+          <ScalarProperty Name="SCHEDULE_ID" ColumnName="SCHEDULE_ID" />
+          <ScalarProperty Name="DATE" ColumnName="DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCHEDULE_NURSE">
+      <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.SCHEDULE_NURSE">
+        <MappingFragment StoreEntitySet="SCHEDULE_NURSE">
+          <ScalarProperty Name="SCHEDULE_NURSE_ID" ColumnName="SCHEDULE_NURSE_ID" />
+          <ScalarProperty Name="DATES" ColumnName="DATES" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SPECIALISTs">
+      <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.SPECIALIST">
+        <MappingFragment StoreEntitySet="SPECIALIST">
+          <ScalarProperty Name="SPECIALIST_ID" ColumnName="SPECIALIST_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRANSACTIONs">
+      <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.TRANSACTION">
+        <MappingFragment StoreEntitySet="TRANSACTION">
+          <ScalarProperty Name="TRANSACTION_ID" ColumnName="TRANSACTION_ID" />
+          <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
+          <ScalarProperty Name="TRANSACTION_DATE" ColumnName="TRANSACTION_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRANSACTION_DETAIL">
+      <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.TRANSACTION_DETAIL">
+        <MappingFragment StoreEntitySet="TRANSACTION_DETAIL">
+          <ScalarProperty Name="TRANSACTION_DETAIL_ID" ColumnName="TRANSACTION_DETAIL_ID" />
+          <ScalarProperty Name="ROOM_ID" ColumnName="ROOM_ID" />
+          <ScalarProperty Name="TRANSACTION_ID" ColumnName="TRANSACTION_ID" />
+          <ScalarProperty Name="ARRIVAL_DATE" ColumnName="ARRIVAL_DATE" />
+          <ScalarProperty Name="LEAVING_DATE" ColumnName="LEAVING_DATE" />
+          <ScalarProperty Name="TOTAL_PRICE" ColumnName="TOTAL_PRICE" />
+          <ScalarProperty Name="PRICE_ROOM" ColumnName="PRICE_ROOM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TYPE_MEDICINE">
+      <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.TYPE_MEDICINE">
+        <MappingFragment StoreEntitySet="TYPE_MEDICINE">
+          <ScalarProperty Name="TYPE_MEDICINE_ID" ColumnName="TYPE_MEDICINE_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TYPE_POLY">
+      <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.TYPE_POLY">
+        <MappingFragment StoreEntitySet="TYPE_POLY">
+          <ScalarProperty Name="TYPE_POLY_ID" ColumnName="TYPE_POLY_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TYPE_ROOM">
+      <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.TYPE_ROOM">
+        <MappingFragment StoreEntitySet="TYPE_ROOM">
+          <ScalarProperty Name="TYPE_ROOM_ID" ColumnName="TYPE_ROOM_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="DOCTOR_TRANSACTION_DETAIL" TypeName="DB_RS_SINGGIHModel.DOCTOR_TRANSACTION_DETAIL" StoreEntitySet="DOCTOR_TRANSACTION_DETAIL">
+      <EndProperty Name="DOCTOR">
+        <ScalarProperty Name="DOCTOR_ID" ColumnName="DOCTOR_ID" />
+      </EndProperty>
+      <EndProperty Name="TRANSACTION_DETAIL">
+        <ScalarProperty Name="TRANSACTION_DETAIL_ID" ColumnName="TRANSACTION_DETAIL_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MEDICAL_TRANSACTION_DETAIL" TypeName="DB_RS_SINGGIHModel.MEDICAL_TRANSACTION_DETAIL" StoreEntitySet="MEDICAL_TRANSACTION_DETAIL">
+      <EndProperty Name="MEDICINE">
+        <ScalarProperty Name="MEDICINE_ID" ColumnName="MEDICINE_ID" />
+      </EndProperty>
+      <EndProperty Name="TRANSACTION_DETAIL">
+        <ScalarProperty Name="TRANSACTION_DETAIL_ID" ColumnName="TRANSACTION_DETAIL_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="NURSE_TRANSACTION_DETAIL" TypeName="DB_RS_SINGGIHModel.NURSE_TRANSACTION_DETAIL" StoreEntitySet="NURSE_TRANSACTION_DETAIL">
+      <EndProperty Name="NURSE">
+        <ScalarProperty Name="NURSE_ID" ColumnName="NURSE_ID" />
+      </EndProperty>
+      <EndProperty Name="TRANSACTION_DETAIL">
+        <ScalarProperty Name="TRANSACTION_DETAIL_ID" ColumnName="TRANSACTION_DETAIL_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

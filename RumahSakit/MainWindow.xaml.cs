@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using RumahSakit.View;
+using RumahSakit.Controller;
 
 namespace RumahSakit
 {
@@ -26,10 +27,23 @@ namespace RumahSakit
             InitializeComponent();
         }
 
+        LoginController lc = new LoginController();
+
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            DasboardAdmin admin = new DasboardAdmin();
-            admin.ShowDialog();
+            if (lc.cekLogin(txtUsername.Text, txtPassword.Text) == true)
+            {
+                MessageBox.Show("Login Berhasil", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Hide();
+                DasboardAdmin admin = new DasboardAdmin();
+                admin.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Username and Password not match", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Warning);
+                txtPassword.Clear();
+                txtPassword.Focus();
+            }
             
         }
     }

@@ -1,0 +1,1202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DB_RS_SINGGIHModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ADMIN">
+          <Key>
+            <PropertyRef Name="ADMIN_ID" />
+          </Key>
+          <Property Name="ADMIN_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="20" />
+          <Property Name="ADDRESS" Type="varchar" MaxLength="50" />
+          <Property Name="PHONE" Type="varchar" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="DOCTOR">
+          <Key>
+            <PropertyRef Name="DOCTOR_ID" />
+          </Key>
+          <Property Name="DOCTOR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="POLY_ID" Type="int" />
+          <Property Name="SPECIALIST_ID" Type="int" />
+          <Property Name="SCHEDULE_ID" Type="int" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="GENDER" Type="varchar" MaxLength="10" />
+          <Property Name="ADDRESS" Type="varchar" MaxLength="100" />
+          <Property Name="PHONE" Type="varchar" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="DOCTOR_TRANSACTION_DETAIL">
+          <Key>
+            <PropertyRef Name="DOCTOR_ID" />
+            <PropertyRef Name="TRANSACTION_DETAIL_ID" />
+          </Key>
+          <Property Name="DOCTOR_ID" Type="int" Nullable="false" />
+          <Property Name="TRANSACTION_DETAIL_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MEDICAL_RECORD">
+          <Key>
+            <PropertyRef Name="MEDICAL_RECORD_ID" />
+          </Key>
+          <Property Name="MEDICAL_RECORD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="int" />
+          <Property Name="DATE" Type="datetime" />
+          <Property Name="COMPLAINT" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="MEDICAL_TRANSACTION_DETAIL">
+          <Key>
+            <PropertyRef Name="TRANSACTION_DETAIL_ID" />
+            <PropertyRef Name="MEDICINE_ID" />
+          </Key>
+          <Property Name="TRANSACTION_DETAIL_ID" Type="int" Nullable="false" />
+          <Property Name="MEDICINE_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MEDICINE">
+          <Key>
+            <PropertyRef Name="MEDICINE_ID" />
+          </Key>
+          <Property Name="MEDICINE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TYPE_MEDICINE_ID" Type="int" />
+          <Property Name="ADMIN_ID" Type="int" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" />
+          <Property Name="PRICE" Type="float" />
+          <Property Name="EXP" Type="datetime" />
+          <Property Name="STOCK" Type="int" />
+        </EntityType>
+        <EntityType Name="NURSE">
+          <Key>
+            <PropertyRef Name="NURSE_ID" />
+          </Key>
+          <Property Name="NURSE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SCHEDULE_NURSE_ID" Type="int" />
+          <Property Name="NAME" Type="varchar" MaxLength="100" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="PHONE" Type="varchar" MaxLength="12" />
+          <Property Name="ADDRESS" Type="varchar" MaxLength="100" />
+          <Property Name="GENDER" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NURSE_TRANSACTION_DETAIL">
+          <Key>
+            <PropertyRef Name="TRANSACTION_DETAIL_ID" />
+            <PropertyRef Name="NURSE_ID" />
+          </Key>
+          <Property Name="TRANSACTION_DETAIL_ID" Type="int" Nullable="false" />
+          <Property Name="NURSE_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PATIENT">
+          <Key>
+            <PropertyRef Name="PATIENT_ID" />
+          </Key>
+          <Property Name="PATIENT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ADMIN_ID" Type="int" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" />
+          <Property Name="BIRTH" Type="datetime" />
+          <Property Name="ADDRESS" Type="varchar" MaxLength="100" />
+          <Property Name="PHONE" Type="varchar" MaxLength="12" />
+          <Property Name="AGE" Type="int" />
+          <Property Name="GENDER" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="POLY">
+          <Key>
+            <PropertyRef Name="POLY_ID" />
+          </Key>
+          <Property Name="POLY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TYPE_POLY_ID" Type="int" />
+          <Property Name="NAME" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="ROOM">
+          <Key>
+            <PropertyRef Name="ROOM_ID" />
+          </Key>
+          <Property Name="ROOM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TYPE_ROOM_ID" Type="int" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" />
+          <Property Name="CAPACITY" Type="int" />
+        </EntityType>
+        <EntityType Name="SCHEDULE">
+          <Key>
+            <PropertyRef Name="SCHEDULE_ID" />
+          </Key>
+          <Property Name="SCHEDULE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SCHEDULE_NURSE">
+          <Key>
+            <PropertyRef Name="SCHEDULE_NURSE_ID" />
+          </Key>
+          <Property Name="SCHEDULE_NURSE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DATES" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SPECIALIST">
+          <Key>
+            <PropertyRef Name="SPECIALIST_ID" />
+          </Key>
+          <Property Name="SPECIALIST_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TRANSACTION">
+          <Key>
+            <PropertyRef Name="TRANSACTION_ID" />
+          </Key>
+          <Property Name="TRANSACTION_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="int" />
+          <Property Name="TRANSACTION_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TRANSACTION_DETAIL">
+          <Key>
+            <PropertyRef Name="TRANSACTION_DETAIL_ID" />
+          </Key>
+          <Property Name="TRANSACTION_DETAIL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ROOM_ID" Type="int" />
+          <Property Name="TRANSACTION_ID" Type="int" />
+          <Property Name="ARRIVAL_DATE" Type="datetime" />
+          <Property Name="LEAVING_DATE" Type="datetime" />
+          <Property Name="TOTAL_PRICE" Type="float" />
+          <Property Name="PRICE_ROOM" Type="float" />
+        </EntityType>
+        <EntityType Name="TYPE_MEDICINE">
+          <Key>
+            <PropertyRef Name="TYPE_MEDICINE_ID" />
+          </Key>
+          <Property Name="TYPE_MEDICINE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TYPE_POLY">
+          <Key>
+            <PropertyRef Name="TYPE_POLY_ID" />
+          </Key>
+          <Property Name="TYPE_POLY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" />
+          <Property Name="PRICE" Type="float" />
+        </EntityType>
+        <EntityType Name="TYPE_ROOM">
+          <Key>
+            <PropertyRef Name="TYPE_ROOM_ID" />
+          </Key>
+          <Property Name="TYPE_ROOM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" />
+          <Property Name="PRICE" Type="float" />
+        </EntityType>
+        <Association Name="FK_DOCTOR_REFERENCE_POLY">
+          <End Role="POLY" Type="Self.POLY" Multiplicity="0..1" />
+          <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POLY">
+              <PropertyRef Name="POLY_ID" />
+            </Principal>
+            <Dependent Role="DOCTOR">
+              <PropertyRef Name="POLY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOCTOR_REFERENCE_SCHEDULE">
+          <End Role="SCHEDULE" Type="Self.SCHEDULE" Multiplicity="0..1" />
+          <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SCHEDULE">
+              <PropertyRef Name="SCHEDULE_ID" />
+            </Principal>
+            <Dependent Role="DOCTOR">
+              <PropertyRef Name="SCHEDULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOCTOR_REFERENCE_SPECIALI">
+          <End Role="SPECIALIST" Type="Self.SPECIALIST" Multiplicity="0..1" />
+          <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SPECIALIST">
+              <PropertyRef Name="SPECIALIST_ID" />
+            </Principal>
+            <Dependent Role="DOCTOR">
+              <PropertyRef Name="SPECIALIST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOCTOR_T_RELATIONS_DOCTOR">
+          <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="1" />
+          <End Role="DOCTOR_TRANSACTION_DETAIL" Type="Self.DOCTOR_TRANSACTION_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCTOR">
+              <PropertyRef Name="DOCTOR_ID" />
+            </Principal>
+            <Dependent Role="DOCTOR_TRANSACTION_DETAIL">
+              <PropertyRef Name="DOCTOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOCTOR_T_RELATIONS_TRANSACT">
+          <End Role="TRANSACTION_DETAIL" Type="Self.TRANSACTION_DETAIL" Multiplicity="1" />
+          <End Role="DOCTOR_TRANSACTION_DETAIL" Type="Self.DOCTOR_TRANSACTION_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRANSACTION_DETAIL">
+              <PropertyRef Name="TRANSACTION_DETAIL_ID" />
+            </Principal>
+            <Dependent Role="DOCTOR_TRANSACTION_DETAIL">
+              <PropertyRef Name="TRANSACTION_DETAIL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDICAL__REFERENCE_PATIENT">
+          <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="0..1" />
+          <End Role="MEDICAL_RECORD" Type="Self.MEDICAL_RECORD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PATIENT">
+              <PropertyRef Name="PATIENT_ID" />
+            </Principal>
+            <Dependent Role="MEDICAL_RECORD">
+              <PropertyRef Name="PATIENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDICAL__RELATIONS_MEDICINE">
+          <End Role="MEDICINE" Type="Self.MEDICINE" Multiplicity="1" />
+          <End Role="MEDICAL_TRANSACTION_DETAIL" Type="Self.MEDICAL_TRANSACTION_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEDICINE">
+              <PropertyRef Name="MEDICINE_ID" />
+            </Principal>
+            <Dependent Role="MEDICAL_TRANSACTION_DETAIL">
+              <PropertyRef Name="MEDICINE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDICAL__RELATIONS_TRANSACT">
+          <End Role="TRANSACTION_DETAIL" Type="Self.TRANSACTION_DETAIL" Multiplicity="1" />
+          <End Role="MEDICAL_TRANSACTION_DETAIL" Type="Self.MEDICAL_TRANSACTION_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRANSACTION_DETAIL">
+              <PropertyRef Name="TRANSACTION_DETAIL_ID" />
+            </Principal>
+            <Dependent Role="MEDICAL_TRANSACTION_DETAIL">
+              <PropertyRef Name="TRANSACTION_DETAIL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDICINE_REFERENCE_ADMIN">
+          <End Role="ADMIN" Type="Self.ADMIN" Multiplicity="0..1" />
+          <End Role="MEDICINE" Type="Self.MEDICINE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADMIN">
+              <PropertyRef Name="ADMIN_ID" />
+            </Principal>
+            <Dependent Role="MEDICINE">
+              <PropertyRef Name="ADMIN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDICINE_REFERENCE_TYPE_MED">
+          <End Role="TYPE_MEDICINE" Type="Self.TYPE_MEDICINE" Multiplicity="0..1" />
+          <End Role="MEDICINE" Type="Self.MEDICINE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPE_MEDICINE">
+              <PropertyRef Name="TYPE_MEDICINE_ID" />
+            </Principal>
+            <Dependent Role="MEDICINE">
+              <PropertyRef Name="TYPE_MEDICINE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NURSE_REFERENCE_SCHEDULE">
+          <End Role="SCHEDULE_NURSE" Type="Self.SCHEDULE_NURSE" Multiplicity="0..1" />
+          <End Role="NURSE" Type="Self.NURSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SCHEDULE_NURSE">
+              <PropertyRef Name="SCHEDULE_NURSE_ID" />
+            </Principal>
+            <Dependent Role="NURSE">
+              <PropertyRef Name="SCHEDULE_NURSE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NURSE_TR_RELATIONS_NURSE">
+          <End Role="NURSE" Type="Self.NURSE" Multiplicity="1" />
+          <End Role="NURSE_TRANSACTION_DETAIL" Type="Self.NURSE_TRANSACTION_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NURSE">
+              <PropertyRef Name="NURSE_ID" />
+            </Principal>
+            <Dependent Role="NURSE_TRANSACTION_DETAIL">
+              <PropertyRef Name="NURSE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NURSE_TR_RELATIONS_TRANSACT">
+          <End Role="TRANSACTION_DETAIL" Type="Self.TRANSACTION_DETAIL" Multiplicity="1" />
+          <End Role="NURSE_TRANSACTION_DETAIL" Type="Self.NURSE_TRANSACTION_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRANSACTION_DETAIL">
+              <PropertyRef Name="TRANSACTION_DETAIL_ID" />
+            </Principal>
+            <Dependent Role="NURSE_TRANSACTION_DETAIL">
+              <PropertyRef Name="TRANSACTION_DETAIL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PATIENT_REFERENCE_ADMIN">
+          <End Role="ADMIN" Type="Self.ADMIN" Multiplicity="0..1" />
+          <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADMIN">
+              <PropertyRef Name="ADMIN_ID" />
+            </Principal>
+            <Dependent Role="PATIENT">
+              <PropertyRef Name="ADMIN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POLY_REFERENCE_TYPE_POL">
+          <End Role="TYPE_POLY" Type="Self.TYPE_POLY" Multiplicity="0..1" />
+          <End Role="POLY" Type="Self.POLY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPE_POLY">
+              <PropertyRef Name="TYPE_POLY_ID" />
+            </Principal>
+            <Dependent Role="POLY">
+              <PropertyRef Name="TYPE_POLY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROOM_REFERENCE_TYPE_ROO">
+          <End Role="TYPE_ROOM" Type="Self.TYPE_ROOM" Multiplicity="0..1" />
+          <End Role="ROOM" Type="Self.ROOM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPE_ROOM">
+              <PropertyRef Name="TYPE_ROOM_ID" />
+            </Principal>
+            <Dependent Role="ROOM">
+              <PropertyRef Name="TYPE_ROOM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANSACT_REFERENCE_PATIENT">
+          <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="0..1" />
+          <End Role="TRANSACTION" Type="Self.TRANSACTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PATIENT">
+              <PropertyRef Name="PATIENT_ID" />
+            </Principal>
+            <Dependent Role="TRANSACTION">
+              <PropertyRef Name="PATIENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANSACT_REFERENCE_ROOM">
+          <End Role="ROOM" Type="Self.ROOM" Multiplicity="0..1" />
+          <End Role="TRANSACTION_DETAIL" Type="Self.TRANSACTION_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROOM">
+              <PropertyRef Name="ROOM_ID" />
+            </Principal>
+            <Dependent Role="TRANSACTION_DETAIL">
+              <PropertyRef Name="ROOM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANSACT_REFERENCE_TRANSACT">
+          <End Role="TRANSACTION" Type="Self.TRANSACTION" Multiplicity="0..1" />
+          <End Role="TRANSACTION_DETAIL" Type="Self.TRANSACTION_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRANSACTION">
+              <PropertyRef Name="TRANSACTION_ID" />
+            </Principal>
+            <Dependent Role="TRANSACTION_DETAIL">
+              <PropertyRef Name="TRANSACTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_RS_SINGGIHModelStoreContainer">
+          <EntitySet Name="ADMIN" EntityType="Self.ADMIN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DOCTOR" EntityType="Self.DOCTOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DOCTOR_TRANSACTION_DETAIL" EntityType="Self.DOCTOR_TRANSACTION_DETAIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEDICAL_RECORD" EntityType="Self.MEDICAL_RECORD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEDICAL_TRANSACTION_DETAIL" EntityType="Self.MEDICAL_TRANSACTION_DETAIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEDICINE" EntityType="Self.MEDICINE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NURSE" EntityType="Self.NURSE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NURSE_TRANSACTION_DETAIL" EntityType="Self.NURSE_TRANSACTION_DETAIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PATIENT" EntityType="Self.PATIENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POLY" EntityType="Self.POLY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROOM" EntityType="Self.ROOM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SCHEDULE" EntityType="Self.SCHEDULE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SCHEDULE_NURSE" EntityType="Self.SCHEDULE_NURSE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SPECIALIST" EntityType="Self.SPECIALIST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRANSACTION" EntityType="Self.TRANSACTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRANSACTION_DETAIL" EntityType="Self.TRANSACTION_DETAIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TYPE_MEDICINE" EntityType="Self.TYPE_MEDICINE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TYPE_POLY" EntityType="Self.TYPE_POLY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TYPE_ROOM" EntityType="Self.TYPE_ROOM" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DOCTOR_REFERENCE_POLY" Association="Self.FK_DOCTOR_REFERENCE_POLY">
+            <End Role="POLY" EntitySet="POLY" />
+            <End Role="DOCTOR" EntitySet="DOCTOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOCTOR_REFERENCE_SCHEDULE" Association="Self.FK_DOCTOR_REFERENCE_SCHEDULE">
+            <End Role="SCHEDULE" EntitySet="SCHEDULE" />
+            <End Role="DOCTOR" EntitySet="DOCTOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOCTOR_REFERENCE_SPECIALI" Association="Self.FK_DOCTOR_REFERENCE_SPECIALI">
+            <End Role="SPECIALIST" EntitySet="SPECIALIST" />
+            <End Role="DOCTOR" EntitySet="DOCTOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOCTOR_T_RELATIONS_DOCTOR" Association="Self.FK_DOCTOR_T_RELATIONS_DOCTOR">
+            <End Role="DOCTOR" EntitySet="DOCTOR" />
+            <End Role="DOCTOR_TRANSACTION_DETAIL" EntitySet="DOCTOR_TRANSACTION_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOCTOR_T_RELATIONS_TRANSACT" Association="Self.FK_DOCTOR_T_RELATIONS_TRANSACT">
+            <End Role="TRANSACTION_DETAIL" EntitySet="TRANSACTION_DETAIL" />
+            <End Role="DOCTOR_TRANSACTION_DETAIL" EntitySet="DOCTOR_TRANSACTION_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDICAL__REFERENCE_PATIENT" Association="Self.FK_MEDICAL__REFERENCE_PATIENT">
+            <End Role="PATIENT" EntitySet="PATIENT" />
+            <End Role="MEDICAL_RECORD" EntitySet="MEDICAL_RECORD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDICAL__RELATIONS_MEDICINE" Association="Self.FK_MEDICAL__RELATIONS_MEDICINE">
+            <End Role="MEDICINE" EntitySet="MEDICINE" />
+            <End Role="MEDICAL_TRANSACTION_DETAIL" EntitySet="MEDICAL_TRANSACTION_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDICAL__RELATIONS_TRANSACT" Association="Self.FK_MEDICAL__RELATIONS_TRANSACT">
+            <End Role="TRANSACTION_DETAIL" EntitySet="TRANSACTION_DETAIL" />
+            <End Role="MEDICAL_TRANSACTION_DETAIL" EntitySet="MEDICAL_TRANSACTION_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDICINE_REFERENCE_ADMIN" Association="Self.FK_MEDICINE_REFERENCE_ADMIN">
+            <End Role="ADMIN" EntitySet="ADMIN" />
+            <End Role="MEDICINE" EntitySet="MEDICINE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDICINE_REFERENCE_TYPE_MED" Association="Self.FK_MEDICINE_REFERENCE_TYPE_MED">
+            <End Role="TYPE_MEDICINE" EntitySet="TYPE_MEDICINE" />
+            <End Role="MEDICINE" EntitySet="MEDICINE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NURSE_REFERENCE_SCHEDULE" Association="Self.FK_NURSE_REFERENCE_SCHEDULE">
+            <End Role="SCHEDULE_NURSE" EntitySet="SCHEDULE_NURSE" />
+            <End Role="NURSE" EntitySet="NURSE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NURSE_TR_RELATIONS_NURSE" Association="Self.FK_NURSE_TR_RELATIONS_NURSE">
+            <End Role="NURSE" EntitySet="NURSE" />
+            <End Role="NURSE_TRANSACTION_DETAIL" EntitySet="NURSE_TRANSACTION_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NURSE_TR_RELATIONS_TRANSACT" Association="Self.FK_NURSE_TR_RELATIONS_TRANSACT">
+            <End Role="TRANSACTION_DETAIL" EntitySet="TRANSACTION_DETAIL" />
+            <End Role="NURSE_TRANSACTION_DETAIL" EntitySet="NURSE_TRANSACTION_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PATIENT_REFERENCE_ADMIN" Association="Self.FK_PATIENT_REFERENCE_ADMIN">
+            <End Role="ADMIN" EntitySet="ADMIN" />
+            <End Role="PATIENT" EntitySet="PATIENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POLY_REFERENCE_TYPE_POL" Association="Self.FK_POLY_REFERENCE_TYPE_POL">
+            <End Role="TYPE_POLY" EntitySet="TYPE_POLY" />
+            <End Role="POLY" EntitySet="POLY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROOM_REFERENCE_TYPE_ROO" Association="Self.FK_ROOM_REFERENCE_TYPE_ROO">
+            <End Role="TYPE_ROOM" EntitySet="TYPE_ROOM" />
+            <End Role="ROOM" EntitySet="ROOM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANSACT_REFERENCE_PATIENT" Association="Self.FK_TRANSACT_REFERENCE_PATIENT">
+            <End Role="PATIENT" EntitySet="PATIENT" />
+            <End Role="TRANSACTION" EntitySet="TRANSACTION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANSACT_REFERENCE_ROOM" Association="Self.FK_TRANSACT_REFERENCE_ROOM">
+            <End Role="ROOM" EntitySet="ROOM" />
+            <End Role="TRANSACTION_DETAIL" EntitySet="TRANSACTION_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANSACT_REFERENCE_TRANSACT" Association="Self.FK_TRANSACT_REFERENCE_TRANSACT">
+            <End Role="TRANSACTION" EntitySet="TRANSACTION" />
+            <End Role="TRANSACTION_DETAIL" EntitySet="TRANSACTION_DETAIL" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_RS_SINGGIHModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ADMIN">
+          <Key>
+            <PropertyRef Name="ADMIN_ID" />
+          </Key>
+          <Property Name="ADMIN_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MEDICINEs" Relationship="Self.FK_MEDICINE_REFERENCE_ADMIN" FromRole="ADMIN" ToRole="MEDICINE" />
+          <NavigationProperty Name="PATIENTs" Relationship="Self.FK_PATIENT_REFERENCE_ADMIN" FromRole="ADMIN" ToRole="PATIENT" />
+        </EntityType>
+        <EntityType Name="DOCTOR">
+          <Key>
+            <PropertyRef Name="DOCTOR_ID" />
+          </Key>
+          <Property Name="DOCTOR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="POLY_ID" Type="Int32" />
+          <Property Name="SPECIALIST_ID" Type="Int32" />
+          <Property Name="SCHEDULE_ID" Type="Int32" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GENDER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="POLY" Relationship="Self.FK_DOCTOR_REFERENCE_POLY" FromRole="DOCTOR" ToRole="POLY" />
+          <NavigationProperty Name="SCHEDULE" Relationship="Self.FK_DOCTOR_REFERENCE_SCHEDULE" FromRole="DOCTOR" ToRole="SCHEDULE" />
+          <NavigationProperty Name="SPECIALIST" Relationship="Self.FK_DOCTOR_REFERENCE_SPECIALI" FromRole="DOCTOR" ToRole="SPECIALIST" />
+          <NavigationProperty Name="TRANSACTION_DETAIL" Relationship="Self.DOCTOR_TRANSACTION_DETAIL" FromRole="DOCTOR" ToRole="TRANSACTION_DETAIL" />
+        </EntityType>
+        <EntityType Name="MEDICAL_RECORD">
+          <Key>
+            <PropertyRef Name="MEDICAL_RECORD_ID" />
+          </Key>
+          <Property Name="MEDICAL_RECORD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PATIENT_ID" Type="Int32" />
+          <Property Name="DATE" Type="DateTime" Precision="3" />
+          <Property Name="COMPLAINT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PATIENT" Relationship="Self.FK_MEDICAL__REFERENCE_PATIENT" FromRole="MEDICAL_RECORD" ToRole="PATIENT" />
+        </EntityType>
+        <EntityType Name="MEDICINE">
+          <Key>
+            <PropertyRef Name="MEDICINE_ID" />
+          </Key>
+          <Property Name="MEDICINE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TYPE_MEDICINE_ID" Type="Int32" />
+          <Property Name="ADMIN_ID" Type="Int32" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PRICE" Type="Double" />
+          <Property Name="EXP" Type="DateTime" Precision="3" />
+          <Property Name="STOCK" Type="Int32" />
+          <NavigationProperty Name="ADMIN" Relationship="Self.FK_MEDICINE_REFERENCE_ADMIN" FromRole="MEDICINE" ToRole="ADMIN" />
+          <NavigationProperty Name="TYPE_MEDICINE" Relationship="Self.FK_MEDICINE_REFERENCE_TYPE_MED" FromRole="MEDICINE" ToRole="TYPE_MEDICINE" />
+          <NavigationProperty Name="TRANSACTION_DETAIL" Relationship="Self.MEDICAL_TRANSACTION_DETAIL" FromRole="MEDICINE" ToRole="TRANSACTION_DETAIL" />
+        </EntityType>
+        <EntityType Name="NURSE">
+          <Key>
+            <PropertyRef Name="NURSE_ID" />
+          </Key>
+          <Property Name="NURSE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SCHEDULE_NURSE_ID" Type="Int32" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GENDER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SCHEDULE_NURSE" Relationship="Self.FK_NURSE_REFERENCE_SCHEDULE" FromRole="NURSE" ToRole="SCHEDULE_NURSE" />
+          <NavigationProperty Name="TRANSACTION_DETAIL" Relationship="Self.NURSE_TRANSACTION_DETAIL" FromRole="NURSE" ToRole="TRANSACTION_DETAIL" />
+        </EntityType>
+        <EntityType Name="PATIENT">
+          <Key>
+            <PropertyRef Name="PATIENT_ID" />
+          </Key>
+          <Property Name="PATIENT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ADMIN_ID" Type="Int32" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BIRTH" Type="DateTime" Precision="3" />
+          <Property Name="ADDRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="AGE" Type="Int32" />
+          <Property Name="GENDER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ADMIN" Relationship="Self.FK_PATIENT_REFERENCE_ADMIN" FromRole="PATIENT" ToRole="ADMIN" />
+          <NavigationProperty Name="MEDICAL_RECORD" Relationship="Self.FK_MEDICAL__REFERENCE_PATIENT" FromRole="PATIENT" ToRole="MEDICAL_RECORD" />
+          <NavigationProperty Name="TRANSACTIONs" Relationship="Self.FK_TRANSACT_REFERENCE_PATIENT" FromRole="PATIENT" ToRole="TRANSACTION" />
+        </EntityType>
+        <EntityType Name="POLY">
+          <Key>
+            <PropertyRef Name="POLY_ID" />
+          </Key>
+          <Property Name="POLY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TYPE_POLY_ID" Type="Int32" />
+          <Property Name="NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DOCTORs" Relationship="Self.FK_DOCTOR_REFERENCE_POLY" FromRole="POLY" ToRole="DOCTOR" />
+          <NavigationProperty Name="TYPE_POLY" Relationship="Self.FK_POLY_REFERENCE_TYPE_POL" FromRole="POLY" ToRole="TYPE_POLY" />
+        </EntityType>
+        <EntityType Name="ROOM">
+          <Key>
+            <PropertyRef Name="ROOM_ID" />
+          </Key>
+          <Property Name="ROOM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TYPE_ROOM_ID" Type="Int32" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CAPACITY" Type="Int32" />
+          <NavigationProperty Name="TYPE_ROOM" Relationship="Self.FK_ROOM_REFERENCE_TYPE_ROO" FromRole="ROOM" ToRole="TYPE_ROOM" />
+          <NavigationProperty Name="TRANSACTION_DETAIL" Relationship="Self.FK_TRANSACT_REFERENCE_ROOM" FromRole="ROOM" ToRole="TRANSACTION_DETAIL" />
+        </EntityType>
+        <EntityType Name="SCHEDULE">
+          <Key>
+            <PropertyRef Name="SCHEDULE_ID" />
+          </Key>
+          <Property Name="SCHEDULE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DOCTORs" Relationship="Self.FK_DOCTOR_REFERENCE_SCHEDULE" FromRole="SCHEDULE" ToRole="DOCTOR" />
+        </EntityType>
+        <EntityType Name="SCHEDULE_NURSE">
+          <Key>
+            <PropertyRef Name="SCHEDULE_NURSE_ID" />
+          </Key>
+          <Property Name="SCHEDULE_NURSE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DATES" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="NURSEs" Relationship="Self.FK_NURSE_REFERENCE_SCHEDULE" FromRole="SCHEDULE_NURSE" ToRole="NURSE" />
+        </EntityType>
+        <EntityType Name="SPECIALIST">
+          <Key>
+            <PropertyRef Name="SPECIALIST_ID" />
+          </Key>
+          <Property Name="SPECIALIST_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DOCTORs" Relationship="Self.FK_DOCTOR_REFERENCE_SPECIALI" FromRole="SPECIALIST" ToRole="DOCTOR" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TRANSACTION">
+          <Key>
+            <PropertyRef Name="TRANSACTION_ID" />
+          </Key>
+          <Property Name="TRANSACTION_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PATIENT_ID" Type="Int32" />
+          <Property Name="TRANSACTION_DATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PATIENT" Relationship="Self.FK_TRANSACT_REFERENCE_PATIENT" FromRole="TRANSACTION" ToRole="PATIENT" />
+          <NavigationProperty Name="TRANSACTION_DETAIL" Relationship="Self.FK_TRANSACT_REFERENCE_TRANSACT" FromRole="TRANSACTION" ToRole="TRANSACTION_DETAIL" />
+        </EntityType>
+        <EntityType Name="TRANSACTION_DETAIL">
+          <Key>
+            <PropertyRef Name="TRANSACTION_DETAIL_ID" />
+          </Key>
+          <Property Name="TRANSACTION_DETAIL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ROOM_ID" Type="Int32" />
+          <Property Name="TRANSACTION_ID" Type="Int32" />
+          <Property Name="ARRIVAL_DATE" Type="DateTime" Precision="3" />
+          <Property Name="LEAVING_DATE" Type="DateTime" Precision="3" />
+          <Property Name="TOTAL_PRICE" Type="Double" />
+          <Property Name="PRICE_ROOM" Type="Double" />
+          <NavigationProperty Name="ROOM" Relationship="Self.FK_TRANSACT_REFERENCE_ROOM" FromRole="TRANSACTION_DETAIL" ToRole="ROOM" />
+          <NavigationProperty Name="TRANSACTION" Relationship="Self.FK_TRANSACT_REFERENCE_TRANSACT" FromRole="TRANSACTION_DETAIL" ToRole="TRANSACTION" />
+          <NavigationProperty Name="DOCTORs" Relationship="Self.DOCTOR_TRANSACTION_DETAIL" FromRole="TRANSACTION_DETAIL" ToRole="DOCTOR" />
+          <NavigationProperty Name="MEDICINEs" Relationship="Self.MEDICAL_TRANSACTION_DETAIL" FromRole="TRANSACTION_DETAIL" ToRole="MEDICINE" />
+          <NavigationProperty Name="NURSEs" Relationship="Self.NURSE_TRANSACTION_DETAIL" FromRole="TRANSACTION_DETAIL" ToRole="NURSE" />
+        </EntityType>
+        <EntityType Name="TYPE_MEDICINE">
+          <Key>
+            <PropertyRef Name="TYPE_MEDICINE_ID" />
+          </Key>
+          <Property Name="TYPE_MEDICINE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MEDICINEs" Relationship="Self.FK_MEDICINE_REFERENCE_TYPE_MED" FromRole="TYPE_MEDICINE" ToRole="MEDICINE" />
+        </EntityType>
+        <EntityType Name="TYPE_POLY">
+          <Key>
+            <PropertyRef Name="TYPE_POLY_ID" />
+          </Key>
+          <Property Name="TYPE_POLY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PRICE" Type="Double" />
+          <NavigationProperty Name="POLies" Relationship="Self.FK_POLY_REFERENCE_TYPE_POL" FromRole="TYPE_POLY" ToRole="POLY" />
+        </EntityType>
+        <EntityType Name="TYPE_ROOM">
+          <Key>
+            <PropertyRef Name="TYPE_ROOM_ID" />
+          </Key>
+          <Property Name="TYPE_ROOM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PRICE" Type="Double" />
+          <NavigationProperty Name="ROOMs" Relationship="Self.FK_ROOM_REFERENCE_TYPE_ROO" FromRole="TYPE_ROOM" ToRole="ROOM" />
+        </EntityType>
+        <Association Name="FK_MEDICINE_REFERENCE_ADMIN">
+          <End Role="ADMIN" Type="Self.ADMIN" Multiplicity="0..1" />
+          <End Role="MEDICINE" Type="Self.MEDICINE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADMIN">
+              <PropertyRef Name="ADMIN_ID" />
+            </Principal>
+            <Dependent Role="MEDICINE">
+              <PropertyRef Name="ADMIN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PATIENT_REFERENCE_ADMIN">
+          <End Role="ADMIN" Type="Self.ADMIN" Multiplicity="0..1" />
+          <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADMIN">
+              <PropertyRef Name="ADMIN_ID" />
+            </Principal>
+            <Dependent Role="PATIENT">
+              <PropertyRef Name="ADMIN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOCTOR_REFERENCE_POLY">
+          <End Role="POLY" Type="Self.POLY" Multiplicity="0..1" />
+          <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POLY">
+              <PropertyRef Name="POLY_ID" />
+            </Principal>
+            <Dependent Role="DOCTOR">
+              <PropertyRef Name="POLY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOCTOR_REFERENCE_SCHEDULE">
+          <End Role="SCHEDULE" Type="Self.SCHEDULE" Multiplicity="0..1" />
+          <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SCHEDULE">
+              <PropertyRef Name="SCHEDULE_ID" />
+            </Principal>
+            <Dependent Role="DOCTOR">
+              <PropertyRef Name="SCHEDULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOCTOR_REFERENCE_SPECIALI">
+          <End Role="SPECIALIST" Type="Self.SPECIALIST" Multiplicity="0..1" />
+          <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SPECIALIST">
+              <PropertyRef Name="SPECIALIST_ID" />
+            </Principal>
+            <Dependent Role="DOCTOR">
+              <PropertyRef Name="SPECIALIST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDICAL__REFERENCE_PATIENT">
+          <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="0..1" />
+          <End Role="MEDICAL_RECORD" Type="Self.MEDICAL_RECORD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PATIENT">
+              <PropertyRef Name="PATIENT_ID" />
+            </Principal>
+            <Dependent Role="MEDICAL_RECORD">
+              <PropertyRef Name="PATIENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEDICINE_REFERENCE_TYPE_MED">
+          <End Role="TYPE_MEDICINE" Type="Self.TYPE_MEDICINE" Multiplicity="0..1" />
+          <End Role="MEDICINE" Type="Self.MEDICINE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPE_MEDICINE">
+              <PropertyRef Name="TYPE_MEDICINE_ID" />
+            </Principal>
+            <Dependent Role="MEDICINE">
+              <PropertyRef Name="TYPE_MEDICINE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NURSE_REFERENCE_SCHEDULE">
+          <End Role="SCHEDULE_NURSE" Type="Self.SCHEDULE_NURSE" Multiplicity="0..1" />
+          <End Role="NURSE" Type="Self.NURSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SCHEDULE_NURSE">
+              <PropertyRef Name="SCHEDULE_NURSE_ID" />
+            </Principal>
+            <Dependent Role="NURSE">
+              <PropertyRef Name="SCHEDULE_NURSE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANSACT_REFERENCE_PATIENT">
+          <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="0..1" />
+          <End Role="TRANSACTION" Type="Self.TRANSACTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PATIENT">
+              <PropertyRef Name="PATIENT_ID" />
+            </Principal>
+            <Dependent Role="TRANSACTION">
+              <PropertyRef Name="PATIENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POLY_REFERENCE_TYPE_POL">
+          <End Role="TYPE_POLY" Type="Self.TYPE_POLY" Multiplicity="0..1" />
+          <End Role="POLY" Type="Self.POLY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPE_POLY">
+              <PropertyRef Name="TYPE_POLY_ID" />
+            </Principal>
+            <Dependent Role="POLY">
+              <PropertyRef Name="TYPE_POLY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROOM_REFERENCE_TYPE_ROO">
+          <End Role="TYPE_ROOM" Type="Self.TYPE_ROOM" Multiplicity="0..1" />
+          <End Role="ROOM" Type="Self.ROOM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPE_ROOM">
+              <PropertyRef Name="TYPE_ROOM_ID" />
+            </Principal>
+            <Dependent Role="ROOM">
+              <PropertyRef Name="TYPE_ROOM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANSACT_REFERENCE_ROOM">
+          <End Role="ROOM" Type="Self.ROOM" Multiplicity="0..1" />
+          <End Role="TRANSACTION_DETAIL" Type="Self.TRANSACTION_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROOM">
+              <PropertyRef Name="ROOM_ID" />
+            </Principal>
+            <Dependent Role="TRANSACTION_DETAIL">
+              <PropertyRef Name="ROOM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANSACT_REFERENCE_TRANSACT">
+          <End Role="TRANSACTION" Type="Self.TRANSACTION" Multiplicity="0..1" />
+          <End Role="TRANSACTION_DETAIL" Type="Self.TRANSACTION_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRANSACTION">
+              <PropertyRef Name="TRANSACTION_ID" />
+            </Principal>
+            <Dependent Role="TRANSACTION_DETAIL">
+              <PropertyRef Name="TRANSACTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DOCTOR_TRANSACTION_DETAIL">
+          <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="*" />
+          <End Role="TRANSACTION_DETAIL" Type="Self.TRANSACTION_DETAIL" Multiplicity="*" />
+        </Association>
+        <Association Name="MEDICAL_TRANSACTION_DETAIL">
+          <End Role="MEDICINE" Type="Self.MEDICINE" Multiplicity="*" />
+          <End Role="TRANSACTION_DETAIL" Type="Self.TRANSACTION_DETAIL" Multiplicity="*" />
+        </Association>
+        <Association Name="NURSE_TRANSACTION_DETAIL">
+          <End Role="NURSE" Type="Self.NURSE" Multiplicity="*" />
+          <End Role="TRANSACTION_DETAIL" Type="Self.TRANSACTION_DETAIL" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="DB_RS_SINGGIHEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ADMINs" EntityType="Self.ADMIN" />
+          <EntitySet Name="DOCTORs" EntityType="Self.DOCTOR" />
+          <EntitySet Name="MEDICAL_RECORD" EntityType="Self.MEDICAL_RECORD" />
+          <EntitySet Name="MEDICINEs" EntityType="Self.MEDICINE" />
+          <EntitySet Name="NURSEs" EntityType="Self.NURSE" />
+          <EntitySet Name="PATIENTs" EntityType="Self.PATIENT" />
+          <EntitySet Name="POLies" EntityType="Self.POLY" />
+          <EntitySet Name="ROOMs" EntityType="Self.ROOM" />
+          <EntitySet Name="SCHEDULEs" EntityType="Self.SCHEDULE" />
+          <EntitySet Name="SCHEDULE_NURSE" EntityType="Self.SCHEDULE_NURSE" />
+          <EntitySet Name="SPECIALISTs" EntityType="Self.SPECIALIST" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TRANSACTIONs" EntityType="Self.TRANSACTION" />
+          <EntitySet Name="TRANSACTION_DETAIL" EntityType="Self.TRANSACTION_DETAIL" />
+          <EntitySet Name="TYPE_MEDICINE" EntityType="Self.TYPE_MEDICINE" />
+          <EntitySet Name="TYPE_POLY" EntityType="Self.TYPE_POLY" />
+          <EntitySet Name="TYPE_ROOM" EntityType="Self.TYPE_ROOM" />
+          <AssociationSet Name="FK_MEDICINE_REFERENCE_ADMIN" Association="Self.FK_MEDICINE_REFERENCE_ADMIN">
+            <End Role="ADMIN" EntitySet="ADMINs" />
+            <End Role="MEDICINE" EntitySet="MEDICINEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PATIENT_REFERENCE_ADMIN" Association="Self.FK_PATIENT_REFERENCE_ADMIN">
+            <End Role="ADMIN" EntitySet="ADMINs" />
+            <End Role="PATIENT" EntitySet="PATIENTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOCTOR_REFERENCE_POLY" Association="Self.FK_DOCTOR_REFERENCE_POLY">
+            <End Role="POLY" EntitySet="POLies" />
+            <End Role="DOCTOR" EntitySet="DOCTORs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOCTOR_REFERENCE_SCHEDULE" Association="Self.FK_DOCTOR_REFERENCE_SCHEDULE">
+            <End Role="SCHEDULE" EntitySet="SCHEDULEs" />
+            <End Role="DOCTOR" EntitySet="DOCTORs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOCTOR_REFERENCE_SPECIALI" Association="Self.FK_DOCTOR_REFERENCE_SPECIALI">
+            <End Role="SPECIALIST" EntitySet="SPECIALISTs" />
+            <End Role="DOCTOR" EntitySet="DOCTORs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDICAL__REFERENCE_PATIENT" Association="Self.FK_MEDICAL__REFERENCE_PATIENT">
+            <End Role="PATIENT" EntitySet="PATIENTs" />
+            <End Role="MEDICAL_RECORD" EntitySet="MEDICAL_RECORD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEDICINE_REFERENCE_TYPE_MED" Association="Self.FK_MEDICINE_REFERENCE_TYPE_MED">
+            <End Role="TYPE_MEDICINE" EntitySet="TYPE_MEDICINE" />
+            <End Role="MEDICINE" EntitySet="MEDICINEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NURSE_REFERENCE_SCHEDULE" Association="Self.FK_NURSE_REFERENCE_SCHEDULE">
+            <End Role="SCHEDULE_NURSE" EntitySet="SCHEDULE_NURSE" />
+            <End Role="NURSE" EntitySet="NURSEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANSACT_REFERENCE_PATIENT" Association="Self.FK_TRANSACT_REFERENCE_PATIENT">
+            <End Role="PATIENT" EntitySet="PATIENTs" />
+            <End Role="TRANSACTION" EntitySet="TRANSACTIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POLY_REFERENCE_TYPE_POL" Association="Self.FK_POLY_REFERENCE_TYPE_POL">
+            <End Role="TYPE_POLY" EntitySet="TYPE_POLY" />
+            <End Role="POLY" EntitySet="POLies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROOM_REFERENCE_TYPE_ROO" Association="Self.FK_ROOM_REFERENCE_TYPE_ROO">
+            <End Role="TYPE_ROOM" EntitySet="TYPE_ROOM" />
+            <End Role="ROOM" EntitySet="ROOMs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANSACT_REFERENCE_ROOM" Association="Self.FK_TRANSACT_REFERENCE_ROOM">
+            <End Role="ROOM" EntitySet="ROOMs" />
+            <End Role="TRANSACTION_DETAIL" EntitySet="TRANSACTION_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANSACT_REFERENCE_TRANSACT" Association="Self.FK_TRANSACT_REFERENCE_TRANSACT">
+            <End Role="TRANSACTION" EntitySet="TRANSACTIONs" />
+            <End Role="TRANSACTION_DETAIL" EntitySet="TRANSACTION_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="DOCTOR_TRANSACTION_DETAIL" Association="Self.DOCTOR_TRANSACTION_DETAIL">
+            <End Role="DOCTOR" EntitySet="DOCTORs" />
+            <End Role="TRANSACTION_DETAIL" EntitySet="TRANSACTION_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="MEDICAL_TRANSACTION_DETAIL" Association="Self.MEDICAL_TRANSACTION_DETAIL">
+            <End Role="MEDICINE" EntitySet="MEDICINEs" />
+            <End Role="TRANSACTION_DETAIL" EntitySet="TRANSACTION_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="NURSE_TRANSACTION_DETAIL" Association="Self.NURSE_TRANSACTION_DETAIL">
+            <End Role="NURSE" EntitySet="NURSEs" />
+            <End Role="TRANSACTION_DETAIL" EntitySet="TRANSACTION_DETAIL" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_RS_SINGGIHModelStoreContainer" CdmEntityContainer="DB_RS_SINGGIHEntities1">
+          <EntitySetMapping Name="ADMINs">
+            <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.ADMIN">
+              <MappingFragment StoreEntitySet="ADMIN">
+                <ScalarProperty Name="ADMIN_ID" ColumnName="ADMIN_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOCTORs">
+            <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.DOCTOR">
+              <MappingFragment StoreEntitySet="DOCTOR">
+                <ScalarProperty Name="DOCTOR_ID" ColumnName="DOCTOR_ID" />
+                <ScalarProperty Name="POLY_ID" ColumnName="POLY_ID" />
+                <ScalarProperty Name="SPECIALIST_ID" ColumnName="SPECIALIST_ID" />
+                <ScalarProperty Name="SCHEDULE_ID" ColumnName="SCHEDULE_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEDICAL_RECORD">
+            <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.MEDICAL_RECORD">
+              <MappingFragment StoreEntitySet="MEDICAL_RECORD">
+                <ScalarProperty Name="MEDICAL_RECORD_ID" ColumnName="MEDICAL_RECORD_ID" />
+                <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="COMPLAINT" ColumnName="COMPLAINT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEDICINEs">
+            <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.MEDICINE">
+              <MappingFragment StoreEntitySet="MEDICINE">
+                <ScalarProperty Name="MEDICINE_ID" ColumnName="MEDICINE_ID" />
+                <ScalarProperty Name="TYPE_MEDICINE_ID" ColumnName="TYPE_MEDICINE_ID" />
+                <ScalarProperty Name="ADMIN_ID" ColumnName="ADMIN_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="EXP" ColumnName="EXP" />
+                <ScalarProperty Name="STOCK" ColumnName="STOCK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NURSEs">
+            <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.NURSE">
+              <MappingFragment StoreEntitySet="NURSE">
+                <ScalarProperty Name="NURSE_ID" ColumnName="NURSE_ID" />
+                <ScalarProperty Name="SCHEDULE_NURSE_ID" ColumnName="SCHEDULE_NURSE_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PATIENTs">
+            <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.PATIENT">
+              <MappingFragment StoreEntitySet="PATIENT">
+                <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
+                <ScalarProperty Name="ADMIN_ID" ColumnName="ADMIN_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="BIRTH" ColumnName="BIRTH" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="AGE" ColumnName="AGE" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POLies">
+            <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.POLY">
+              <MappingFragment StoreEntitySet="POLY">
+                <ScalarProperty Name="POLY_ID" ColumnName="POLY_ID" />
+                <ScalarProperty Name="TYPE_POLY_ID" ColumnName="TYPE_POLY_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROOMs">
+            <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.ROOM">
+              <MappingFragment StoreEntitySet="ROOM">
+                <ScalarProperty Name="ROOM_ID" ColumnName="ROOM_ID" />
+                <ScalarProperty Name="TYPE_ROOM_ID" ColumnName="TYPE_ROOM_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="CAPACITY" ColumnName="CAPACITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SCHEDULEs">
+            <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.SCHEDULE">
+              <MappingFragment StoreEntitySet="SCHEDULE">
+                <ScalarProperty Name="SCHEDULE_ID" ColumnName="SCHEDULE_ID" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SCHEDULE_NURSE">
+            <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.SCHEDULE_NURSE">
+              <MappingFragment StoreEntitySet="SCHEDULE_NURSE">
+                <ScalarProperty Name="SCHEDULE_NURSE_ID" ColumnName="SCHEDULE_NURSE_ID" />
+                <ScalarProperty Name="DATES" ColumnName="DATES" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SPECIALISTs">
+            <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.SPECIALIST">
+              <MappingFragment StoreEntitySet="SPECIALIST">
+                <ScalarProperty Name="SPECIALIST_ID" ColumnName="SPECIALIST_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRANSACTIONs">
+            <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.TRANSACTION">
+              <MappingFragment StoreEntitySet="TRANSACTION">
+                <ScalarProperty Name="TRANSACTION_ID" ColumnName="TRANSACTION_ID" />
+                <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
+                <ScalarProperty Name="TRANSACTION_DATE" ColumnName="TRANSACTION_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRANSACTION_DETAIL">
+            <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.TRANSACTION_DETAIL">
+              <MappingFragment StoreEntitySet="TRANSACTION_DETAIL">
+                <ScalarProperty Name="TRANSACTION_DETAIL_ID" ColumnName="TRANSACTION_DETAIL_ID" />
+                <ScalarProperty Name="ROOM_ID" ColumnName="ROOM_ID" />
+                <ScalarProperty Name="TRANSACTION_ID" ColumnName="TRANSACTION_ID" />
+                <ScalarProperty Name="ARRIVAL_DATE" ColumnName="ARRIVAL_DATE" />
+                <ScalarProperty Name="LEAVING_DATE" ColumnName="LEAVING_DATE" />
+                <ScalarProperty Name="TOTAL_PRICE" ColumnName="TOTAL_PRICE" />
+                <ScalarProperty Name="PRICE_ROOM" ColumnName="PRICE_ROOM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TYPE_MEDICINE">
+            <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.TYPE_MEDICINE">
+              <MappingFragment StoreEntitySet="TYPE_MEDICINE">
+                <ScalarProperty Name="TYPE_MEDICINE_ID" ColumnName="TYPE_MEDICINE_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TYPE_POLY">
+            <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.TYPE_POLY">
+              <MappingFragment StoreEntitySet="TYPE_POLY">
+                <ScalarProperty Name="TYPE_POLY_ID" ColumnName="TYPE_POLY_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TYPE_ROOM">
+            <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.TYPE_ROOM">
+              <MappingFragment StoreEntitySet="TYPE_ROOM">
+                <ScalarProperty Name="TYPE_ROOM_ID" ColumnName="TYPE_ROOM_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="DOCTOR_TRANSACTION_DETAIL" TypeName="DB_RS_SINGGIHModel.DOCTOR_TRANSACTION_DETAIL" StoreEntitySet="DOCTOR_TRANSACTION_DETAIL">
+            <EndProperty Name="DOCTOR">
+              <ScalarProperty Name="DOCTOR_ID" ColumnName="DOCTOR_ID" />
+            </EndProperty>
+            <EndProperty Name="TRANSACTION_DETAIL">
+              <ScalarProperty Name="TRANSACTION_DETAIL_ID" ColumnName="TRANSACTION_DETAIL_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MEDICAL_TRANSACTION_DETAIL" TypeName="DB_RS_SINGGIHModel.MEDICAL_TRANSACTION_DETAIL" StoreEntitySet="MEDICAL_TRANSACTION_DETAIL">
+            <EndProperty Name="MEDICINE">
+              <ScalarProperty Name="MEDICINE_ID" ColumnName="MEDICINE_ID" />
+            </EndProperty>
+            <EndProperty Name="TRANSACTION_DETAIL">
+              <ScalarProperty Name="TRANSACTION_DETAIL_ID" ColumnName="TRANSACTION_DETAIL_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="NURSE_TRANSACTION_DETAIL" TypeName="DB_RS_SINGGIHModel.NURSE_TRANSACTION_DETAIL" StoreEntitySet="NURSE_TRANSACTION_DETAIL">
+            <EndProperty Name="NURSE">
+              <ScalarProperty Name="NURSE_ID" ColumnName="NURSE_ID" />
+            </EndProperty>
+            <EndProperty Name="TRANSACTION_DETAIL">
+              <ScalarProperty Name="TRANSACTION_DETAIL_ID" ColumnName="TRANSACTION_DETAIL_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

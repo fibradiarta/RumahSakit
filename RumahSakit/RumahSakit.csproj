@@ -33,8 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -53,6 +62,74 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controller\LoginController.cs" />
+    <Compile Include="Controller\PasienController.cs" />
+    <Compile Include="Model\ADMIN.cs">
+      <DependentUpon>ModelRS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DOCTOR.cs">
+      <DependentUpon>ModelRS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MEDICAL_RECORD.cs">
+      <DependentUpon>ModelRS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MEDICINE.cs">
+      <DependentUpon>ModelRS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModelRS.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelRS.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModelRS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelRS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModelRS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelRS.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NURSE.cs">
+      <DependentUpon>ModelRS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PATIENT.cs">
+      <DependentUpon>ModelRS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\POLY.cs">
+      <DependentUpon>ModelRS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ROOM.cs">
+      <DependentUpon>ModelRS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SCHEDULE.cs">
+      <DependentUpon>ModelRS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SCHEDULE_NURSE.cs">
+      <DependentUpon>ModelRS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SPECIALIST.cs">
+      <DependentUpon>ModelRS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sysdiagram.cs">
+      <DependentUpon>ModelRS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TRANSACTION.cs">
+      <DependentUpon>ModelRS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TRANSACTION_DETAIL.cs">
+      <DependentUpon>ModelRS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TYPE_MEDICINE.cs">
+      <DependentUpon>ModelRS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TYPE_POLY.cs">
+      <DependentUpon>ModelRS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TYPE_ROOM.cs">
+      <DependentUpon>ModelRS.tt</DependentUpon>
+    </Compile>
     <Compile Include="View\DasboardAdmin.xaml.cs">
       <DependentUpon>DasboardAdmin.xaml</DependentUpon>
     </Compile>
@@ -91,6 +168,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Model\ModelRS.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelRS.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\ModelRS.edmx.diagram">
+      <DependentUpon>ModelRS.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -99,9 +184,21 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="ViewModel\" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\ModelRS.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelRS.edmx</DependentUpon>
+      <LastGenOutput>ModelRS.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\ModelRS.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelRS.edmx</DependentUpon>
+      <LastGenOutput>ModelRS.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
