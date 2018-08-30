@@ -1,0 +1,17 @@
+C:\Users\fibradiarta\source\repos\RumahSakit\RumahSakit\bin\Debug\RumahSakit.exe.config
+C:\Users\fibradiarta\source\repos\RumahSakit\RumahSakit\bin\Debug\RumahSakit.exe
+C:\Users\fibradiarta\source\repos\RumahSakit\RumahSakit\bin\Debug\RumahSakit.pdb
+C:\Users\fibradiarta\source\repos\RumahSakit\RumahSakit\obj\Debug\RumahSakit.csprojAssemblyReference.cache
+C:\Users\fibradiarta\source\repos\RumahSakit\RumahSakit\obj\Debug\MainWindow.g.cs
+C:\Users\fibradiarta\source\repos\RumahSakit\RumahSakit\obj\Debug\App.g.cs
+C:\Users\fibradiarta\source\repos\RumahSakit\RumahSakit\obj\Debug\RumahSakit_MarkupCompile.cache
+C:\Users\fibradiarta\source\repos\RumahSakit\RumahSakit\obj\Debug\RumahSakit_MarkupCompile.lref
+C:\Users\fibradiarta\source\repos\RumahSakit\RumahSakit\obj\Debug\MainWindow.baml
+C:\Users\fibradiarta\source\repos\RumahSakit\RumahSakit\obj\Debug\RumahSakit.g.resources
+C:\Users\fibradiarta\source\repos\RumahSakit\RumahSakit\obj\Debug\RumahSakit.Properties.Resources.resources
+C:\Users\fibradiarta\source\repos\RumahSakit\RumahSakit\obj\Debug\RumahSakit.csproj.GenerateResource.cache
+C:\Users\fibradiarta\source\repos\RumahSakit\RumahSakit\obj\Debug\RumahSakit.csproj.CoreCompileInputs.cache
+C:\Users\fibradiarta\source\repos\RumahSakit\RumahSakit\obj\Debug\RumahSakit.exe
+C:\Users\fibradiarta\source\repos\RumahSakit\RumahSakit\obj\Debug\RumahSakit.pdb
+C:\Users\fibradiarta\source\repos\RumahSakit\RumahSakit\obj\Debug\View\DasboardAdmin.g.cs
+C:\Users\fibradiarta\source\repos\RumahSakit\RumahSakit\obj\Debug\View\DasboardAdmin.baml
