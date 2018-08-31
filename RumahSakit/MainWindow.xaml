@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RumahSakit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="700">
+        Title="MainWindow" Height="500" Width="700" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid Width="300" Background="#00C853" Margin="392,0,0,0" >
             <Label Content="Login" HorizontalAlignment="Left" Margin="100,104,0,0" VerticalAlignment="Top" FontFamily="Sitka Banner" FontWeight="Bold" FontSize="36" Foreground="White" RenderTransformOrigin="1.446,-0.775"/>
