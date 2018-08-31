@@ -37,10 +37,11 @@ namespace RumahSakit.View
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             viewPasien(dgPasien);
+            viewPerawat(dgPerawat);
         }
 
         //Pasien
-        public string getJenisKelaminP()
+        public string getJenisKelaminPasien()
         {
             string jk = "";
             if (rbLaki.IsChecked==true)
@@ -55,8 +56,24 @@ namespace RumahSakit.View
             
         }
 
-        //clear textbox
-        private void clearText()
+        //Perawat
+        public string getJenisKelaminPerawat()
+        {
+            string jk = "";
+            if (rbLakiN.IsChecked == true)
+            {
+                jk = "Laki-laki";
+            }
+            else if (rbPerempuanN.IsChecked == true)
+            {
+                jk = "Perempuan";
+            }
+            return jk;
+
+        }
+
+        //clear text pasien
+        private void clearTextPasien()
         {
             txtNamaP.Clear();
             txtAlamatP.Clear();
@@ -65,6 +82,18 @@ namespace RumahSakit.View
             rbLaki.IsChecked=false;
             rbPerempuan.IsChecked = false;
             dtTanggalLahirP.Text = DateTime.Today.ToString();
+        }
+
+        //
+        private void clearTextPerawat()
+        {
+            txtNamaPer.Clear();
+            txtAlamatPer.Clear();
+            txtTelpPer.Clear();
+            txtEmailPer.Clear();
+            rbLakiN.IsChecked = false;
+            rbPerempuanN.IsChecked = false;
+
         }
 
         //Tampil Data Pasien
@@ -85,14 +114,14 @@ namespace RumahSakit.View
                 ADDRESS = txtAlamatP.Text,
                 PHONE = txtTelpP.Text,
                 AGE = Convert.ToInt32(txtUmurP.Text),
-                GENDER = getJenisKelaminP()
+                GENDER = getJenisKelaminPasien()
             };
 
             try
             {
                 et.PATIENTs.Add(pasien);
                 et.SaveChanges();
-                clearText();
+                clearTextPasien();
                 this.viewPasien(dgPasien);
                 MessageBox.Show("Tambah Data Pasien Berhasil !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
             }
@@ -102,7 +131,7 @@ namespace RumahSakit.View
             }
         }
 
-        //get Data dari kolom
+        //get Data dari kolom Pasien
         private void dgPasien_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             /*DataGrid dg = (DataGrid)sender;
@@ -154,7 +183,7 @@ namespace RumahSakit.View
             }
         }
 
-        private PATIENT SearchById(int id)
+        private PATIENT SearchByIdPasien(int id)
         {
             
             var pasien = et.PATIENTs.Find(id);
@@ -174,16 +203,16 @@ namespace RumahSakit.View
 
             int id = Convert.ToInt32(temp_id);
 
-            PATIENT pasien = SearchById(id);
+            PATIENT pasien = SearchByIdPasien(id);
             pasien.NAME = txtNamaP.Text;
             pasien.ADDRESS = txtAlamatP.Text;
             pasien.BIRTH = Convert.ToDateTime(dtTanggalLahirP.Text);
             pasien.AGE = Convert.ToInt32(txtUmurP.Text);
-            pasien.GENDER = getJenisKelaminP();
+            pasien.GENDER = getJenisKelaminPasien();
 
             et.Entry(pasien).State = System.Data.Entity.EntityState.Modified;
             et.SaveChanges();
-            clearText();
+            clearTextPasien();
             this.viewPasien(dgPasien);
             MessageBox.Show("Update Data Pasien Berhasil !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
         }
@@ -196,17 +225,64 @@ namespace RumahSakit.View
 
             int id = Convert.ToInt32(temp_id);
 
-            PATIENT pasien = SearchById(id);
+            PATIENT pasien = SearchByIdPasien(id);
             et.Entry(pasien).State = System.Data.Entity.EntityState.Deleted;
             et.SaveChanges();
-            clearText();
+            clearTextPasien();
             this.viewPasien(dgPasien);
             MessageBox.Show("Data Pasien Berhasil di hapus !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
             
 
         }
 
-        //================================================================Obat===============================================================
+
+        //================================================================Nurse===============================================================
+
+
+
+        private void viewPerawat(DataGrid DG)
+        {
+            DG.ItemsSource = et.NURSEs.OrderBy(p => p.NURSE_ID).ToList();
+        }
+
+        // Tambah Perawat
+        private void btnTambahN_Click(object sender, RoutedEventArgs e)
+        {
+            NURSE perawat = new NURSE()
+            {
+                NAME = txtNamaPer.Text,
+                ADDRESS = txtAlamatPer.Text,
+                EMAIL = txtEmailPer.Text,
+                GENDER = getJenisKelaminPerawat(),
+                PHONE = txtTelpPer.Text
+            };
+            try
+            {
+                et.NURSEs.Add(perawat);
+                et.SaveChanges();
+                clearTextPerawat();
+                this.viewPerawat(dgPerawat);
+                MessageBox.Show("Tambah Data Perawat Berhasil !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            
+        }
+
+        private NURSE SearchByIdPerawat(int id)
+        {
+            var perawat = et.NURSEs.Find(id);
+            if (perawat == null)
+            {
+                MessageBox.Show("ID Pasien " + id + " tidak ditemukan", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+            return perawat;
+        }
+
+        
 
 
     }
