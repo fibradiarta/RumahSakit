@@ -38,6 +38,7 @@ namespace RumahSakit.View
         {
             viewPasien(dgPasien);
             ViewPerawat(dgPerawat);
+            ViewObat(dgObat);
         }
 
         //Pasien
@@ -84,7 +85,7 @@ namespace RumahSakit.View
             dtTanggalLahirP.Text = DateTime.Today.ToString();
         }
 
-        //
+        //clear text perawat
         private void clearTextPerawat()
         {
             txtNamaPer.Clear();
@@ -93,7 +94,16 @@ namespace RumahSakit.View
             txtEmailPer.Clear();
             rbLakiN.IsChecked = false;
             rbPerempuanN.IsChecked = false;
+        }
 
+        //clear text obat
+        private void clearTextObat()
+        {
+            txtNamaObat.Clear();
+            txtHargaObat.Clear();
+            txtStockObat.Clear();
+            cmbTipeObat.SelectedIndex = -1;
+            dtObat.Text = DateTime.Today.ToString();
         }
 
         //Tampil Data Pasien
@@ -374,7 +384,37 @@ namespace RumahSakit.View
             this.ViewPerawat(dgPerawat);
             MessageBox.Show("Data Perawat Berhasil di hapus !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
+
+        //=====================================================Obat=================================================================
+
+        private void ViewObat(DataGrid DG)
+        {
+            DG.ItemsSource = et.MEDICINEs.OrderBy(o => o.MEDICINE_ID).ToList();
+        }
+
+        private void btnTambahObat_Click(object sender, RoutedEventArgs e)
+        {
+            MEDICINE obat = new MEDICINE()
+            {
+                NAME = txtNamaObat.Text,
+                PRICE = Convert.ToDouble(txtHargaObat.Text),
+                STOCK = Convert.ToInt32(txtStockObat.Text),
+                EXP = Convert.ToDateTime(dtObat.Text)
+            };
+
+            try
+            {
+                et.MEDICINEs.Add(obat);
+                et.SaveChanges();
+                clearTextObat();
+                this.ViewObat(dgObat);
+                MessageBox.Show("Tambah Data Obat Berhasil !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
     }
-
-
 }
