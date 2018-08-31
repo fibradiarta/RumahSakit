@@ -300,9 +300,9 @@ namespace RumahSakit.View
                 txtNamaPer.Text = Nama;
                 string Email = (dgPerawat.SelectedCells[2].Column.GetCellContent(item) as TextBlock).Text;
                 txtEmailPer.Text = Email;
-                string Telp = (dgPerawat.SelectedCells[3].Column.GetCellContent(item) as TextBlock).Text;
+                string Telp = (dgPerawat.SelectedCells[4].Column.GetCellContent(item) as TextBlock).Text;
                 txtTelpPer.Text = Telp;
-                string Alamat = (dgPerawat.SelectedCells[4].Column.GetCellContent(item) as TextBlock).Text;
+                string Alamat = (dgPerawat.SelectedCells[3].Column.GetCellContent(item) as TextBlock).Text;
                 txtAlamatPer.Text = Alamat;
                 string JenisKelamin = (dgPerawat.SelectedCells[5].Column.GetCellContent(item) as TextBlock).Text;
 
