@@ -30,6 +30,11 @@
 
                 </DataGrid>
                 <Grid Background="#00C853" HorizontalAlignment="Left" Height="529" Margin="774,0,0,0" VerticalAlignment="Top" Width="335">
+                    <Label Content="Nama" HorizontalAlignment="Left" Margin="71,115,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                    <Label Content="Email" HorizontalAlignment="Left" Margin="71,144,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                    <Label Content="No Telp" HorizontalAlignment="Left" Margin="71,178,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                    <Label Content="Alamat" HorizontalAlignment="Left" Margin="71,212,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                    <Label Content="Jenis Kelamin" HorizontalAlignment="Left" Margin="71,241,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
                 </Grid>
 
             </Grid>
@@ -75,7 +80,22 @@
             <Grid Background="White">
                 <DataGrid Name="dgObat" HorizontalAlignment="Left" Height="529" VerticalAlignment="Top" Width="774" Margin="-2,0,0,0"/>
                 <Grid Background="#00C853" HorizontalAlignment="Left" Height="529" Margin="774,0,0,0" VerticalAlignment="Top" Width="335">
+                    <Label Content="Nama" HorizontalAlignment="Left" Margin="71,115,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                    <Label Content="Tipe Obat" HorizontalAlignment="Left" Margin="50,155,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.36,1.974" FontSize="14" Foreground="White"/>
+                    <Label Content="Expired" HorizontalAlignment="Left" Margin="65,230,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                    <Label Content="Stock" HorizontalAlignment="Left" Margin="75,266,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                    <Label Content="Harga" HorizontalAlignment="Left" Margin="71,192,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.36,1.974" FontSize="14" Foreground="White"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="152,115,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="152,192,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="152,281,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="152,155,0,0" VerticalAlignment="Top" Width="120"/>
+                    <DatePicker HorizontalAlignment="Left" Margin="152,234,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Button Content="Button" HorizontalAlignment="Left" Margin="50,327,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button Content="Button" HorizontalAlignment="Left" Margin="142,327,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button Content="Button" HorizontalAlignment="Left" Margin="231,327,0,0" VerticalAlignment="Top" Width="75"/>
+
                 </Grid>
+
 
             </Grid>
         </TabItem>
