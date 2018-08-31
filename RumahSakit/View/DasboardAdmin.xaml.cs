@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using RumahSakit.Controller;
 using RumahSakit.Model;
-using System.Data;
+using System.Data.Entity.Validation;
 
 namespace RumahSakit.View
 {
@@ -37,7 +37,7 @@ namespace RumahSakit.View
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             viewPasien(dgPasien);
-            viewPerawat(dgPerawat);
+            ViewPerawat(dgPerawat);
         }
 
         //Pasien
@@ -156,6 +156,7 @@ namespace RumahSakit.View
             try
             {
                 object item = dgPasien.SelectedItem;
+             
                 string Nama = (dgPasien.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text;
                 txtNamaP.Text = Nama;
                 string TanggalLahir = (dgPasien.SelectedCells[2].Column.GetCellContent(item) as TextBlock).Text;
@@ -240,34 +241,15 @@ namespace RumahSakit.View
 
 
 
-        private void viewPerawat(DataGrid DG)
+        private void ViewPerawat(DataGrid DG)
         {
             DG.ItemsSource = et.NURSEs.OrderBy(p => p.NURSE_ID).ToList();
         }
 
-        // Tambah Perawat
+        
         private void btnTambahN_Click(object sender, RoutedEventArgs e)
         {
-            NURSE perawat = new NURSE()
-            {
-                NAME = txtNamaPer.Text,
-                ADDRESS = txtAlamatPer.Text,
-                EMAIL = txtEmailPer.Text,
-                GENDER = getJenisKelaminPerawat(),
-                PHONE = txtTelpPer.Text
-            };
-            try
-            {
-                et.NURSEs.Add(perawat);
-                et.SaveChanges();
-                clearTextPerawat();
-                this.viewPerawat(dgPerawat);
-                MessageBox.Show("Tambah Data Perawat Berhasil !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (Exception ex)
-            {
-
-            }
+            
             
         }
 
@@ -282,9 +264,116 @@ namespace RumahSakit.View
             return perawat;
         }
 
-        
+        // Tambah Perawat
+        private void btnTambahN_Click_1(object sender, RoutedEventArgs e)
+        {
+            NURSE perawat = new NURSE()
+            {
+                NAME = txtNamaPer.Text,
+                ADDRESS = txtAlamatPer.Text,
+                EMAIL = txtEmailPer.Text,
+                GENDER = getJenisKelaminPerawat(),
+                PHONE = txtTelpPer.Text
+            };
+            try
+            {
+                et.NURSEs.Add(perawat);
+                et.SaveChanges();
+                clearTextPerawat();
+                this.ViewPerawat(dgPerawat);
+                MessageBox.Show("Tambah Data Perawat Berhasil !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
 
+            }
+        }
 
+        //get kolom perawat
+        private void dgPerawat_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                object item = dgPerawat.SelectedItem;
+               
+                string Nama = (dgPerawat.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text;
+                txtNamaPer.Text = Nama;
+                string Email = (dgPerawat.SelectedCells[2].Column.GetCellContent(item) as TextBlock).Text;
+                txtEmailPer.Text = Email;
+                string Telp = (dgPerawat.SelectedCells[3].Column.GetCellContent(item) as TextBlock).Text;
+                txtTelpPer.Text = Telp;
+                string Alamat = (dgPerawat.SelectedCells[4].Column.GetCellContent(item) as TextBlock).Text;
+                txtAlamatPer.Text = Alamat;
+                string JenisKelamin = (dgPerawat.SelectedCells[5].Column.GetCellContent(item) as TextBlock).Text;
+
+                if (JenisKelamin == "Laki-laki")
+                {
+                    rbLakiN.IsChecked = true;
+                }
+                else if (JenisKelamin == "Perempuan")
+                {
+                    rbPerempuanN.IsChecked = true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        //update data perawat
+        private void btnEditN_Click(object sender, RoutedEventArgs e)
+        {
+            object item = dgPerawat.SelectedItem;
+            string temp_id = (dgPerawat.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+
+            int id = Convert.ToInt32(temp_id);
+
+            NURSE perawat = SearchByIdPerawat(id);
+            perawat.NAME = txtNamaPer.Text;
+            perawat.PHONE = txtTelpPer.Text;
+            perawat.EMAIL = txtEmailPer.Text;
+            perawat.ADDRESS = txtAlamatPer.Text;
+            perawat.GENDER = getJenisKelaminPerawat();
+
+            try
+            {
+                et.Entry(perawat).State = System.Data.Entity.EntityState.Modified;
+                et.SaveChanges();
+                clearTextPerawat();
+                this.ViewPerawat(dgPerawat);
+                MessageBox.Show("Update Data Perawat Berhasil !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var eve in ex.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+        }
+
+        //delete data perawat
+        private void btnDeleteN_Click(object sender, RoutedEventArgs e)
+        {
+            object item = dgPerawat.SelectedItem;
+            string temp_id = (dgPerawat.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+
+            int id = Convert.ToInt32(temp_id);
+            NURSE perawat = SearchByIdPerawat(id);
+            et.Entry(perawat).State = System.Data.Entity.EntityState.Deleted;
+            et.SaveChanges();
+            clearTextPerawat();
+            this.ViewPerawat(dgPerawat);
+            MessageBox.Show("Data Perawat Berhasil di hapus !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 
 
