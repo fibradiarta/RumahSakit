@@ -38,3 +38,26 @@ C:\Users\fibradiarta\Documents\RumahSakit\RumahSakit\obj\Debug\RumahSakit.csproj
 C:\Users\fibradiarta\Documents\RumahSakit\RumahSakit\obj\Debug\RumahSakit.exe
 C:\Users\fibradiarta\Documents\RumahSakit\RumahSakit\obj\Debug\RumahSakit.pdb
 C:\Users\fibradiarta\Documents\RumahSakit\RumahSakit\obj\Debug\RumahSakit.csprojResolveAssemblyReference.cache
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\bin\Debug\RumahSakit.exe.config
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\bin\Debug\RumahSakit.exe
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\bin\Debug\RumahSakit.pdb
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\bin\Debug\EntityFramework.dll
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\bin\Debug\EntityFramework.SqlServer.dll
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\bin\Debug\EntityFramework.xml
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\bin\Debug\EntityFramework.SqlServer.xml
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\obj\Debug\RumahSakit.csprojAssemblyReference.cache
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\obj\Debug\MainWindow.g.cs
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\obj\Debug\View\DasboardAdmin.g.cs
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\obj\Debug\App.g.cs
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\obj\Debug\RumahSakit_Content.g.cs
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\obj\Debug\RumahSakit_MarkupCompile.cache
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\obj\Debug\RumahSakit_MarkupCompile.lref
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\obj\Debug\MainWindow.baml
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\obj\Debug\View\DasboardAdmin.baml
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\obj\Debug\RumahSakit.g.resources
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\obj\Debug\RumahSakit.Properties.Resources.resources
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\obj\Debug\RumahSakit.csproj.GenerateResource.cache
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\obj\Debug\RumahSakit.csproj.CoreCompileInputs.cache
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\obj\Debug\RumahSakit.csproj.CopyComplete
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\obj\Debug\RumahSakit.exe
+D:\Bootcamp 18 MII\Project\RumahSakit\RumahSakit\obj\Debug\RumahSakit.pdb

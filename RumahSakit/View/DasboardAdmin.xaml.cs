@@ -39,6 +39,7 @@ namespace RumahSakit.View
             viewPasien(dgPasien);
             ViewPerawat(dgPerawat);
             ViewObat(dgObat);
+            viewTypeObat();
         }
 
         //Pasien
@@ -387,20 +388,28 @@ namespace RumahSakit.View
 
 
         //=====================================================Obat=================================================================
-
+        
+         
         private void ViewObat(DataGrid DG)
         {
-            DG.ItemsSource = et.MEDICINEs.OrderBy(o => o.MEDICINE_ID).ToList();
+            var medicine = from m in et.MEDICINEs.ToList() join t in et.TYPE_MEDICINE.ToList()
+                           on m.TYPE_MEDICINE_ID equals t.TYPE_MEDICINE_ID
+                           select m;
+            DG.ItemsSource = medicine.ToList();
         }
 
         private void btnTambahObat_Click(object sender, RoutedEventArgs e)
         {
+            //int tempIdTypeObat;
             MEDICINE obat = new MEDICINE()
             {
                 NAME = txtNamaObat.Text,
                 PRICE = Convert.ToDouble(txtHargaObat.Text),
                 STOCK = Convert.ToInt32(txtStockObat.Text),
-                EXP = Convert.ToDateTime(dtObat.Text)
+                EXP = Convert.ToDateTime(dtObat.Text),
+                TYPE_MEDICINE_ID = Convert.ToInt32(cmbTipeObat.SelectedValue)
+                
+                
             };
 
             try
@@ -415,6 +424,86 @@ namespace RumahSakit.View
             {
 
             }
+        }
+
+        //get value typeObat to Combobox
+        private void viewTypeObat()
+        {
+            TYPE_MEDICINE type_obat = new TYPE_MEDICINE();
+            cmbTipeObat.DisplayMemberPath = "NAME";
+            cmbTipeObat.SelectedValuePath = "TYPE_MEDICINE_ID";
+
+            cmbTipeObat.ItemsSource = et.TYPE_MEDICINE.ToList();
+        }
+
+        private void dgObat_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                object item = dgObat.SelectedItem;
+
+                string Nama = (dgObat.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text;
+                txtNamaObat.Text = Nama;
+                string Tipe = (dgObat.SelectedCells[2].Column.GetCellContent(item) as TextBlock).Text;
+                cmbTipeObat.Text = Tipe;
+                string Harga = (dgObat.SelectedCells[3].Column.GetCellContent(item) as TextBlock).Text;
+                txtHargaObat.Text = Harga;
+                string Expired = (dgObat.SelectedCells[4].Column.GetCellContent(item) as TextBlock).Text;
+                dtObat.Text = Expired;
+                string Stock = (dgObat.SelectedCells[5].Column.GetCellContent(item) as TextBlock).Text;
+                txtStockObat.Text = Stock;
+                
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private MEDICINE SearchByIdObat(int id)
+        {
+            var obat = et.MEDICINEs.Find(id);
+            if (obat == null)
+            {
+                MessageBox.Show("ID Obat " + id + " tidak ditemukan", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+            return obat;
+        }
+
+        private void btnEditObat_Click(object sender, RoutedEventArgs e)
+        {
+            object item = dgObat.SelectedItem;
+            string temp_id = (dgObat.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+
+            int id = Convert.ToInt32(temp_id);
+            MEDICINE obat = SearchByIdObat(id);
+            obat.NAME = txtNamaObat.Text;
+            obat.TYPE_MEDICINE_ID = Convert.ToInt32(cmbTipeObat.SelectedValue);
+            obat.EXP = Convert.ToDateTime(dtObat.Text);
+            obat.STOCK = Convert.ToInt32(txtStockObat.Text);
+            obat.PRICE = Convert.ToDouble(txtHargaObat.Text);
+
+            et.Entry(obat).State = System.Data.Entity.EntityState.Modified;
+            et.SaveChanges();
+            clearTextObat();
+            this.ViewObat(dgObat);
+            MessageBox.Show("Update Data Obat Berhasil !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+
+        }
+
+        private void btnDeleteObat_Click(object sender, RoutedEventArgs e)
+        {
+            object item = dgObat.SelectedItem;
+            string temp_id = (dgObat.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+            int id = Convert.ToInt32(temp_id);
+            MEDICINE obat = SearchByIdObat(id);
+
+            et.Entry(obat).State = System.Data.Entity.EntityState.Deleted;
+            et.SaveChanges();
+            clearTextObat();
+            this.ViewObat(dgObat);
+            MessageBox.Show("Delete Data Obat Berhasil !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
