@@ -20,6 +20,22 @@
                     </DataGrid.Columns>
                 </DataGrid>
                 <Grid Background="#00C853" HorizontalAlignment="Left" Height="529" Margin="774,0,0,0" VerticalAlignment="Top" Width="335">
+                    <Label Content="Nama" HorizontalAlignment="Left" Margin="73,130,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                    <Label Content="Email" HorizontalAlignment="Left" Margin="77,168,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                    <Label Content="Alamat" HorizontalAlignment="Left" Margin="67,205,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                    <Label Content="No Telp" HorizontalAlignment="Left" Margin="63,243,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                    <Label Content="Specialis" HorizontalAlignment="Left" Margin="57,280,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                    <Label Content="Poli" HorizontalAlignment="Left" Margin="88,315,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                    <Label Content="Jenis Kelamin" HorizontalAlignment="Left" Margin="27,347,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                    <TextBox Name="txtNamaDok" HorizontalAlignment="Left" Height="25" Margin="131,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
+                    <TextBox Name="txtEmailDok" HorizontalAlignment="Left" Height="25" Margin="131,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
+                    <TextBox Name="txtAlamatDok" HorizontalAlignment="Left" Height="25" Margin="131,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
+                    <TextBox Name="txtNoTelpDok" HorizontalAlignment="Left" Height="25" Margin="131,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
+                    <ComboBox Name="cmbSpecialis" HorizontalAlignment="Left" Margin="131,286,0,0" VerticalAlignment="Top" Width="169"/>
+                    <ComboBox Name="cmbPoli" HorizontalAlignment="Left" Margin="131,320,0,0" VerticalAlignment="Top" Width="169"/>
+                    <RadioButton Name="rbLakiDok" Content="Laki-laki" HorizontalAlignment="Left" Margin="131,355,0,0" VerticalAlignment="Top" BorderThickness="0" Foreground="White"/>
+                    <RadioButton Name="rbPerempuanDok" Content="Perempuan" HorizontalAlignment="Left" Margin="218,355,0,0" VerticalAlignment="Top" BorderThickness="0" Foreground="White"/>
+
                 </Grid>
 
             </Grid>
