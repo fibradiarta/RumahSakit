@@ -22,7 +22,7 @@ namespace RumahSakit.View
     /// </summary>
     public partial class DasboardAdmin : Window
     {
-        DB_RS_SINGGIHEntities1 et = new DB_RS_SINGGIHEntities1();
+        DB_RS_SINGGIHEntities2 et = new DB_RS_SINGGIHEntities2();
         public static DataGrid viewpasien;
 
         public DasboardAdmin()
@@ -32,6 +32,7 @@ namespace RumahSakit.View
         }
 
         //PasienController ps = new PasienController();
+        ComboBox poli = new ComboBox();
 
         //windows loaded
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -42,8 +43,12 @@ namespace RumahSakit.View
             viewTypeObat();
             ViewDokter(dgDokter);
             viewSpecialis();
-            viewTypePoly();
+            //viewTypePoly();
             viewPoly();
+            //cmbSpecialis.Visibility = Visibility.Hidden;
+            //cmbTypePoli.Visibility = Visibility.Hidden;
+            cmbTypePoli.IsEnabled = false;
+            cmbSpecialis.IsEnabled = false;
         }
 
         //Pasien
@@ -602,13 +607,22 @@ namespace RumahSakit.View
             cmbPoli.ItemsSource = et.POLies.ToList();
         }
 
-        //get combobox type poly
-        private void viewTypePoly()
+        //get combobox type poly umum
+        private void viewTypePolyUmum()
         {
             cmbTypePoli.DisplayMemberPath = "NAME";
             cmbTypePoli.SelectedValuePath = "TYPE_POLY_ID";
 
-            cmbTypePoli.ItemsSource = et.TYPE_POLY.ToList();
+            cmbTypePoli.ItemsSource = et.TYPE_POLY.Where(tp => tp.POLY_ID == 1005).ToList();
+        }
+
+        //get combobox type poly khusus
+        private void viewTypePolyKhusus()
+        {
+            cmbTypePoli.DisplayMemberPath = "NAME";
+            cmbTypePoli.SelectedValuePath = "TYPE_POLY_ID";
+
+            cmbTypePoli.ItemsSource = et.TYPE_POLY.Where(tp => tp.POLY_ID == 1006).ToList();
         }
 
         private DOCTOR SearchByIdDokter(int id)
@@ -635,7 +649,7 @@ namespace RumahSakit.View
             dokter.ADDRESS = txtAlamatDok.Text;
             dokter.PHONE = txtNoTelpDok.Text;
             dokter.SPECIALIST_ID = Convert.ToInt32(cmbSpecialis.SelectedValue);
-            //dokter.POLY_ID = Convert.ToInt32(cmbPoli.SelectedValue);
+            dokter.POLY_ID = Convert.ToInt32(cmbPoli.SelectedValue);
             dokter.GENDER = getJenisKelaminDokter();
 
             et.Entry(dokter).State = System.Data.Entity.EntityState.Modified;
@@ -673,6 +687,37 @@ namespace RumahSakit.View
             }
 
 
+        }
+
+        private void cmbTypePoli_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
+        private void cmbPoli_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            int umum = 1005;
+            int khusus = 1006;
+
+            if (cmbPoli.SelectedValue.ToString() == umum.ToString())
+            {
+                cmbTypePoli.IsEnabled = true;
+                cmbSpecialis.IsEnabled = false;
+
+                viewTypePolyUmum();
+                //cmbTypePoli.ItemsSource = et.TYPE_POLY.Where(tp =>tp.POLY_ID == umum).ToList();
+            }
+            else if (cmbPoli.SelectedValue.ToString() == khusus.ToString())
+            {
+                cmbTypePoli.IsEnabled = true;
+                cmbSpecialis.IsEnabled = true;
+
+                viewTypePolyKhusus();
+                //cmbTypePoli.ItemsSource = et.TYPE_POLY.Where(tp => tp.POLY_ID == khusus).ToList();
+            }
+
+            
         }
     }
 }

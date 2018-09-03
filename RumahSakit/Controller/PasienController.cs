@@ -10,7 +10,7 @@ namespace RumahSakit.Controller
 {
     class PasienController
     {
-        DB_RS_SINGGIHEntities1 et = new DB_RS_SINGGIHEntities1();
+        DB_RS_SINGGIHEntities2 et = new DB_RS_SINGGIHEntities2();
         DasboardAdmin da = new DasboardAdmin();
 
         public void InsertPasien()

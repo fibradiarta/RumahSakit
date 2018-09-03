@@ -91,11 +91,9 @@
       <PropertyRef Name="POLY_ID" />
     </Key>
     <Property Name="POLY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TYPE_POLY_ID" Type="Int32" />
     <Property Name="NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="DOCTORs" Relationship="Self.FK_DOCTOR_REFERENCE_POLY" FromRole="POLY" ToRole="DOCTOR" />
-    <NavigationProperty Name="TYPE_POLY" Relationship="Self.FK_POLY_REFERENCE_TYPE_POL" FromRole="POLY" ToRole="TYPE_POLY" />
-    <NavigationProperty Name="TYPE_POLY1" Relationship="DB_RS_SINGGIHModel.FK_TYPE_POLY_TYPE_POLY" FromRole="POLY" ToRole="TYPE_POLY" />
+    <NavigationProperty Name="TYPE_POLY" Relationship="Self.FK_TYPE_POLY_TYPE_POLY" FromRole="POLY" ToRole="TYPE_POLY" />
   </EntityType>
   <EntityType Name="ROOM">
     <Key>
@@ -184,9 +182,8 @@
     <Property Name="TYPE_POLY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="PRICE" Type="Double" />
-    <NavigationProperty Name="POLies" Relationship="Self.FK_POLY_REFERENCE_TYPE_POL" FromRole="TYPE_POLY" ToRole="POLY" />
     <Property Name="POLY_ID" Type="Int32" />
-    <NavigationProperty Name="POLY" Relationship="DB_RS_SINGGIHModel.FK_TYPE_POLY_TYPE_POLY" FromRole="TYPE_POLY" ToRole="POLY" />
+    <NavigationProperty Name="POLY" Relationship="Self.FK_TYPE_POLY_TYPE_POLY" FromRole="TYPE_POLY" ToRole="POLY" />
   </EntityType>
   <EntityType Name="TYPE_ROOM">
     <Key>
@@ -305,15 +302,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_POLY_REFERENCE_TYPE_POL">
-    <End Role="TYPE_POLY" Type="Self.TYPE_POLY" Multiplicity="0..1" />
-    <End Role="POLY" Type="Self.POLY" Multiplicity="*" />
+  <Association Name="FK_TYPE_POLY_TYPE_POLY">
+    <End Role="POLY" Type="Self.POLY" Multiplicity="0..1" />
+    <End Role="TYPE_POLY" Type="Self.TYPE_POLY" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="TYPE_POLY">
-        <PropertyRef Name="TYPE_POLY_ID" />
+      <Principal Role="POLY">
+        <PropertyRef Name="POLY_ID" />
       </Principal>
-      <Dependent Role="POLY">
-        <PropertyRef Name="TYPE_POLY_ID" />
+      <Dependent Role="TYPE_POLY">
+        <PropertyRef Name="POLY_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -365,7 +362,7 @@
     <End Role="NURSE" Type="Self.NURSE" Multiplicity="*" />
     <End Role="TRANSACTION_DETAIL" Type="Self.TRANSACTION_DETAIL" Multiplicity="*" />
   </Association>
-  <EntityContainer Name="DB_RS_SINGGIHEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="DB_RS_SINGGIHEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="ADMINs" EntityType="Self.ADMIN" />
     <EntitySet Name="DOCTORs" EntityType="Self.DOCTOR" />
     <EntitySet Name="MEDICAL_RECORD" EntityType="Self.MEDICAL_RECORD" />
@@ -419,9 +416,9 @@
       <End Role="PATIENT" EntitySet="PATIENTs" />
       <End Role="TRANSACTION" EntitySet="TRANSACTIONs" />
     </AssociationSet>
-    <AssociationSet Name="FK_POLY_REFERENCE_TYPE_POL" Association="Self.FK_POLY_REFERENCE_TYPE_POL">
-      <End Role="TYPE_POLY" EntitySet="TYPE_POLY" />
+    <AssociationSet Name="FK_TYPE_POLY_TYPE_POLY" Association="Self.FK_TYPE_POLY_TYPE_POLY">
       <End Role="POLY" EntitySet="POLies" />
+      <End Role="TYPE_POLY" EntitySet="TYPE_POLY" />
     </AssociationSet>
     <AssociationSet Name="FK_ROOM_REFERENCE_TYPE_ROO" Association="Self.FK_ROOM_REFERENCE_TYPE_ROO">
       <End Role="TYPE_ROOM" EntitySet="TYPE_ROOM" />
@@ -447,21 +444,5 @@
       <End Role="NURSE" EntitySet="NURSEs" />
       <End Role="TRANSACTION_DETAIL" EntitySet="TRANSACTION_DETAIL" />
     </AssociationSet>
-    <AssociationSet Name="FK_TYPE_POLY_TYPE_POLY" Association="DB_RS_SINGGIHModel.FK_TYPE_POLY_TYPE_POLY">
-      <End Role="POLY" EntitySet="POLies" />
-      <End Role="TYPE_POLY" EntitySet="TYPE_POLY" />
-    </AssociationSet>
   </EntityContainer>
-  <Association Name="FK_TYPE_POLY_TYPE_POLY">
-    <End Type="DB_RS_SINGGIHModel.POLY" Role="POLY" Multiplicity="0..1" />
-    <End Type="DB_RS_SINGGIHModel.TYPE_POLY" Role="TYPE_POLY" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="POLY">
-        <PropertyRef Name="POLY_ID" />
-      </Principal>
-      <Dependent Role="TYPE_POLY">
-        <PropertyRef Name="POLY_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>

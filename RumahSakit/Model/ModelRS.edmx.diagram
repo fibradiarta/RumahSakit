@@ -4,23 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8b6078e4cb8a4accadcabe4e9692843b" Name="Diagram1">
-        <EntityTypeShape EntityType="DB_RS_SINGGIHModel.ADMIN" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_RS_SINGGIHModel.DOCTOR" Width="1.5" PointX="5.25" PointY="15.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_RS_SINGGIHModel.MEDICAL_RECORD" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_RS_SINGGIHModel.MEDICINE" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+      <Diagram DiagramId="3dbcadd9fa4c4a6f8af0e6ac6aaa2add" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_RS_SINGGIHModel.ADMIN" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RS_SINGGIHModel.DOCTOR" Width="1.5" PointX="5.25" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RS_SINGGIHModel.MEDICAL_RECORD" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RS_SINGGIHModel.MEDICINE" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_RS_SINGGIHModel.NURSE" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_RS_SINGGIHModel.PATIENT" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_RS_SINGGIHModel.POLY" Width="1.5" PointX="3" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RS_SINGGIHModel.POLY" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_RS_SINGGIHModel.ROOM" Width="1.5" PointX="5.25" PointY="22.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_RS_SINGGIHModel.SCHEDULE" Width="1.5" PointX="3" PointY="17" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_RS_SINGGIHModel.SCHEDULE_NURSE" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_RS_SINGGIHModel.SPECIALIST" Width="1.5" PointX="3" PointY="19.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_RS_SINGGIHModel.sysdiagram" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_RS_SINGGIHModel.TRANSACTION" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RS_SINGGIHModel.sysdiagram" Width="1.5" PointX="7.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RS_SINGGIHModel.TRANSACTION" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_RS_SINGGIHModel.TRANSACTION_DETAIL" Width="1.5" PointX="7.5" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_RS_SINGGIHModel.TYPE_MEDICINE" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_RS_SINGGIHModel.TYPE_POLY" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RS_SINGGIHModel.TYPE_MEDICINE" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RS_SINGGIHModel.TYPE_POLY" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_RS_SINGGIHModel.TYPE_ROOM" Width="1.5" PointX="3" PointY="22.5" IsExpanded="true" />
         <AssociationConnector Association="DB_RS_SINGGIHModel.FK_MEDICINE_REFERENCE_ADMIN" ManuallyRouted="false" />
         <AssociationConnector Association="DB_RS_SINGGIHModel.FK_PATIENT_REFERENCE_ADMIN" ManuallyRouted="false" />
@@ -31,13 +31,13 @@
         <AssociationConnector Association="DB_RS_SINGGIHModel.FK_MEDICINE_REFERENCE_TYPE_MED" ManuallyRouted="false" />
         <AssociationConnector Association="DB_RS_SINGGIHModel.FK_NURSE_REFERENCE_SCHEDULE" ManuallyRouted="false" />
         <AssociationConnector Association="DB_RS_SINGGIHModel.FK_TRANSACT_REFERENCE_PATIENT" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_RS_SINGGIHModel.FK_TYPE_POLY_TYPE_POLY" ManuallyRouted="false" />
         <AssociationConnector Association="DB_RS_SINGGIHModel.FK_ROOM_REFERENCE_TYPE_ROO" ManuallyRouted="false" />
         <AssociationConnector Association="DB_RS_SINGGIHModel.FK_TRANSACT_REFERENCE_ROOM" ManuallyRouted="false" />
         <AssociationConnector Association="DB_RS_SINGGIHModel.FK_TRANSACT_REFERENCE_TRANSACT" ManuallyRouted="false" />
         <AssociationConnector Association="DB_RS_SINGGIHModel.DOCTOR_TRANSACTION_DETAIL" ManuallyRouted="false" />
         <AssociationConnector Association="DB_RS_SINGGIHModel.MEDICAL_TRANSACTION_DETAIL" ManuallyRouted="false" />
         <AssociationConnector Association="DB_RS_SINGGIHModel.NURSE_TRANSACTION_DETAIL" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_RS_SINGGIHModel.FK_TYPE_POLY_TYPE_POLY" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

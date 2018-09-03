@@ -13,10 +13,10 @@ namespace RumahSakit.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DB_RS_SINGGIHEntities1 : DbContext
+    public partial class DB_RS_SINGGIHEntities2 : DbContext
     {
-        public DB_RS_SINGGIHEntities1()
-            : base("name=DB_RS_SINGGIHEntities1")
+        public DB_RS_SINGGIHEntities2()
+            : base("name=DB_RS_SINGGIHEntities2")
         {
         }
     

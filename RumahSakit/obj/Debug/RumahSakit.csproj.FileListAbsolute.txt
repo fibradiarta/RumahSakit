@@ -45,6 +45,7 @@ C:\Users\fibradiarta\Documents\RumahSakit\RumahSakit\bin\Debug\EntityFramework.d
 C:\Users\fibradiarta\Documents\RumahSakit\RumahSakit\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\fibradiarta\Documents\RumahSakit\RumahSakit\bin\Debug\EntityFramework.xml
 C:\Users\fibradiarta\Documents\RumahSakit\RumahSakit\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\fibradiarta\Documents\RumahSakit\RumahSakit\obj\Debug\RumahSakit.csprojAssemblyReference.cache
 C:\Users\fibradiarta\Documents\RumahSakit\RumahSakit\obj\Debug\MainWindow.g.cs
 C:\Users\fibradiarta\Documents\RumahSakit\RumahSakit\obj\Debug\View\DasboardAdmin.g.cs
 C:\Users\fibradiarta\Documents\RumahSakit\RumahSakit\obj\Debug\App.g.cs

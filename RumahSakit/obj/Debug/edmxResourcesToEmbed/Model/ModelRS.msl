@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DB_RS_SINGGIHModelStoreContainer" CdmEntityContainer="DB_RS_SINGGIHEntities1">
+  <EntityContainerMapping StorageEntityContainer="DB_RS_SINGGIHModelStoreContainer" CdmEntityContainer="DB_RS_SINGGIHEntities2">
     <EntitySetMapping Name="ADMINs">
       <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.ADMIN">
         <MappingFragment StoreEntitySet="ADMIN">
@@ -164,10 +164,10 @@
     <EntitySetMapping Name="TYPE_POLY">
       <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.TYPE_POLY">
         <MappingFragment StoreEntitySet="TYPE_POLY">
-          <ScalarProperty Name="POLY_ID" ColumnName="POLY_ID" />
           <ScalarProperty Name="TYPE_POLY_ID" ColumnName="TYPE_POLY_ID" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
           <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="POLY_ID" ColumnName="POLY_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -18,16 +18,15 @@ namespace RumahSakit.Model
         public POLY()
         {
             this.DOCTORs = new HashSet<DOCTOR>();
-            this.TYPE_POLY1 = new HashSet<TYPE_POLY>();
+            this.TYPE_POLY = new HashSet<TYPE_POLY>();
         }
     
         public int POLY_ID { get; set; }
-        public Nullable<int> TYPE_POLY_ID { get; set; }
         public string NAME { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DOCTOR> DOCTORs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TYPE_POLY> TYPE_POLY1 { get; set; }
+        public virtual ICollection<TYPE_POLY> TYPE_POLY { get; set; }
     }
 }

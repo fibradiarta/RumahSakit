@@ -26,22 +26,22 @@
                     <Label Content="Email" HorizontalAlignment="Left" Margin="77,164,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
                     <Label Content="Alamat" HorizontalAlignment="Left" Margin="67,201,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
                     <Label Content="No Telp" HorizontalAlignment="Left" Margin="63,239,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Specialis" HorizontalAlignment="Left" Margin="57,346,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Jenis Poli" HorizontalAlignment="Left" Margin="54,310,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Jenis Kelamin" HorizontalAlignment="Left" Margin="27,373,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                    <Label Content="Specialis" HorizontalAlignment="Left" Margin="57,345,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                    <Label Content="Jenis Poli" HorizontalAlignment="Left" Margin="55,274,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                    <Label Content="Jenis Kelamin" HorizontalAlignment="Left" Margin="27,376,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
                     <TextBox Name="txtNamaDok" HorizontalAlignment="Left" Height="25" Margin="131,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
                     <TextBox Name="txtEmailDok" HorizontalAlignment="Left" Height="25" Margin="131,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
                     <TextBox Name="txtAlamatDok" HorizontalAlignment="Left" Height="25" Margin="131,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
                     <TextBox Name="txtNoTelpDok" HorizontalAlignment="Left" Height="25" Margin="131,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
                     <ComboBox Name="cmbSpecialis" HorizontalAlignment="Left" Margin="131,349,0,0" VerticalAlignment="Top" Width="169"/>
-                    <ComboBox Name="cmbPoli" HorizontalAlignment="Left" Margin="131,313,0,0" VerticalAlignment="Top" Width="169"/>
-                    <RadioButton Name="rbLakiDok" Content="Laki-laki" HorizontalAlignment="Left" Margin="131,383,0,0" VerticalAlignment="Top" BorderThickness="0" Foreground="White"/>
-                    <RadioButton Name="rbPerempuanDok" Content="Perempuan" HorizontalAlignment="Left" Margin="218,383,0,0" VerticalAlignment="Top" BorderThickness="0" Foreground="White"/>
-                    <Button Name="btnTambahDok" Content="Tambah" HorizontalAlignment="Left" Margin="50,415,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnTambahDok_Click"/>
-                    <Button Name="btnEditDok" Content="Edit" HorizontalAlignment="Left" Margin="138,415,0,0" VerticalAlignment="Top" Width="74" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnEditDok_Click"/>
-                    <Button Name="btnDeleteDok" Content="Delete" HorizontalAlignment="Left" Margin="225,415,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0"/>
-                    <Label Content="Tipe Poli" HorizontalAlignment="Left" Margin="54,273,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <ComboBox Name="cmbTypePoli" HorizontalAlignment="Left" Margin="131,278,0,0" VerticalAlignment="Top" Width="169"/>
+                    <ComboBox Name="cmbPoli" HorizontalAlignment="Left" Margin="131,279,0,0" VerticalAlignment="Top" Width="169" SelectionChanged="cmbPoli_SelectionChanged"/>
+                    <RadioButton Name="rbLakiDok" Content="Laki-laki" HorizontalAlignment="Left" Margin="131,386,0,0" VerticalAlignment="Top" BorderThickness="0" Foreground="White"/>
+                    <RadioButton Name="rbPerempuanDok" Content="Perempuan" HorizontalAlignment="Left" Margin="218,386,0,0" VerticalAlignment="Top" BorderThickness="0" Foreground="White"/>
+                    <Button Name="btnTambahDok" Content="Tambah" HorizontalAlignment="Left" Margin="49,415,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnTambahDok_Click"/>
+                    <Button Name="btnEditDok" Content="Edit" HorizontalAlignment="Left" Margin="137,415,0,0" VerticalAlignment="Top" Width="74" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnEditDok_Click"/>
+                    <Button Name="btnDeleteDok" Content="Delete" HorizontalAlignment="Left" Margin="224,415,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0"/>
+                    <Label Content="Tipe Poli" HorizontalAlignment="Left" Margin="58,309,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                    <ComboBox Name="cmbTypePoli" HorizontalAlignment="Left" Margin="131,313,0,0" VerticalAlignment="Top" Width="169" SelectionChanged="cmbTypePoli_SelectionChanged"/>
 
                 </Grid>
 

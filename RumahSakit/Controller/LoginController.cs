@@ -11,7 +11,7 @@ namespace RumahSakit.Controller
     class LoginController
     {
         //ADMIN admin = new ADMIN();
-        DB_RS_SINGGIHEntities1 et = new DB_RS_SINGGIHEntities1();
+        DB_RS_SINGGIHEntities2 et = new DB_RS_SINGGIHEntities2();
 
         public bool cekLogin(string username, string password)
         {
