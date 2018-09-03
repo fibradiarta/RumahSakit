@@ -31,7 +31,7 @@ namespace RumahSakit
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (lc.cekLogin(txtUsername.Text, txtPassword.Text) == true)
+            if (lc.cekLogin(txtUsername.Text, txtPassword.Password) == true)
             {
                 MessageBox.Show("Login Berhasil", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Hide();

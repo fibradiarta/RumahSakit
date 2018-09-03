@@ -40,6 +40,10 @@ namespace RumahSakit.View
             ViewPerawat(dgPerawat);
             ViewObat(dgObat);
             viewTypeObat();
+            ViewDokter(dgDokter);
+            viewSpecialis();
+            viewTypePoly();
+            //viewPoly();
         }
 
         //Pasien
@@ -74,6 +78,21 @@ namespace RumahSakit.View
 
         }
 
+        //Dokter
+        public string getJenisKelaminDokter()
+        {
+            string jk = "";
+            if (rbLakiDok.IsChecked == true)
+            {
+                jk = "Laki-laki";
+            } else if (rbPerempuanDok.IsChecked == true)
+            {
+                jk = "Perempuan";
+            }
+
+            return jk;
+        }
+
         //clear text pasien
         private void clearTextPasien()
         {
@@ -105,6 +124,21 @@ namespace RumahSakit.View
             txtStockObat.Clear();
             cmbTipeObat.SelectedIndex = -1;
             dtObat.Text = DateTime.Today.ToString();
+        }
+
+        //clear text dokter
+        private void clearTextDokter()
+        {
+            txtNamaDok.Clear();
+            txtAlamatDok.Clear();
+            txtNoTelpDok.Clear();
+            txtEmailDok.Clear();
+            cmbSpecialis.SelectedIndex = -1;
+            cmbPoli.SelectedIndex = -1;
+            cmbTypePoli.SelectedIndex = -1;
+            rbLakiDok.IsChecked = false;
+            rbPerempuanDok.IsChecked = false;
+            
         }
 
         //Tampil Data Pasien
@@ -400,7 +434,7 @@ namespace RumahSakit.View
 
         private void btnTambahObat_Click(object sender, RoutedEventArgs e)
         {
-            //int tempIdTypeObat;
+            
             MEDICINE obat = new MEDICINE()
             {
                 NAME = txtNamaObat.Text,
@@ -504,6 +538,148 @@ namespace RumahSakit.View
             clearTextObat();
             this.ViewObat(dgObat);
             MessageBox.Show("Delete Data Obat Berhasil !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        //===========================================Dokter====================================================================
+
+        private void ViewDokter(DataGrid DG)
+        {
+            var dokter = from d in et.DOCTORs.ToList() join s in et.SPECIALISTs.ToList()
+                         on d.SPECIALIST_ID equals s.SPECIALIST_ID join p in et.POLies.ToList()
+                         on d.POLY_ID equals p.POLY_ID
+                         select d;
+
+            DG.ItemsSource = dokter.ToList();
+        }
+
+        private void btnTambahDok_Click(object sender, RoutedEventArgs e)
+        {
+            POLY poly = new POLY()
+            {
+                NAME = cmbPoli.Text,
+                TYPE_POLY_ID = Convert.ToInt32(cmbTypePoli.SelectedValue)
+            };
+
+            
+            DOCTOR dokter = new DOCTOR()
+            {
+                NAME = txtNamaDok.Text,
+                EMAIL = txtEmailDok.Text,
+                ADDRESS = txtAlamatDok.Text,
+                PHONE = txtNoTelpDok.Text,
+                GENDER = getJenisKelaminDokter(),
+                SPECIALIST_ID = Convert.ToInt32(cmbSpecialis.SelectedValue),
+                POLY_ID = Convert.ToInt32(cmbPoli.SelectedValue)
+                
+            };
+
+            try
+            {
+                //insert to poly first
+                et.POLies.Add(poly);
+                et.DOCTORs.Add(dokter);
+                et.SaveChanges();
+                clearTextDokter();
+                this.ViewDokter(dgDokter);
+                MessageBox.Show("Tambah Data Dokter Berhasil !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+                
+                
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        //get combobox specialis
+        private void viewSpecialis()
+        {
+            cmbSpecialis.DisplayMemberPath = "NAME";
+            cmbSpecialis.SelectedValuePath = "SPECIALIST_ID";
+
+            cmbSpecialis.ItemsSource = et.SPECIALISTs.ToList();
+        }
+
+        //get combobox poly
+        private void viewPoly()
+        {
+            cmbPoli.DisplayMemberPath = "NAME";
+            cmbPoli.SelectedValuePath = "POLY_ID";
+
+            cmbPoli.ItemsSource = et.POLies.ToList();
+        }
+
+        //get combobox type poly
+        private void viewTypePoly()
+        {
+            cmbTypePoli.DisplayMemberPath = "NAME";
+            cmbTypePoli.SelectedValuePath = "TYPE_POLY_ID";
+
+            cmbTypePoli.ItemsSource = et.TYPE_POLY.ToList();
+        }
+
+        private DOCTOR SearchByIdDokter(int id)
+        {
+            var dokter = et.DOCTORs.Find(id);
+            if (dokter == null)
+            {
+                MessageBox.Show("ID Dokter " + id + " tidak ditemukan", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+            return dokter;
+        }
+
+        private void btnEditDok_Click(object sender, RoutedEventArgs e)
+        {
+            object item = dgDokter.SelectedItem;
+
+            string temp_id = (dgDokter.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+            int id = Convert.ToInt32(temp_id);
+            
+            DOCTOR dokter = SearchByIdDokter(id);
+            dokter.NAME = txtNamaDok.Text;
+            dokter.EMAIL = txtEmailDok.Text;
+            dokter.ADDRESS = txtAlamatDok.Text;
+            dokter.PHONE = txtNoTelpDok.Text;
+            dokter.SPECIALIST_ID = Convert.ToInt32(cmbSpecialis.SelectedValue);
+            //dokter.POLY_ID = Convert.ToInt32(cmbPoli.SelectedValue);
+            dokter.GENDER = getJenisKelaminDokter();
+
+            et.Entry(dokter).State = System.Data.Entity.EntityState.Modified;
+            et.SaveChanges();
+            clearTextDokter();
+            this.ViewDokter(dgDokter);
+            MessageBox.Show("Update Data Dokter Berhasil !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void dgDokter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            object item = dgDokter.SelectedItem;
+
+            string Nama = (dgDokter.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text;
+            txtNamaDok.Text = Nama;
+            string Email = (dgDokter.SelectedCells[4].Column.GetCellContent(item) as TextBlock).Text;
+            txtEmailDok.Text = Email;
+            string Alamat = (dgDokter.SelectedCells[6].Column.GetCellContent(item) as TextBlock).Text;
+            txtAlamatDok.Text = Alamat;
+            string Telp = (dgDokter.SelectedCells[7].Column.GetCellContent(item) as TextBlock).Text;
+            txtNoTelpDok.Text = Telp;
+            string Specialis = (dgDokter.SelectedCells[2].Column.GetCellContent(item) as TextBlock).Text;
+            cmbSpecialis.Text = Specialis;
+            string Poly = (dgDokter.SelectedCells[3].Column.GetCellContent(item) as TextBlock).Text;
+            cmbPoli.Text = Poly;
+            string JenisKelamin = (dgDokter.SelectedCells[5].Column.GetCellContent(item) as TextBlock).Text;
+
+            if (JenisKelamin == "Laki-laki")
+            {
+                rbLakiDok.IsChecked = true;
+            }
+            else if (JenisKelamin == "Perempuan")
+            {
+                rbPerempuanDok.IsChecked = true;
+            }
+
+
         }
     }
 }
