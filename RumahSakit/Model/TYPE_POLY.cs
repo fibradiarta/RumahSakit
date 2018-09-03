@@ -14,17 +14,11 @@ namespace RumahSakit.Model
     
     public partial class TYPE_POLY
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TYPE_POLY()
-        {
-            this.POLies = new HashSet<POLY>();
-        }
-    
         public int TYPE_POLY_ID { get; set; }
         public string NAME { get; set; }
         public Nullable<double> PRICE { get; set; }
+        public Nullable<int> POLY_ID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<POLY> POLies { get; set; }
+        public virtual POLY POLY { get; set; }
     }
 }

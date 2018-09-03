@@ -43,7 +43,7 @@ namespace RumahSakit.View
             ViewDokter(dgDokter);
             viewSpecialis();
             viewTypePoly();
-            //viewPoly();
+            viewPoly();
         }
 
         //Pasien
@@ -554,12 +554,6 @@ namespace RumahSakit.View
 
         private void btnTambahDok_Click(object sender, RoutedEventArgs e)
         {
-            POLY poly = new POLY()
-            {
-                NAME = cmbPoli.Text,
-                TYPE_POLY_ID = Convert.ToInt32(cmbTypePoli.SelectedValue)
-            };
-
             
             DOCTOR dokter = new DOCTOR()
             {
@@ -570,13 +564,12 @@ namespace RumahSakit.View
                 GENDER = getJenisKelaminDokter(),
                 SPECIALIST_ID = Convert.ToInt32(cmbSpecialis.SelectedValue),
                 POLY_ID = Convert.ToInt32(cmbPoli.SelectedValue)
-                
             };
 
             try
             {
                 //insert to poly first
-                et.POLies.Add(poly);
+                
                 et.DOCTORs.Add(dokter);
                 et.SaveChanges();
                 clearTextDokter();

@@ -82,7 +82,6 @@
       <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.POLY">
         <MappingFragment StoreEntitySet="POLY">
           <ScalarProperty Name="POLY_ID" ColumnName="POLY_ID" />
-          <ScalarProperty Name="TYPE_POLY_ID" ColumnName="TYPE_POLY_ID" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -165,6 +164,7 @@
     <EntitySetMapping Name="TYPE_POLY">
       <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.TYPE_POLY">
         <MappingFragment StoreEntitySet="TYPE_POLY">
+          <ScalarProperty Name="POLY_ID" ColumnName="POLY_ID" />
           <ScalarProperty Name="TYPE_POLY_ID" ColumnName="TYPE_POLY_ID" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
           <ScalarProperty Name="PRICE" ColumnName="PRICE" />

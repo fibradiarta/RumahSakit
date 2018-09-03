@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DB_RS_SINGGIHModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DB_RS_SINGGIHModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ADMIN">
           <Key>
             <PropertyRef Name="ADMIN_ID" />
@@ -105,7 +105,6 @@
             <PropertyRef Name="POLY_ID" />
           </Key>
           <Property Name="POLY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TYPE_POLY_ID" Type="int" />
           <Property Name="NAME" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="ROOM">
@@ -182,6 +181,7 @@
           <Property Name="TYPE_POLY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NAME" Type="varchar" MaxLength="50" />
           <Property Name="PRICE" Type="float" />
+          <Property Name="POLY_ID" Type="int" />
         </EntityType>
         <EntityType Name="TYPE_ROOM">
           <Key>
@@ -359,18 +359,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_POLY_REFERENCE_TYPE_POL">
-          <End Role="TYPE_POLY" Type="Self.TYPE_POLY" Multiplicity="0..1" />
-          <End Role="POLY" Type="Self.POLY" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TYPE_POLY">
-              <PropertyRef Name="TYPE_POLY_ID" />
-            </Principal>
-            <Dependent Role="POLY">
-              <PropertyRef Name="TYPE_POLY_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ROOM_REFERENCE_TYPE_ROO">
           <End Role="TYPE_ROOM" Type="Self.TYPE_ROOM" Multiplicity="0..1" />
           <End Role="ROOM" Type="Self.ROOM" Multiplicity="*" />
@@ -416,6 +404,18 @@
             </Principal>
             <Dependent Role="TRANSACTION_DETAIL">
               <PropertyRef Name="TRANSACTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TYPE_POLY_TYPE_POLY">
+          <End Role="POLY" Type="Self.POLY" Multiplicity="0..1" />
+          <End Role="TYPE_POLY" Type="Self.TYPE_POLY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POLY">
+              <PropertyRef Name="POLY_ID" />
+            </Principal>
+            <Dependent Role="TYPE_POLY">
+              <PropertyRef Name="POLY_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -496,10 +496,6 @@
             <End Role="ADMIN" EntitySet="ADMIN" />
             <End Role="PATIENT" EntitySet="PATIENT" />
           </AssociationSet>
-          <AssociationSet Name="FK_POLY_REFERENCE_TYPE_POL" Association="Self.FK_POLY_REFERENCE_TYPE_POL">
-            <End Role="TYPE_POLY" EntitySet="TYPE_POLY" />
-            <End Role="POLY" EntitySet="POLY" />
-          </AssociationSet>
           <AssociationSet Name="FK_ROOM_REFERENCE_TYPE_ROO" Association="Self.FK_ROOM_REFERENCE_TYPE_ROO">
             <End Role="TYPE_ROOM" EntitySet="TYPE_ROOM" />
             <End Role="ROOM" EntitySet="ROOM" />
@@ -516,9 +512,12 @@
             <End Role="TRANSACTION" EntitySet="TRANSACTION" />
             <End Role="TRANSACTION_DETAIL" EntitySet="TRANSACTION_DETAIL" />
           </AssociationSet>
+          <AssociationSet Name="FK_TYPE_POLY_TYPE_POLY" Association="Self.FK_TYPE_POLY_TYPE_POLY">
+            <End Role="POLY" EntitySet="POLY" />
+            <End Role="TYPE_POLY" EntitySet="TYPE_POLY" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_RS_SINGGIHModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -616,7 +615,7 @@
           <Property Name="TYPE_POLY_ID" Type="Int32" />
           <Property Name="NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="DOCTORs" Relationship="Self.FK_DOCTOR_REFERENCE_POLY" FromRole="POLY" ToRole="DOCTOR" />
-          <NavigationProperty Name="TYPE_POLY" Relationship="Self.FK_POLY_REFERENCE_TYPE_POL" FromRole="POLY" ToRole="TYPE_POLY" />
+          <NavigationProperty Name="TYPE_POLY1" Relationship="DB_RS_SINGGIHModel.FK_TYPE_POLY_TYPE_POLY" FromRole="POLY" ToRole="TYPE_POLY" />
         </EntityType>
         <EntityType Name="ROOM">
           <Key>
@@ -705,7 +704,8 @@
           <Property Name="TYPE_POLY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PRICE" Type="Double" />
-          <NavigationProperty Name="POLies" Relationship="Self.FK_POLY_REFERENCE_TYPE_POL" FromRole="TYPE_POLY" ToRole="POLY" />
+          <Property Name="POLY_ID" Type="Int32" />
+          <NavigationProperty Name="POLY" Relationship="DB_RS_SINGGIHModel.FK_TYPE_POLY_TYPE_POLY" FromRole="TYPE_POLY" ToRole="POLY" />
         </EntityType>
         <EntityType Name="TYPE_ROOM">
           <Key>
@@ -824,18 +824,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_POLY_REFERENCE_TYPE_POL">
-          <End Role="TYPE_POLY" Type="Self.TYPE_POLY" Multiplicity="0..1" />
-          <End Role="POLY" Type="Self.POLY" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TYPE_POLY">
-              <PropertyRef Name="TYPE_POLY_ID" />
-            </Principal>
-            <Dependent Role="POLY">
-              <PropertyRef Name="TYPE_POLY_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ROOM_REFERENCE_TYPE_ROO">
           <End Role="TYPE_ROOM" Type="Self.TYPE_ROOM" Multiplicity="0..1" />
           <End Role="ROOM" Type="Self.ROOM" Multiplicity="*" />
@@ -938,10 +926,6 @@
             <End Role="PATIENT" EntitySet="PATIENTs" />
             <End Role="TRANSACTION" EntitySet="TRANSACTIONs" />
           </AssociationSet>
-          <AssociationSet Name="FK_POLY_REFERENCE_TYPE_POL" Association="Self.FK_POLY_REFERENCE_TYPE_POL">
-            <End Role="TYPE_POLY" EntitySet="TYPE_POLY" />
-            <End Role="POLY" EntitySet="POLies" />
-          </AssociationSet>
           <AssociationSet Name="FK_ROOM_REFERENCE_TYPE_ROO" Association="Self.FK_ROOM_REFERENCE_TYPE_ROO">
             <End Role="TYPE_ROOM" EntitySet="TYPE_ROOM" />
             <End Role="ROOM" EntitySet="ROOMs" />
@@ -966,7 +950,23 @@
             <End Role="NURSE" EntitySet="NURSEs" />
             <End Role="TRANSACTION_DETAIL" EntitySet="TRANSACTION_DETAIL" />
           </AssociationSet>
+          <AssociationSet Name="FK_TYPE_POLY_TYPE_POLY" Association="DB_RS_SINGGIHModel.FK_TYPE_POLY_TYPE_POLY">
+            <End Role="POLY" EntitySet="POLies" />
+            <End Role="TYPE_POLY" EntitySet="TYPE_POLY" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_TYPE_POLY_TYPE_POLY">
+          <End Type="DB_RS_SINGGIHModel.POLY" Role="POLY" Multiplicity="0..1" />
+          <End Type="DB_RS_SINGGIHModel.TYPE_POLY" Role="TYPE_POLY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POLY">
+              <PropertyRef Name="POLY_ID" />
+            </Principal>
+            <Dependent Role="TYPE_POLY">
+              <PropertyRef Name="POLY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1054,7 +1054,6 @@
             <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.POLY">
               <MappingFragment StoreEntitySet="POLY">
                 <ScalarProperty Name="POLY_ID" ColumnName="POLY_ID" />
-                <ScalarProperty Name="TYPE_POLY_ID" ColumnName="TYPE_POLY_ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1137,6 +1136,7 @@
           <EntitySetMapping Name="TYPE_POLY">
             <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.TYPE_POLY">
               <MappingFragment StoreEntitySet="TYPE_POLY">
+                <ScalarProperty Name="POLY_ID" ColumnName="POLY_ID" />
                 <ScalarProperty Name="TYPE_POLY_ID" ColumnName="TYPE_POLY_ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
                 <ScalarProperty Name="PRICE" ColumnName="PRICE" />

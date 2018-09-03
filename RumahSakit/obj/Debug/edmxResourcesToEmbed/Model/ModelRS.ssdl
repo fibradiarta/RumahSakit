@@ -100,7 +100,6 @@
       <PropertyRef Name="POLY_ID" />
     </Key>
     <Property Name="POLY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="TYPE_POLY_ID" Type="int" />
     <Property Name="NAME" Type="varchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="ROOM">
@@ -177,6 +176,7 @@
     <Property Name="TYPE_POLY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NAME" Type="varchar" MaxLength="50" />
     <Property Name="PRICE" Type="float" />
+    <Property Name="POLY_ID" Type="int" />
   </EntityType>
   <EntityType Name="TYPE_ROOM">
     <Key>
@@ -354,18 +354,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_POLY_REFERENCE_TYPE_POL">
-    <End Role="TYPE_POLY" Type="Self.TYPE_POLY" Multiplicity="0..1" />
-    <End Role="POLY" Type="Self.POLY" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TYPE_POLY">
-        <PropertyRef Name="TYPE_POLY_ID" />
-      </Principal>
-      <Dependent Role="POLY">
-        <PropertyRef Name="TYPE_POLY_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_ROOM_REFERENCE_TYPE_ROO">
     <End Role="TYPE_ROOM" Type="Self.TYPE_ROOM" Multiplicity="0..1" />
     <End Role="ROOM" Type="Self.ROOM" Multiplicity="*" />
@@ -411,6 +399,18 @@
       </Principal>
       <Dependent Role="TRANSACTION_DETAIL">
         <PropertyRef Name="TRANSACTION_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TYPE_POLY_TYPE_POLY">
+    <End Role="POLY" Type="Self.POLY" Multiplicity="0..1" />
+    <End Role="TYPE_POLY" Type="Self.TYPE_POLY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="POLY">
+        <PropertyRef Name="POLY_ID" />
+      </Principal>
+      <Dependent Role="TYPE_POLY">
+        <PropertyRef Name="POLY_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -491,10 +491,6 @@
       <End Role="ADMIN" EntitySet="ADMIN" />
       <End Role="PATIENT" EntitySet="PATIENT" />
     </AssociationSet>
-    <AssociationSet Name="FK_POLY_REFERENCE_TYPE_POL" Association="Self.FK_POLY_REFERENCE_TYPE_POL">
-      <End Role="TYPE_POLY" EntitySet="TYPE_POLY" />
-      <End Role="POLY" EntitySet="POLY" />
-    </AssociationSet>
     <AssociationSet Name="FK_ROOM_REFERENCE_TYPE_ROO" Association="Self.FK_ROOM_REFERENCE_TYPE_ROO">
       <End Role="TYPE_ROOM" EntitySet="TYPE_ROOM" />
       <End Role="ROOM" EntitySet="ROOM" />
@@ -510,6 +506,10 @@
     <AssociationSet Name="FK_TRANSACT_REFERENCE_TRANSACT" Association="Self.FK_TRANSACT_REFERENCE_TRANSACT">
       <End Role="TRANSACTION" EntitySet="TRANSACTION" />
       <End Role="TRANSACTION_DETAIL" EntitySet="TRANSACTION_DETAIL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TYPE_POLY_TYPE_POLY" Association="Self.FK_TYPE_POLY_TYPE_POLY">
+      <End Role="POLY" EntitySet="POLY" />
+      <End Role="TYPE_POLY" EntitySet="TYPE_POLY" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -60,4 +60,3 @@ C:\Users\fibradiarta\Documents\RumahSakit\RumahSakit\obj\Debug\RumahSakit.csproj
 C:\Users\fibradiarta\Documents\RumahSakit\RumahSakit\obj\Debug\RumahSakit.csproj.CopyComplete
 C:\Users\fibradiarta\Documents\RumahSakit\RumahSakit\obj\Debug\RumahSakit.exe
 C:\Users\fibradiarta\Documents\RumahSakit\RumahSakit\obj\Debug\RumahSakit.pdb
-C:\Users\fibradiarta\Documents\RumahSakit\RumahSakit\obj\Debug\RumahSakit.csprojAssemblyReference.cache

@@ -31,13 +31,13 @@
         <AssociationConnector Association="DB_RS_SINGGIHModel.FK_MEDICINE_REFERENCE_TYPE_MED" ManuallyRouted="false" />
         <AssociationConnector Association="DB_RS_SINGGIHModel.FK_NURSE_REFERENCE_SCHEDULE" ManuallyRouted="false" />
         <AssociationConnector Association="DB_RS_SINGGIHModel.FK_TRANSACT_REFERENCE_PATIENT" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_RS_SINGGIHModel.FK_POLY_REFERENCE_TYPE_POL" ManuallyRouted="false" />
         <AssociationConnector Association="DB_RS_SINGGIHModel.FK_ROOM_REFERENCE_TYPE_ROO" ManuallyRouted="false" />
         <AssociationConnector Association="DB_RS_SINGGIHModel.FK_TRANSACT_REFERENCE_ROOM" ManuallyRouted="false" />
         <AssociationConnector Association="DB_RS_SINGGIHModel.FK_TRANSACT_REFERENCE_TRANSACT" ManuallyRouted="false" />
         <AssociationConnector Association="DB_RS_SINGGIHModel.DOCTOR_TRANSACTION_DETAIL" ManuallyRouted="false" />
         <AssociationConnector Association="DB_RS_SINGGIHModel.MEDICAL_TRANSACTION_DETAIL" ManuallyRouted="false" />
         <AssociationConnector Association="DB_RS_SINGGIHModel.NURSE_TRANSACTION_DETAIL" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_RS_SINGGIHModel.FK_TYPE_POLY_TYPE_POLY" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
