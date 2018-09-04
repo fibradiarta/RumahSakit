@@ -29,6 +29,7 @@ namespace RumahSakit.Model
         public Nullable<System.DateTime> LEAVING_DATE { get; set; }
         public Nullable<double> TOTAL_PRICE { get; set; }
         public Nullable<double> PRICE_ROOM { get; set; }
+        public Nullable<int> QTY_MEDICINE { get; set; }
     
         public virtual ROOM ROOM { get; set; }
         public virtual TRANSACTION TRANSACTION { get; set; }

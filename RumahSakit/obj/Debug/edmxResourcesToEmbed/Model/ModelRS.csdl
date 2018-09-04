@@ -85,6 +85,7 @@
     <NavigationProperty Name="ADMIN" Relationship="Self.FK_PATIENT_REFERENCE_ADMIN" FromRole="PATIENT" ToRole="ADMIN" />
     <NavigationProperty Name="MEDICAL_RECORD" Relationship="Self.FK_MEDICAL__REFERENCE_PATIENT" FromRole="PATIENT" ToRole="MEDICAL_RECORD" />
     <NavigationProperty Name="TRANSACTIONs" Relationship="Self.FK_TRANSACT_REFERENCE_PATIENT" FromRole="PATIENT" ToRole="TRANSACTION" />
+    <Property Name="STATUS" Type="Int32" />
   </EntityType>
   <EntityType Name="POLY">
     <Key>
@@ -166,6 +167,7 @@
     <NavigationProperty Name="DOCTORs" Relationship="Self.DOCTOR_TRANSACTION_DETAIL" FromRole="TRANSACTION_DETAIL" ToRole="DOCTOR" />
     <NavigationProperty Name="MEDICINEs" Relationship="Self.MEDICAL_TRANSACTION_DETAIL" FromRole="TRANSACTION_DETAIL" ToRole="MEDICINE" />
     <NavigationProperty Name="NURSEs" Relationship="Self.NURSE_TRANSACTION_DETAIL" FromRole="TRANSACTION_DETAIL" ToRole="NURSE" />
+    <Property Name="QTY_MEDICINE" Type="Int32" />
   </EntityType>
   <EntityType Name="TYPE_MEDICINE">
     <Key>

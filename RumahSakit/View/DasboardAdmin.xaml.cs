@@ -41,24 +41,24 @@ namespace RumahSakit.View
             ViewPerawat(dgPerawat);
             ViewObat(dgObat);
             viewTypeObat();
-            
-            if (rbSpecialis.IsChecked == true)
-            {
-                dgDokter.UnselectAllCells();
-                ViewDokterSpecialis(dgDokter);
-            }
-            else if (rbNonSpecialis.IsChecked == true)
-            {
-                dgDokter.UnselectAllCells();
-                ViewDokterNonSpecialis(dgDokter);
-            }
             viewSpecialis();
             viewTypePoly();
             viewPoly();
+            ViewRuangan(dgRuangan);
+            viewTypeRuangan();
             //cmbSpecialis.Visibility = Visibility.Hidden;
             //cmbTypePoli.Visibility = Visibility.Hidden;
             //cmbTypePoli.IsEnabled = false;
             //cmbSpecialis.IsEnabled = false;
+            viewObatTransaksi();
+            viewPerawatTransaksi();
+            viewDokterTransaksi();
+            viewJenisPolyTransaksi();
+            viewNamaRuanganTransaksi();
+            viewJenisRuanganTransaksi();
+            viewJenisPolyTransaksi();
+            viewTypePolyTransaksi();
+            dtTanggalTransaksi.Text = DateTime.Today.ToString();
         }
 
         //Pasien
@@ -166,7 +166,7 @@ namespace RumahSakit.View
         //Insert Data Pasien
         private void btnTambah_Click(object sender, RoutedEventArgs e)
         {
-            
+
             PATIENT pasien = new PATIENT()
             {
                 NAME = txtNamaP.Text,
@@ -174,7 +174,8 @@ namespace RumahSakit.View
                 ADDRESS = txtAlamatP.Text,
                 PHONE = txtTelpP.Text,
                 AGE = Convert.ToInt32(txtUmurP.Text),
-                GENDER = getJenisKelaminPasien()
+                GENDER = getJenisKelaminPasien(),
+                STATUS = 0
             };
 
             try
@@ -845,6 +846,7 @@ namespace RumahSakit.View
         private void rbSpecialis_Click(object sender, RoutedEventArgs e)
         {
             rbSpecialis.IsChecked = true;
+            clearTextDokter();
             ViewDokterSpecialis(dgDokter);
             cmbSpecialis.IsEnabled = true;
         }
@@ -852,10 +854,211 @@ namespace RumahSakit.View
         private void rbNonSpecialis_Click(object sender, RoutedEventArgs e)
         {
             rbNonSpecialis.IsChecked = true;
+            clearTextDokter();
             ViewDokterNonSpecialis(dgDokter);
             cmbSpecialis.IsEnabled = false;
             
             
+        }
+
+        //=======================================================Ruangan======================================================================
+
+        private void ViewRuangan(DataGrid DG)
+        {
+            var ruangan = from r in et.ROOMs.ToList()
+                          join tr in et.TYPE_ROOM.ToList()
+                          on r.ROOM_ID equals tr.TYPE_ROOM_ID
+                          select r;
+            DG.ItemsSource = ruangan.ToList();
+        
+        }
+
+        private void clearTextRuangan()
+        {
+            txtNamaRuangan.Clear();
+            txtKapasitasRuangan.Clear();
+            cmbJenisRuangan.SelectedIndex = -1;
+        }
+
+        private void viewTypeRuangan()
+        {
+            cmbJenisRuangan.DisplayMemberPath = "NAME";
+            cmbJenisRuangan.SelectedValuePath = "TYPE_ROOM_ID";
+
+            cmbJenisRuangan.ItemsSource = et.TYPE_ROOM.ToList();
+        }
+
+        private void btnTambahRuangan_Click(object sender, RoutedEventArgs e)
+        {
+            ROOM ruangan = new ROOM() {
+                NAME = txtNamaRuangan.Text,
+                CAPACITY = Convert.ToInt32(txtKapasitasRuangan.Text),
+                TYPE_ROOM_ID = Convert.ToInt32(cmbJenisRuangan.SelectedValue)
+            };
+
+            et.ROOMs.Add(ruangan);
+            et.SaveChanges();
+            clearTextRuangan();
+            this.ViewRuangan(dgRuangan);
+            MessageBox.Show("Tambah Data Ruangan Berhasil !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+
+        }
+
+        private void dgRuangan_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            object item = dgRuangan.SelectedItem;
+
+            try
+            {
+                string Nama = (dgRuangan.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text;
+                txtNamaRuangan.Text = Nama;
+                string TipeRuangan = (dgRuangan.SelectedCells[2].Column.GetCellContent(item) as TextBlock).Text;
+                cmbJenisRuangan.Text = TipeRuangan;
+                string Kapasitas = (dgRuangan.SelectedCells[3].Column.GetCellContent(item) as TextBlock).Text;
+                txtKapasitasRuangan.Text = Kapasitas;
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
+        private ROOM SearchByIdRoom(int id)
+        {
+            var ruangan = et.ROOMs.Find(id);
+            if (ruangan == null)
+            {
+                MessageBox.Show("ID Ruangan " + id + " tidak ditemukan", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+            return ruangan;
+        }
+
+        private void btnEditRuangan_Click(object sender, RoutedEventArgs e)
+        {
+            object item = dgRuangan.SelectedItem;
+
+            string temp_id = (dgRuangan.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+            int id = Convert.ToInt32(temp_id);
+
+            ROOM ruangan = SearchByIdRoom(id);
+            ruangan.NAME = txtNamaRuangan.Text;
+            ruangan.CAPACITY = Convert.ToInt32(txtKapasitasRuangan.Text);
+            ruangan.TYPE_ROOM_ID = Convert.ToInt32(cmbJenisRuangan.SelectedValue);
+
+            et.Entry(ruangan).State = System.Data.Entity.EntityState.Modified;
+            et.SaveChanges();
+            clearTextRuangan();
+            this.ViewRuangan(dgRuangan);
+            MessageBox.Show("Update Data Ruangan Berhasil !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void btnDeleteRuangan_Click(object sender, RoutedEventArgs e)
+        {
+            object item = dgRuangan.SelectedItem;
+
+            string temp_id = (dgRuangan.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+            int id = Convert.ToInt32(temp_id);
+
+            ROOM ruangan = SearchByIdRoom(id);
+
+            et.Entry(ruangan).State = System.Data.Entity.EntityState.Deleted;
+            et.SaveChanges();
+            clearTextRuangan();
+            this.ViewRuangan(dgRuangan);
+            MessageBox.Show("Update Data Ruangan Berhasil !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+            dgRuangan.UnselectAllCells();
+        }
+
+        //========================================================Transaksi================================================================
+
+        private void viewBlmTransaksiPasien(DataGrid DG)
+        {
+            var transaksi = from p in et.PATIENTs.ToList()
+                            where p.STATUS == 0
+                            select p;
+
+            DG.ItemsSource = transaksi.ToList();
+        }
+
+        private void viewSdhTransaksiPasien(DataGrid DG)
+        {
+            var transaksi = from p in et.PATIENTs.ToList()
+                            join t in et.TRANSACTIONs.ToList()
+                            on p.PATIENT_ID equals t.PATIENT_ID
+                            where p.STATUS == 1
+                            select p;
+
+            DG.ItemsSource = transaksi.ToList();
+        }
+
+        private void rbBelumTransaksi_Click(object sender, RoutedEventArgs e)
+        {
+            viewBlmTransaksiPasien(dgTransaksiPasien);
+        }
+
+        private void rbSudahTransaksi_Click(object sender, RoutedEventArgs e)
+        {
+            viewSdhTransaksiPasien(dgTransaksiPasien);
+        }
+
+        //get combobox transaksi 
+        private void viewTypePolyTransaksi()
+        {
+            cmbTipePoliTransaksi.DisplayMemberPath = "NAME";
+            cmbTipePoliTransaksi.SelectedValuePath = "TYPE_POLY_ID";
+
+            cmbTipePoliTransaksi.ItemsSource = et.TYPE_POLY.ToList();
+        }
+
+        private void viewJenisPolyTransaksi()
+        {
+            cmbJenisPoliTransaksi.DisplayMemberPath = "NAME";
+            cmbJenisPoliTransaksi.SelectedValuePath = "POLY_ID";
+
+            cmbJenisPoliTransaksi.ItemsSource = et.POLies.ToList();
+        }
+
+        private void viewDokterTransaksi()
+        {
+            cmbNamaDokterTransaksi.DisplayMemberPath = "NAME";
+            cmbNamaDokterTransaksi.SelectedValuePath = "DOCTOR_ID";
+
+            cmbNamaDokterTransaksi.ItemsSource = et.DOCTORs.ToList();
+        }
+
+        private void viewPerawatTransaksi()
+        {
+            cmbNamaPerawatTransaksi.DisplayMemberPath = "NAME";
+            cmbNamaPerawatTransaksi.SelectedValuePath = "NURSE_ID";
+
+            cmbNamaPerawatTransaksi.ItemsSource = et.NURSEs.ToList();
+        }
+
+        private void viewNamaRuanganTransaksi()
+        {
+            cmbNamaRuanganTransaksi.DisplayMemberPath = "NAME";
+            cmbNamaRuanganTransaksi.SelectedValuePath = "ROOM_ID";
+
+            cmbNamaRuanganTransaksi.ItemsSource = et.ROOMs.ToList();
+        }
+
+        private void viewJenisRuanganTransaksi()
+        {
+            cmbJenisRuanganTransaksi.DisplayMemberPath = "NAME";
+            cmbJenisRuanganTransaksi.SelectedValuePath = "TYPE_ROOM_ID";
+
+            cmbJenisRuanganTransaksi.ItemsSource = et.TYPE_ROOM.ToList();
+        }
+
+        private void viewObatTransaksi()
+        {
+            cmbNamaObatTransaksi.DisplayMemberPath = "NAME";
+            cmbNamaObatTransaksi.SelectedValuePath = "MEDICINE_ID";
+
+            cmbNamaObatTransaksi.ItemsSource = et.MEDICINEs.ToList();
         }
     }
 }

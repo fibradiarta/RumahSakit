@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DB_RS_SINGGIHModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DB_RS_SINGGIHModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ADMIN">
           <Key>
             <PropertyRef Name="ADMIN_ID" />
@@ -99,6 +99,7 @@
           <Property Name="PHONE" Type="varchar" MaxLength="12" />
           <Property Name="AGE" Type="int" />
           <Property Name="GENDER" Type="varchar" MaxLength="10" />
+          <Property Name="STATUS" Type="int" />
         </EntityType>
         <EntityType Name="POLY">
           <Key>
@@ -166,6 +167,7 @@
           <Property Name="LEAVING_DATE" Type="datetime" />
           <Property Name="TOTAL_PRICE" Type="float" />
           <Property Name="PRICE_ROOM" Type="float" />
+          <Property Name="QTY_MEDICINE" Type="int" />
         </EntityType>
         <EntityType Name="TYPE_MEDICINE">
           <Key>
@@ -517,8 +519,7 @@
             <End Role="TYPE_POLY" EntitySet="TYPE_POLY" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_RS_SINGGIHModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -607,6 +608,7 @@
           <NavigationProperty Name="ADMIN" Relationship="Self.FK_PATIENT_REFERENCE_ADMIN" FromRole="PATIENT" ToRole="ADMIN" />
           <NavigationProperty Name="MEDICAL_RECORD" Relationship="Self.FK_MEDICAL__REFERENCE_PATIENT" FromRole="PATIENT" ToRole="MEDICAL_RECORD" />
           <NavigationProperty Name="TRANSACTIONs" Relationship="Self.FK_TRANSACT_REFERENCE_PATIENT" FromRole="PATIENT" ToRole="TRANSACTION" />
+          <Property Name="STATUS" Type="Int32" />
         </EntityType>
         <EntityType Name="POLY">
           <Key>
@@ -688,6 +690,7 @@
           <NavigationProperty Name="DOCTORs" Relationship="Self.DOCTOR_TRANSACTION_DETAIL" FromRole="TRANSACTION_DETAIL" ToRole="DOCTOR" />
           <NavigationProperty Name="MEDICINEs" Relationship="Self.MEDICAL_TRANSACTION_DETAIL" FromRole="TRANSACTION_DETAIL" ToRole="MEDICINE" />
           <NavigationProperty Name="NURSEs" Relationship="Self.NURSE_TRANSACTION_DETAIL" FromRole="TRANSACTION_DETAIL" ToRole="NURSE" />
+          <Property Name="QTY_MEDICINE" Type="Int32" />
         </EntityType>
         <EntityType Name="TYPE_MEDICINE">
           <Key>
@@ -1039,6 +1042,7 @@
           <EntitySetMapping Name="PATIENTs">
             <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.PATIENT">
               <MappingFragment StoreEntitySet="PATIENT">
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
                 <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
                 <ScalarProperty Name="ADMIN_ID" ColumnName="ADMIN_ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -1115,6 +1119,7 @@
           <EntitySetMapping Name="TRANSACTION_DETAIL">
             <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.TRANSACTION_DETAIL">
               <MappingFragment StoreEntitySet="TRANSACTION_DETAIL">
+                <ScalarProperty Name="QTY_MEDICINE" ColumnName="QTY_MEDICINE" />
                 <ScalarProperty Name="TRANSACTION_DETAIL_ID" ColumnName="TRANSACTION_DETAIL_ID" />
                 <ScalarProperty Name="ROOM_ID" ColumnName="ROOM_ID" />
                 <ScalarProperty Name="TRANSACTION_ID" ColumnName="TRANSACTION_ID" />

@@ -67,6 +67,7 @@
     <EntitySetMapping Name="PATIENTs">
       <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.PATIENT">
         <MappingFragment StoreEntitySet="PATIENT">
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
           <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
           <ScalarProperty Name="ADMIN_ID" ColumnName="ADMIN_ID" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -143,6 +144,7 @@
     <EntitySetMapping Name="TRANSACTION_DETAIL">
       <EntityTypeMapping TypeName="DB_RS_SINGGIHModel.TRANSACTION_DETAIL">
         <MappingFragment StoreEntitySet="TRANSACTION_DETAIL">
+          <ScalarProperty Name="QTY_MEDICINE" ColumnName="QTY_MEDICINE" />
           <ScalarProperty Name="TRANSACTION_DETAIL_ID" ColumnName="TRANSACTION_DETAIL_ID" />
           <ScalarProperty Name="ROOM_ID" ColumnName="ROOM_ID" />
           <ScalarProperty Name="TRANSACTION_ID" ColumnName="TRANSACTION_ID" />

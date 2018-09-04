@@ -29,6 +29,7 @@ namespace RumahSakit.Model
         public string PHONE { get; set; }
         public Nullable<int> AGE { get; set; }
         public string GENDER { get; set; }
+        public Nullable<int> STATUS { get; set; }
     
         public virtual ADMIN ADMIN { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
