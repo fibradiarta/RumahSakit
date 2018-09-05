@@ -28,9 +28,10 @@ namespace RumahSakit
         }
 
         LoginController lc = new LoginController();
-
+        public static string tempUsername;
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            tempUsername = txtUsername.Text;
             if (lc.cekLogin(txtUsername.Text, txtPassword.Password) == true)
             {
                 MessageBox.Show("Login Berhasil", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Information);

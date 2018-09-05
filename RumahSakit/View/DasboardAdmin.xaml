@@ -6,230 +6,262 @@
         xmlns:local="clr-namespace:RumahSakit.View"
         mc:Ignorable="d"
         Title="DasboardAdmin" Height="588" Width="1123.333" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
-    <TabControl>
-        <TabItem Header="Dokter">
-            <Grid Background="White">
-                <DataGrid AutoGenerateColumns="False" Name="dgDokter" HorizontalAlignment="Left" Height="501" VerticalAlignment="Top" Width="774" Margin="-2,28,0,0" SelectionChanged="dgDokter_SelectionChanged">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Width="50" Binding="{Binding Path=DOCTOR_ID}"/>
-                        <DataGridTextColumn Header="Nama" Width="150" Binding="{Binding Path=NAME}"/>
-                        <DataGridTextColumn Header="Specialis" Width="90" Binding="{Binding Path=SPECIALIST.NAME}"/>
-                        <DataGridTextColumn Header="Poly" Width="50" Binding="{Binding Path=POLY.NAME}"/>
-                        <DataGridTextColumn Header="Email" Width="100" Binding="{Binding Path=EMAIL}"/>
-                        <DataGridTextColumn Header="Jenis Kelamin" Width="90" Binding="{Binding Path=GENDER}"/>
-                        <DataGridTextColumn Header="Alamat" Width="150" Binding="{Binding Path=ADDRESS}"/>
-                        <DataGridTextColumn Header="No Telp" Width="90" Binding="{Binding Path=PHONE}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-                <Grid Background="#00C853" HorizontalAlignment="Left" Height="529" Margin="774,0,0,0" VerticalAlignment="Top" Width="335">
-                    <Label Content="Nama" HorizontalAlignment="Left" Margin="73,126,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Email" HorizontalAlignment="Left" Margin="77,164,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Alamat" HorizontalAlignment="Left" Margin="67,201,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="No Telp" HorizontalAlignment="Left" Margin="63,239,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Specialis" HorizontalAlignment="Left" Margin="57,345,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Jenis Poli" HorizontalAlignment="Left" Margin="55,274,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Jenis Kelamin" HorizontalAlignment="Left" Margin="27,376,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <TextBox Name="txtNamaDok" HorizontalAlignment="Left" Height="25" Margin="131,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
-                    <TextBox Name="txtEmailDok" HorizontalAlignment="Left" Height="25" Margin="131,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
-                    <TextBox Name="txtAlamatDok" HorizontalAlignment="Left" Height="25" Margin="131,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
-                    <TextBox Name="txtNoTelpDok" HorizontalAlignment="Left" Height="25" Margin="131,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
-                    <ComboBox Name="cmbSpecialis" HorizontalAlignment="Left" Margin="131,349,0,0" VerticalAlignment="Top" Width="169"/>
-                    <ComboBox Name="cmbPoli" HorizontalAlignment="Left" Margin="131,279,0,0" VerticalAlignment="Top" Width="169" SelectionChanged="cmbPoli_SelectionChanged"/>
-                    <RadioButton Name="rbLakiDok" Content="Laki-laki" HorizontalAlignment="Left" Margin="131,386,0,0" VerticalAlignment="Top" BorderThickness="0" Foreground="White"/>
-                    <RadioButton Name="rbPerempuanDok" Content="Perempuan" HorizontalAlignment="Left" Margin="218,386,0,0" VerticalAlignment="Top" BorderThickness="0" Foreground="White"/>
-                    <Button Name="btnTambahDok" Content="Tambah" HorizontalAlignment="Left" Margin="49,415,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnTambahDok_Click"/>
-                    <Button Name="btnEditDok" Content="Edit" HorizontalAlignment="Left" Margin="137,415,0,0" VerticalAlignment="Top" Width="74" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnEditDok_Click"/>
-                    <Button Name="btnDeleteDok" Content="Delete" HorizontalAlignment="Left" Margin="224,415,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnDeleteDok_Click"/>
-                    <Label Content="Tipe Poli" HorizontalAlignment="Left" Margin="58,309,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <ComboBox Name="cmbTypePoli" HorizontalAlignment="Left" Margin="131,313,0,0" VerticalAlignment="Top" Width="169" SelectionChanged="cmbTypePoli_SelectionChanged"/>
+    <Grid>
+        <TabControl Margin="0,64,0,0">
+            <TabItem Header="Dokter">
+                <Grid Background="White">
+                    <DataGrid AutoGenerateColumns="False" Name="dgDokter" HorizontalAlignment="Left" Height="437" VerticalAlignment="Top" Width="774" Margin="-2,28,0,0" SelectionChanged="dgDokter_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Width="50" Binding="{Binding Path=DOCTOR_ID}"/>
+                            <DataGridTextColumn Header="Nama" Width="150" Binding="{Binding Path=NAME}"/>
+                            <DataGridTextColumn Header="Specialis" Width="90" Binding="{Binding Path=SPECIALIST.NAME}"/>
+                            <DataGridTextColumn Header="Poly" Width="50" Binding="{Binding Path=POLY.NAME}"/>
+                            <DataGridTextColumn Header="Email" Width="100" Binding="{Binding Path=EMAIL}"/>
+                            <DataGridTextColumn Header="Jenis Kelamin" Width="90" Binding="{Binding Path=GENDER}"/>
+                            <DataGridTextColumn Header="Alamat" Width="150" Binding="{Binding Path=ADDRESS}"/>
+                            <DataGridTextColumn Header="No Telp" Width="90" Binding="{Binding Path=PHONE}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Grid Background="#00C853" HorizontalAlignment="Left" Height="465" Margin="774,0,0,0" VerticalAlignment="Top" Width="335">
+                        <Label Content="Nama" HorizontalAlignment="Left" Margin="73,70,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="Email" HorizontalAlignment="Left" Margin="77,108,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="Alamat" HorizontalAlignment="Left" Margin="67,145,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="No Telp" HorizontalAlignment="Left" Margin="63,183,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="Specialis" HorizontalAlignment="Left" Margin="57,289,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="Jenis Poli" HorizontalAlignment="Left" Margin="55,218,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="Jenis Kelamin" HorizontalAlignment="Left" Margin="27,320,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <TextBox Name="txtNamaDok" HorizontalAlignment="Left" Height="25" Margin="131,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
+                        <TextBox Name="txtEmailDok" HorizontalAlignment="Left" Height="25" Margin="131,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
+                        <TextBox Name="txtAlamatDok" HorizontalAlignment="Left" Height="25" Margin="131,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
+                        <TextBox Name="txtNoTelpDok" HorizontalAlignment="Left" Height="25" Margin="131,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
+                        <ComboBox Name="cmbSpecialis" HorizontalAlignment="Left" Margin="131,293,0,0" VerticalAlignment="Top" Width="169"/>
+                        <ComboBox Name="cmbPoli" HorizontalAlignment="Left" Margin="131,223,0,0" VerticalAlignment="Top" Width="169" SelectionChanged="cmbPoli_SelectionChanged"/>
+                        <RadioButton Name="rbLakiDok" Content="Laki-laki" HorizontalAlignment="Left" Margin="131,330,0,0" VerticalAlignment="Top" BorderThickness="0" Foreground="White"/>
+                        <RadioButton Name="rbPerempuanDok" Content="Perempuan" HorizontalAlignment="Left" Margin="218,330,0,0" VerticalAlignment="Top" BorderThickness="0" Foreground="White"/>
+                        <Button Name="btnTambahDok" Content="Tambah" HorizontalAlignment="Left" Margin="49,359,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnTambahDok_Click"/>
+                        <Button Name="btnEditDok" Content="Edit" HorizontalAlignment="Left" Margin="137,359,0,0" VerticalAlignment="Top" Width="74" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnEditDok_Click"/>
+                        <Button Name="btnDeleteDok" Content="Delete" HorizontalAlignment="Left" Margin="224,359,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnDeleteDok_Click"/>
+                        <Label Content="Tipe Poli" HorizontalAlignment="Left" Margin="58,253,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <ComboBox Name="cmbTypePoli" HorizontalAlignment="Left" Margin="131,257,0,0" VerticalAlignment="Top" Width="169" SelectionChanged="cmbTypePoli_SelectionChanged"/>
+
+                    </Grid>
+                    <RadioButton Name="rbSpecialis" Content="Specialis" HorizontalAlignment="Left" Margin="602,7,0,0" VerticalAlignment="Top" Click="rbSpecialis_Click"/>
+                    <RadioButton Name="rbNonSpecialis" Content="Non Specialis" HorizontalAlignment="Left" Margin="671,7,0,0" VerticalAlignment="Top" Click="rbNonSpecialis_Click"/>
 
                 </Grid>
-                <RadioButton Name="rbSpecialis" Content="Specialis" HorizontalAlignment="Left" Margin="602,7,0,0" VerticalAlignment="Top" Click="rbSpecialis_Click"/>
-                <RadioButton Name="rbNonSpecialis" Content="Non Specialis" HorizontalAlignment="Left" Margin="671,7,0,0" VerticalAlignment="Top" Click="rbNonSpecialis_Click"/>
-
-            </Grid>
-        </TabItem>
-        <TabItem Header="Perawatan">
-            <Grid Background="White">
-                <DataGrid Name="dgPerawat" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="529" VerticalAlignment="Top" Width="774" Margin="-2,0,0,0" SelectionChanged="dgPerawat_SelectionChanged">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Width="50" Binding="{Binding NURSE_ID}"/>
-                        <DataGridTextColumn Header="Nama" Width="180" Binding="{Binding NAME}"/>
-                        <DataGridTextColumn Header="Email" Width="150" Binding="{Binding EMAIL}"/>
-                        <DataGridTextColumn Header="Alamat" Width="200" Binding="{Binding ADDRESS}"/>
-                        <DataGridTextColumn Header="No Telp" Width="100" Binding="{Binding PHONE}"/>
-                        <DataGridTextColumn Header="Jenis Kelamin" Width="90" Binding="{Binding GENDER}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-                <Grid Background="#00C853" HorizontalAlignment="Left" Height="529" Margin="774,0,0,0" VerticalAlignment="Top" Width="335">
-                    <Label Content="Nama" HorizontalAlignment="Left" Margin="73,148,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Email" HorizontalAlignment="Left" Margin="77,186,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Alamat" HorizontalAlignment="Left" Margin="63,223,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="No Telp" HorizontalAlignment="Left" Margin="67,294,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Jenis Kelamin" HorizontalAlignment="Left" Margin="27,327,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <TextBox Name="txtNamaPer" HorizontalAlignment="Left" Height="25" Margin="131,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
-                    <TextBox Name="txtEmailPer" HorizontalAlignment="Left" Height="25" Margin="131,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
-                    <TextBox Name="txtTelpPer" HorizontalAlignment="Left" Height="25" Margin="131,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
-                    <TextBox Name="txtAlamatPer" HorizontalAlignment="Left" Height="60" Margin="131,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
-                    <RadioButton Name="rbLakiN" Content="Laki-laki" HorizontalAlignment="Left" Margin="131,337,0,0" VerticalAlignment="Top" BorderThickness="0" Foreground="White"/>
-                    <RadioButton Name="rbPerempuanN" Content="Perempuan " HorizontalAlignment="Left" Margin="208,338,0,0" VerticalAlignment="Top" BorderThickness="0" Foreground="White"/>
-                    <Button Name="btnTambahN" Content="Tambah" HorizontalAlignment="Left" Margin="51,375,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnTambahN_Click_1"/>
-                    <Button Name="btnEditN" Content="Edit" HorizontalAlignment="Left" Margin="137,375,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnEditN_Click"/>
-                    <Button Name="btnDeleteN" Content="Delete" HorizontalAlignment="Left" Margin="225,375,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnDeleteN_Click"/>
-                    <GroupBox Header="Perawat" HorizontalAlignment="Left" Height="363" Margin="10,86,0,0" VerticalAlignment="Top" Width="305" Foreground="White" BorderBrush="White"/>
-                </Grid>
-
-            </Grid>
-        </TabItem>
-        <TabItem Header="Pasien">
-            <Grid Background="White">
-                <DataGrid AutoGenerateColumns="False" Name="dgPasien" HorizontalAlignment="Left" Height="529" VerticalAlignment="Top" Width="774" Margin="-2,0,0,0" SelectionChanged="dgPasien_SelectionChanged">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Width="50" Binding="{Binding PATIENT_ID}"/>
-                        <DataGridTextColumn Header="Nama" Width="180" Binding="{Binding NAME}"/>
-                        <DataGridTextColumn Header="Tanggal Lahir" Width="100" Binding="{Binding BIRTH}"/>
-                        <DataGridTextColumn Header="Alamat" Width="200" Binding="{Binding ADDRESS}"/>
-                        <DataGridTextColumn Header="No Telp" Width="100" Binding="{Binding PHONE}"/>
-                        <DataGridTextColumn Header="Umur" Width="50" Binding="{Binding AGE}"/>
-                        <DataGridTextColumn Header="Jenis Kelamin" Width="90" Binding="{Binding GENDER}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-
-                <Grid Background="#00C853" HorizontalAlignment="Left" Height="529" Margin="774,0,0,0" VerticalAlignment="Top" Width="335">
-                    <Label Content="Nama" HorizontalAlignment="Left" Margin="71,115,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Tanggal Lahir" HorizontalAlignment="Left" Margin="26,151,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.36,1.974" FontSize="14" Foreground="White"/>
-                    <Label Content="Alamat" HorizontalAlignment="Left" Margin="65,185,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="No Telp" HorizontalAlignment="Left" Margin="65,257,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Umur" HorizontalAlignment="Left" Margin="74,295,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Jenis Kelamin" HorizontalAlignment="Left" Margin="29,326,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <TextBox Name="txtNamaP" HorizontalAlignment="Left" Height="25" Margin="129,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" BorderThickness="0"/>
-                    <TextBox Name="txtAlamatP" HorizontalAlignment="Left" Height="57" Margin="129,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" BorderThickness="0"/>
-                    <TextBox Name="txtTelpP" HorizontalAlignment="Left" Height="25" Margin="129,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" BorderThickness="0"/>
-                    <TextBox Name="txtUmurP" HorizontalAlignment="Left" Height="25" Margin="129,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" BorderThickness="0"/>
-                    <DatePicker Name="dtTanggalLahirP" HorizontalAlignment="Left" Margin="129,154,0,0" VerticalAlignment="Top" Width="165" BorderThickness="0"/>
-                    <RadioButton Name="rbLaki" Content="Laki-laki" HorizontalAlignment="Left" Margin="129,334,0,0" VerticalAlignment="Top" BorderThickness="0" Foreground="White"/>
-                    <RadioButton Name="rbPerempuan" Content="Perempuan" HorizontalAlignment="Left" Margin="205,334,0,0" VerticalAlignment="Top" BorderThickness="0" Foreground="White"/>
-                    <Button Name="btnTambah" Content="Tambah" HorizontalAlignment="Left" Margin="46,378,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnTambah_Click"/>
-                    <Button Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="132,378,0,0" VerticalAlignment="Top" Width="75" Height="29" Background="White" Foreground="#FF00C853" BorderThickness="0" Click="btnEdit_Click"/>
-                    <Button Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="218,378,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnDelete_Click"/>
-                    <Label Name="tempJK" Content="" HorizontalAlignment="Left" Margin="284,498,0,0" VerticalAlignment="Top"/>
-                    <GroupBox Header="Pasien" HorizontalAlignment="Left" Height="379" Margin="10,69,0,0" VerticalAlignment="Top" Width="304" Foreground="White" BorderBrush="White"/>
+            </TabItem>
+            <TabItem Header="Perawatan">
+                <Grid Background="White">
+                    <DataGrid Name="dgPerawat" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="465" VerticalAlignment="Top" Width="774" Margin="-2,0,0,0" SelectionChanged="dgPerawat_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Width="50" Binding="{Binding NURSE_ID}"/>
+                            <DataGridTextColumn Header="Nama" Width="180" Binding="{Binding NAME}"/>
+                            <DataGridTextColumn Header="Email" Width="150" Binding="{Binding EMAIL}"/>
+                            <DataGridTextColumn Header="Alamat" Width="200" Binding="{Binding ADDRESS}"/>
+                            <DataGridTextColumn Header="No Telp" Width="100" Binding="{Binding PHONE}"/>
+                            <DataGridTextColumn Header="Jenis Kelamin" Width="90" Binding="{Binding GENDER}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Grid Background="#00C853" HorizontalAlignment="Left" Height="465" Margin="774,0,0,0" VerticalAlignment="Top" Width="335">
+                        <Label Content="Nama" HorizontalAlignment="Left" Margin="73,110,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="Email" HorizontalAlignment="Left" Margin="77,148,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="Alamat" HorizontalAlignment="Left" Margin="63,185,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="No Telp" HorizontalAlignment="Left" Margin="67,256,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="Jenis Kelamin" HorizontalAlignment="Left" Margin="27,289,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <TextBox Name="txtNamaPer" HorizontalAlignment="Left" Height="25" Margin="131,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
+                        <TextBox Name="txtEmailPer" HorizontalAlignment="Left" Height="25" Margin="131,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
+                        <TextBox Name="txtTelpPer" HorizontalAlignment="Left" Height="25" Margin="131,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
+                        <TextBox Name="txtAlamatPer" HorizontalAlignment="Left" Height="60" Margin="131,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" BorderThickness="0"/>
+                        <RadioButton Name="rbLakiN" Content="Laki-laki" HorizontalAlignment="Left" Margin="131,299,0,0" VerticalAlignment="Top" BorderThickness="0" Foreground="White"/>
+                        <RadioButton Name="rbPerempuanN" Content="Perempuan " HorizontalAlignment="Left" Margin="208,300,0,0" VerticalAlignment="Top" BorderThickness="0" Foreground="White"/>
+                        <Button Name="btnTambahN" Content="Tambah" HorizontalAlignment="Left" Margin="51,337,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnTambahN_Click_1"/>
+                        <Button Name="btnEditN" Content="Edit" HorizontalAlignment="Left" Margin="137,337,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnEditN_Click"/>
+                        <Button Name="btnDeleteN" Content="Delete" HorizontalAlignment="Left" Margin="225,337,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnDeleteN_Click"/>
+                        <GroupBox Header="Perawat" HorizontalAlignment="Left" Height="363" Margin="10,46,0,0" VerticalAlignment="Top" Width="305" Foreground="White" BorderBrush="White"/>
+                    </Grid>
 
                 </Grid>
+            </TabItem>
+            <TabItem Header="Pasien">
+                <Grid Background="White">
+                    <DataGrid AutoGenerateColumns="False" Name="dgPasien" HorizontalAlignment="Left" Height="465" VerticalAlignment="Top" Width="774" Margin="-2,0,0,0" SelectionChanged="dgPasien_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Width="50" Binding="{Binding PATIENT_ID}"/>
+                            <DataGridTextColumn Header="Nama" Width="180" Binding="{Binding NAME}"/>
+                            <DataGridTextColumn Header="Tanggal Lahir" Width="100" Binding="{Binding BIRTH}"/>
+                            <DataGridTextColumn Header="Alamat" Width="200" Binding="{Binding ADDRESS}"/>
+                            <DataGridTextColumn Header="No Telp" Width="100" Binding="{Binding PHONE}"/>
+                            <DataGridTextColumn Header="Umur" Width="50" Binding="{Binding AGE}"/>
+                            <DataGridTextColumn Header="Jenis Kelamin" Width="90" Binding="{Binding GENDER}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
 
-            </Grid>
-        </TabItem>
-        <TabItem Header="Obat">
-            <Grid Background="White">
-                <DataGrid Name="dgObat" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="529" VerticalAlignment="Top" Width="774" Margin="-2,0,0,0" SelectionChanged="dgObat_SelectionChanged">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding MEDICINE_ID}"/>
-                        <DataGridTextColumn Header="Nama Obat" Binding="{Binding NAME}"/>
-                        <DataGridTextColumn Header="Tipe Obat" Binding="{Binding Path=TYPE_MEDICINE.NAME}"/>
-                        <DataGridTextColumn Header="Harga" Binding="{Binding PRICE}"/>
-                        <DataGridTextColumn Header="Expired" Binding="{Binding EXP}"/>
-                        <DataGridTextColumn Header="Stock" Binding="{Binding STOCK}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-                <Grid Background="#00C853" HorizontalAlignment="Left" Height="529" Margin="774,0,0,0" VerticalAlignment="Top" Width="335">
-                    <Label Content="Nama" HorizontalAlignment="Left" Margin="65,145,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Tipe Obat" HorizontalAlignment="Left" Margin="44,185,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.36,1.974" FontSize="14" Foreground="White"/>
-                    <Label Content="Expired" HorizontalAlignment="Left" Margin="59,260,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Stock" HorizontalAlignment="Left" Margin="69,296,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Harga" HorizontalAlignment="Left" Margin="65,222,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.36,1.974" FontSize="14" Foreground="White"/>
-                    <TextBox Name="txtNamaObat" HorizontalAlignment="Left" Height="25" Margin="124,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
-                    <TextBox Name="txtHargaObat" HorizontalAlignment="Left" Height="25" Margin="124,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
-                    <TextBox Name="txtStockObat" HorizontalAlignment="Left" Height="25" Margin="124,300,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
-                    <ComboBox Name="cmbTipeObat" HorizontalAlignment="Left" Margin="124,190,0,0" VerticalAlignment="Top" Width="167" BorderThickness="0" Foreground="Black"/>
-                    <DatePicker Name="dtObat" HorizontalAlignment="Left" Margin="124,265,0,0" VerticalAlignment="Top" Width="167"/>
-                    <Button Name="btnTambahObat" Content="Tambah" HorizontalAlignment="Left" Margin="32,344,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnTambahObat_Click"/>
-                    <Button Name="btnEditObat" Content="Edit" HorizontalAlignment="Left" Margin="124,344,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnEditObat_Click"/>
-                    <Button Name="btnDeleteObat" Content="Delete" HorizontalAlignment="Left" Margin="216,344,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnDeleteObat_Click"/>
-                    <GroupBox Header="Obat" HorizontalAlignment="Left" Height="316" Margin="17,100,0,0" VerticalAlignment="Top" Width="290" BorderBrush="White" Foreground="White"/>
+                    <Grid Background="#00C853" HorizontalAlignment="Left" Height="465" Margin="774,0,0,0" VerticalAlignment="Top" Width="335">
+                        <Label Content="Nama" HorizontalAlignment="Left" Margin="71,85,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="Tanggal Lahir" HorizontalAlignment="Left" Margin="26,121,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.36,1.974" FontSize="14" Foreground="White"/>
+                        <Label Content="Alamat" HorizontalAlignment="Left" Margin="65,155,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="No Telp" HorizontalAlignment="Left" Margin="65,227,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="Umur" HorizontalAlignment="Left" Margin="74,265,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="Jenis Kelamin" HorizontalAlignment="Left" Margin="29,296,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <TextBox Name="txtNamaP" HorizontalAlignment="Left" Height="25" Margin="129,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" BorderThickness="0"/>
+                        <TextBox Name="txtAlamatP" HorizontalAlignment="Left" Height="57" Margin="129,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" BorderThickness="0"/>
+                        <TextBox Name="txtTelpP" HorizontalAlignment="Left" Height="25" Margin="129,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" BorderThickness="0"/>
+                        <TextBox Name="txtUmurP" HorizontalAlignment="Left" Height="25" Margin="129,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" BorderThickness="0"/>
+                        <DatePicker Name="dtTanggalLahirP" HorizontalAlignment="Left" Margin="129,124,0,0" VerticalAlignment="Top" Width="165" BorderThickness="0"/>
+                        <RadioButton Name="rbLaki" Content="Laki-laki" HorizontalAlignment="Left" Margin="129,304,0,0" VerticalAlignment="Top" BorderThickness="0" Foreground="White"/>
+                        <RadioButton Name="rbPerempuan" Content="Perempuan" HorizontalAlignment="Left" Margin="205,304,0,0" VerticalAlignment="Top" BorderThickness="0" Foreground="White"/>
+                        <Button Name="btnTambah" Content="Tambah" HorizontalAlignment="Left" Margin="46,348,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnTambah_Click"/>
+                        <Button Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="132,348,0,0" VerticalAlignment="Top" Width="75" Height="29" Background="White" Foreground="#FF00C853" BorderThickness="0" Click="btnEdit_Click"/>
+                        <Button Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="218,348,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnDelete_Click"/>
+                        <Label Name="tempJK" Content="" HorizontalAlignment="Left" Margin="284,498,0,0" VerticalAlignment="Top"/>
+                        <GroupBox Header="Pasien" HorizontalAlignment="Left" Height="379" Margin="10,39,0,0" VerticalAlignment="Top" Width="304" Foreground="White" BorderBrush="White"/>
+
+                    </Grid>
 
                 </Grid>
-            </Grid>
-        </TabItem>
-        <TabItem Header="Ruangan">
-            <Grid Background="White">
-                <DataGrid Name="dgRuangan" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="529" VerticalAlignment="Top" Width="774" Margin="-2,0,0,0" SelectionChanged="dgRuangan_SelectionChanged">
+            </TabItem>
+            <TabItem Header="Obat">
+                <Grid Background="White">
+                    <DataGrid Name="dgObat" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="465" VerticalAlignment="Top" Width="774" Margin="-2,0,0,0" SelectionChanged="dgObat_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding MEDICINE_ID}"/>
+                            <DataGridTextColumn Header="Nama Obat" Binding="{Binding NAME}"/>
+                            <DataGridTextColumn Header="Tipe Obat" Binding="{Binding Path=TYPE_MEDICINE.NAME}"/>
+                            <DataGridTextColumn Header="Harga" Binding="{Binding PRICE}"/>
+                            <DataGridTextColumn Header="Expired" Binding="{Binding EXP}"/>
+                            <DataGridTextColumn Header="Stock" Binding="{Binding STOCK}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Grid Background="#00C853" HorizontalAlignment="Left" Height="465" Margin="774,0,0,0" VerticalAlignment="Top" Width="335">
+                        <Label Content="Nama" HorizontalAlignment="Left" Margin="65,113,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="Tipe Obat" HorizontalAlignment="Left" Margin="44,153,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.36,1.974" FontSize="14" Foreground="White"/>
+                        <Label Content="Expired" HorizontalAlignment="Left" Margin="59,228,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="Stock" HorizontalAlignment="Left" Margin="69,264,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="Harga" HorizontalAlignment="Left" Margin="65,190,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.36,1.974" FontSize="14" Foreground="White"/>
+                        <TextBox Name="txtNamaObat" HorizontalAlignment="Left" Height="25" Margin="124,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
+                        <TextBox Name="txtHargaObat" HorizontalAlignment="Left" Height="25" Margin="124,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
+                        <TextBox Name="txtStockObat" HorizontalAlignment="Left" Height="25" Margin="124,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
+                        <ComboBox Name="cmbTipeObat" HorizontalAlignment="Left" Margin="124,158,0,0" VerticalAlignment="Top" Width="167" BorderThickness="0" Foreground="Black"/>
+                        <DatePicker Name="dtObat" HorizontalAlignment="Left" Margin="124,233,0,0" VerticalAlignment="Top" Width="167"/>
+                        <Button Name="btnTambahObat" Content="Tambah" HorizontalAlignment="Left" Margin="32,312,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnTambahObat_Click"/>
+                        <Button Name="btnEditObat" Content="Edit" HorizontalAlignment="Left" Margin="124,312,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnEditObat_Click"/>
+                        <Button Name="btnDeleteObat" Content="Delete" HorizontalAlignment="Left" Margin="216,312,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnDeleteObat_Click"/>
+                        <GroupBox Header="Obat" HorizontalAlignment="Left" Height="316" Margin="17,68,0,0" VerticalAlignment="Top" Width="290" BorderBrush="White" Foreground="White"/>
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Ruangan">
+                <Grid Background="White">
+                    <DataGrid Name="dgRuangan" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="465" VerticalAlignment="Top" Width="774" Margin="-2,0,0,0" SelectionChanged="dgRuangan_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Path=ROOM_ID}"/>
+                            <DataGridTextColumn Header="Nama Ruangan" Binding="{Binding Path=NAME}"/>
+                            <DataGridTextColumn Header="Jenis Ruangan" Binding="{Binding Path=TYPE_ROOM.NAME}"/>
+                            <DataGridTextColumn Header="Kapasitas" Binding="{Binding Path=CAPACITY}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Grid Background="#00C853" HorizontalAlignment="Left" Height="465" Margin="774,0,0,0" VerticalAlignment="Top" Width="335">
+                        <Label Content="Nama Ruangan" HorizontalAlignment="Left" Margin="24,151,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="Kapasitas" HorizontalAlignment="Left" Margin="61,231,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="Jenis Ruangan" HorizontalAlignment="Left" Margin="31,191,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <TextBox Name="txtNamaRuangan" HorizontalAlignment="Left" Height="25" Margin="134,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
+                        <TextBox Name="txtKapasitasRuangan" HorizontalAlignment="Left" Height="25" Margin="134,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
+                        <ComboBox Name="cmbJenisRuangan" HorizontalAlignment="Left" Margin="134,196,0,0" VerticalAlignment="Top" Width="167"/>
+                        <Button Name="btnDeleteRuangan" Content="Delete" HorizontalAlignment="Left" Margin="226,295,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnDeleteRuangan_Click"/>
+                        <Button Name="btnEditRuangan" Content="Edit" HorizontalAlignment="Left" Margin="134,295,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnEditRuangan_Click"/>
+                        <Button Name="btnTambahRuangan" Content="Tambah" HorizontalAlignment="Left" Margin="43,295,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnTambahRuangan_Click"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Transaksi">
+                <Grid Background="White">
+                    <DataGrid Name="dgTransaksiPasien" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="437" VerticalAlignment="Top" Width="448" Margin="-2,28,0,0" SelectionChanged="dgTransaksiPasien_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID Pasien" Binding="{Binding Path=PATIENT_ID}"/>
+                            <DataGridTextColumn Header="Nama Pasien" Binding="{Binding Path=NAME}"/>
+                            <DataGridTextColumn Header="Umur" Binding="{Binding Path=AGE}"/>
+                            <DataGridTextColumn Header="Jenis Kelamin" Binding="{Binding Path=GENDER}"/>
+                            <DataGridTextColumn Header="Tanggal Transaksi" Binding="{Binding Path=TRANSACTION.TRANSACTION_DATE}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Grid Background="#00C853" HorizontalAlignment="Left" Height="465" Margin="452,0,0,0" VerticalAlignment="Top" Width="657">
+                        <Label Content="Nama Pasien" HorizontalAlignment="Left" Margin="55,90,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="Poli" HorizontalAlignment="Left" Margin="115,232,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="Jenis Poli" HorizontalAlignment="Left" Margin="80,263,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="Nama Dokter" HorizontalAlignment="Left" Margin="53,294,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="Tanggal Transaksi" HorizontalAlignment="Left" Margin="29,26,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <Label Content="Kedatangan" HorizontalAlignment="Left" Margin="369,26,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
+                        <Label Content="Kepergian" HorizontalAlignment="Left" Margin="381,54,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
+                        <Label Content="Nama Ruangan" HorizontalAlignment="Left" Margin="347,83,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
+                        <Label Content="Jenis Ruangan" HorizontalAlignment="Left" Margin="355,116,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
+                        <Label Content="Biaya Poli" HorizontalAlignment="Left" Margin="76,358,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
+                        <Label Content="Biaya Inap" HorizontalAlignment="Left" Margin="379,181,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
+                        <Label Content="Nama Obat" HorizontalAlignment="Left" Margin="372,236,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
+                        <Label Content="Biaya Obat" HorizontalAlignment="Left" Margin="379,299,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
+                        <Label Content="Biaya/Hari" HorizontalAlignment="Left" Margin="379,150,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
+                        <Label Content="Total Biaya" HorizontalAlignment="Left" Margin="377,360,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
+                        <Label Content="Nama Perawat" HorizontalAlignment="Left" Margin="47,323,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
+                        <TextBox Name="txtNamaPasienTransaksi" HorizontalAlignment="Left" Height="25" Margin="150,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
+                        <DatePicker Name="dtTanggalTransaksi" HorizontalAlignment="Left" Margin="151,30,0,0" VerticalAlignment="Top" Width="166"/>
+                        <TextBox Name="txtBiayaPoliTransaksi" HorizontalAlignment="Left" Height="25" Margin="152,362,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" BorderThickness="0"/>
+                        <TextBox Name="txtBiayaObatTransaksi" HorizontalAlignment="Left" Height="25" Margin="459,302,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
+                        <DatePicker Name="dtKedatanganTransaksi" HorizontalAlignment="Left" Margin="459,29,0,0" VerticalAlignment="Top" Width="166"/>
+                        <DatePicker Name="dtKepergianTransaksi" HorizontalAlignment="Left" Margin="459,58,0,0" VerticalAlignment="Top" Width="166"/>
+                        <ComboBox Name="cmbNamaRuanganTransaksi" HorizontalAlignment="Left" Margin="459,88,0,0" VerticalAlignment="Top" Width="166" SelectionChanged="cmbNamaRuanganTransaksi_SelectionChanged"/>
+                        <ComboBox Name="cmbNamaObatTransaksi" HorizontalAlignment="Left" Margin="459,239,0,0" VerticalAlignment="Top" Width="166" SelectionChanged="cmbNamaObatTransaksi_SelectionChanged"/>
+                        <ComboBox Name="cmbNamaDokterTransaksi" HorizontalAlignment="Left" Margin="152,301,0,0" VerticalAlignment="Top" Width="166"/>
+                        <ComboBox Name="cmbNamaPerawatTransaksi" HorizontalAlignment="Left" Margin="152,330,0,0" VerticalAlignment="Top" Width="166"/>
+                        <ComboBox Name="cmbTipePoliTransaksi" HorizontalAlignment="Left" Margin="152,236,0,0" VerticalAlignment="Top" Width="166" SelectionChanged="cmbTipePoliTransaksi_SelectionChanged"/>
+                        <TextBox Name="txtBiayaRuanganTransaksi" HorizontalAlignment="Left" Height="25" Margin="459,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0" TextChanged="txtBiayaRuanganTransaksi_TextChanged"/>
+                        <TextBox Name="txtBiayaInap" HorizontalAlignment="Left" Height="25" Margin="459,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
+                        <Button Name="btnDeleteTransaksi" Content="Delete" HorizontalAlignment="Left" Margin="550,418,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0"/>
+                        <Button Name="btnEditTransaksi" Content="Edit" HorizontalAlignment="Left" Margin="465,418,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0"/>
+                        <Button Name="btnTambahTransaksi" Content="Tambah" HorizontalAlignment="Left" Margin="381,418,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnTambahTransaksi_Click"/>
+                        <TextBox Name="txtTotalBiayaTransaksi" HorizontalAlignment="Left" Height="25" Margin="458,362,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
+                        <Label Content="Jumlah" HorizontalAlignment="Left" Margin="399,265,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
+                        <TextBox Name="txtQtyObat" HorizontalAlignment="Left" Height="25" Margin="459,269,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0" TextChanged="txtQtyObat_TextChanged"/>
+                        <TextBox Name="txtJenisRuanganTransaksi" HorizontalAlignment="Left" Height="25" Margin="459,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
+                        <TextBox Name="txtJenisPoliTransaksi" HorizontalAlignment="Left" Height="25" Margin="152,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" BorderThickness="0"/>
+                        <Label Content="ID Pasien" HorizontalAlignment="Left" Margin="79,58,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
+                        <TextBox Name="txtIdPasienTransaksi" HorizontalAlignment="Left" Height="25" Margin="150,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
+                    </Grid>
+                    <RadioButton Name="rbBelumTransaksi" Content="Belum Transaksi" HorizontalAlignment="Left" Margin="221,7,0,0" VerticalAlignment="Top" Click="rbBelumTransaksi_Click"/>
+                    <RadioButton Name="rbSudahTransaksi" Content="Sudah Transaksi" HorizontalAlignment="Left" Margin="344,7,0,0" VerticalAlignment="Top" Click="rbSudahTransaksi_Click"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Detail Transaksi">
+                <DataGrid Name="dgDetailTransaksi">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding Path=ROOM_ID}"/>
-                        <DataGridTextColumn Header="Nama Ruangan" Binding="{Binding Path=NAME}"/>
-                        <DataGridTextColumn Header="Jenis Ruangan" Binding="{Binding Path=TYPE_ROOM.NAME}"/>
-                        <DataGridTextColumn Header="Kapasitas" Binding="{Binding Path=CAPACITY}"/>
+                        <DataGridTextColumn Header="Tanggal Transaksi"/>
+                        <DataGridTextColumn Header="Nama Pasien"/>
+                        <DataGridTextColumn Header="Nama Dokter"/>
+                        <DataGridTextColumn Header="Nama Perawat"/>
+                        <DataGridTextColumn Header="Jenis Poli"/>
+                        <DataGridTextColumn Header="Biaya Poli"/>
+                        <DataGridTextColumn Header="Kedatangan"/>
+                        <DataGridTextColumn Header="Kepergian"/>
+                        <DataGridTextColumn Header="Nama Ruangan"/>
+                        <DataGridTextColumn Header="Jenis Ruangan"/>
+                        <DataGridTextColumn Header="Biaya/Hari"/>
+                        <DataGridTextColumn Header="Biaya Inap"/>
+                        <DataGridTextColumn Header="Nama Obat"/>
+                        <DataGridTextColumn Header="Qty Obat"/>
+                        <DataGridTextColumn Header="Biaya Obat"/>
+                        <DataGridTextColumn Header="Total Biaya"/>
                     </DataGrid.Columns>
                 </DataGrid>
-                <Grid Background="#00C853" HorizontalAlignment="Left" Height="529" Margin="774,0,0,0" VerticalAlignment="Top" Width="335">
-                    <Label Content="Nama Ruangan" HorizontalAlignment="Left" Margin="24,167,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Kapasitas" HorizontalAlignment="Left" Margin="61,247,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Jenis Ruangan" HorizontalAlignment="Left" Margin="31,207,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <TextBox Name="txtNamaRuangan" HorizontalAlignment="Left" Height="25" Margin="134,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
-                    <TextBox Name="txtKapasitasRuangan" HorizontalAlignment="Left" Height="25" Margin="134,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
-                    <ComboBox Name="cmbJenisRuangan" HorizontalAlignment="Left" Margin="134,212,0,0" VerticalAlignment="Top" Width="167"/>
-                    <Button Name="btnDeleteRuangan" Content="Delete" HorizontalAlignment="Left" Margin="226,311,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnDeleteRuangan_Click"/>
-                    <Button Name="btnEditRuangan" Content="Edit" HorizontalAlignment="Left" Margin="134,311,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnEditRuangan_Click"/>
-                    <Button Name="btnTambahRuangan" Content="Tambah" HorizontalAlignment="Left" Margin="43,311,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0" Click="btnTambahRuangan_Click"/>
-                </Grid>
-            </Grid>
-        </TabItem>
-        <TabItem Header="Transaksi">
-            <Grid Background="White">
-                <DataGrid Name="dgTransaksiPasien" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="501" VerticalAlignment="Top" Width="448" Margin="-2,28,0,0">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID Pasien" Binding="{Binding Path=PATIENT_ID}"/>
-                        <DataGridTextColumn Header="Nama Pasien" Binding="{Binding Path=NAME}"/>
-                        <DataGridTextColumn Header="Umur" Binding="{Binding Path=BIRTH}"/>
-                        <DataGridTextColumn Header="Jenis Kelamin" Binding="{Binding Path=GENDER}"/>
-                        <DataGridTextColumn Header="Tanggal Transaksi" Binding="{Binding Path=TRANSACTION.TRANSACTION_DATE}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+            </TabItem>
+        </TabControl>
+        <Label Content="RUMAH SAKIT UMUM SINGGIH" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Foreground="#FF00C853"/>
+        <Label Content="Jl. Grogol No.50, Jakarta Barat, Indonesia" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Foreground="#FF00C853"/>
+        <Button Name="btnLogOut" Content="Log Out" HorizontalAlignment="Left" Margin="1030,58,0,0" VerticalAlignment="Top" Width="75" Click="btnLogOut_Click"/>
+        <TextBox  Name="txtNamaAdmin" HorizontalAlignment="Left" Height="23" Margin="838,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" BorderThickness="0" RenderTransformOrigin="-1.046,0.152" FontSize="16"/>
+        <Label Content="Admin :" HorizontalAlignment="Left" Margin="782,55,0,0" VerticalAlignment="Top" FontSize="14"/>
 
-                <Grid Background="#00C853" HorizontalAlignment="Left" Height="529" Margin="452,0,0,0" VerticalAlignment="Top" Width="657">
-                    <Label Content="Nama Pasien" HorizontalAlignment="Left" Margin="55,85,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Jenis Poli" HorizontalAlignment="Left" Margin="80,260,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Tipe Poli" HorizontalAlignment="Left" Margin="84,289,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Nama Dokter" HorizontalAlignment="Left" Margin="53,318,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Tanggal Transaksi" HorizontalAlignment="Left" Margin="29,54,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White"/>
-                    <Label Content="Kedatangan" HorizontalAlignment="Left" Margin="369,54,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
-                    <Label Content="Kepergian" HorizontalAlignment="Left" Margin="381,82,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
-                    <Label Content="Nama Ruangan" HorizontalAlignment="Left" Margin="347,111,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
-                    <Label Content="Jenis Ruangan" HorizontalAlignment="Left" Margin="355,140,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
-                    <Label Content="Biaya Poli" HorizontalAlignment="Left" Margin="76,382,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
-                    <Label Content="Biaya Inap" HorizontalAlignment="Left" Margin="379,203,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
-                    <Label Content="Nama Obat" HorizontalAlignment="Left" Margin="372,264,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
-                    <Label Content="Biaya Obat" HorizontalAlignment="Left" Margin="379,327,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
-                    <Label Content="Biaya/Hari" HorizontalAlignment="Left" Margin="379,172,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
-                    <Label Content="Total Biaya" HorizontalAlignment="Left" Margin="377,382,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
-                    <Label Content="Nama Perawat" HorizontalAlignment="Left" Margin="47,347,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
-                    <TextBox Name="txtNamaPasienTransaksi" HorizontalAlignment="Left" Height="25" Margin="150,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
-                    <DatePicker Name="dtTanggalTransaksi" HorizontalAlignment="Left" Margin="151,58,0,0" VerticalAlignment="Top" Width="166"/>
-                    <TextBox Name="txtBiayaPoliTransaksi" HorizontalAlignment="Left" Height="25" Margin="150,386,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
-                    <TextBox Name="txtBiayaObatTransaksi" HorizontalAlignment="Left" Height="25" Margin="459,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
-                    <DatePicker Name="dtKedatanganTransaksi" HorizontalAlignment="Left" Margin="459,57,0,0" VerticalAlignment="Top" Width="166"/>
-                    <DatePicker Name="dtKepergianTransaksi" HorizontalAlignment="Left" Margin="459,86,0,0" VerticalAlignment="Top" Width="166"/>
-                    <ComboBox Name="cmbNamaRuanganTransaksi" HorizontalAlignment="Left" Margin="459,116,0,0" VerticalAlignment="Top" Width="166"/>
-                    <ComboBox Name="cmbNamaObatTransaksi" HorizontalAlignment="Left" Margin="459,267,0,0" VerticalAlignment="Top" Width="166"/>
-                    <ComboBox Name="cmbNamaDokterTransaksi" HorizontalAlignment="Left" Margin="152,325,0,0" VerticalAlignment="Top" Width="166"/>
-                    <ComboBox Name="cmbNamaPerawatTransaksi" HorizontalAlignment="Left" Margin="152,354,0,0" VerticalAlignment="Top" Width="166"/>
-                    <ComboBox Name="cmbJenisPoliTransaksi" HorizontalAlignment="Left" Margin="152,267,0,0" VerticalAlignment="Top" Width="166"/>
-                    <ComboBox Name="cmbTipePoliTransaksi" HorizontalAlignment="Left" Margin="152,296,0,0" VerticalAlignment="Top" Width="166"/>
-                    <ComboBox Name="cmbJenisRuanganTransaksi" HorizontalAlignment="Left" Margin="459,145,0,0" VerticalAlignment="Top" Width="166"/>
-                    <TextBox Name="txtBiayaRuanganTransaksi" HorizontalAlignment="Left" Height="25" Margin="459,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
-                    <TextBox Name="txtBiayaInap" HorizontalAlignment="Left" Height="25" Margin="459,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
-                    <Button Name="btnDeleteTransaksi" Content="Delete" HorizontalAlignment="Left" Margin="550,446,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0"/>
-                    <Button Name="btnEditTransaksi" Content="Edit" HorizontalAlignment="Left" Margin="465,446,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0"/>
-                    <Button Name="btnTambahTransaksi" Content="Tambah" HorizontalAlignment="Left" Margin="381,446,0,0" VerticalAlignment="Top" Width="75" Height="29" Foreground="#FF00C853" Background="White" BorderThickness="0"/>
-                    <TextBox Name="txtTotalBiayaTransaksi" HorizontalAlignment="Left" Height="25" Margin="458,386,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
-                    <Label Content="Jumlah" HorizontalAlignment="Left" Margin="399,293,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.479,2.172"/>
-                    <TextBox Name="txtQtyObat" HorizontalAlignment="Left" Height="25" Margin="459,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" BorderThickness="0"/>
-                </Grid>
-                <RadioButton Name="rbBelumTransaksi" Content="Belum Transaksi" HorizontalAlignment="Left" Margin="221,7,0,0" VerticalAlignment="Top" Click="rbBelumTransaksi_Click"/>
-                <RadioButton Name="rbSudahTransaksi" Content="Sudah Transaksi" HorizontalAlignment="Left" Margin="344,7,0,0" VerticalAlignment="Top" Click="rbSudahTransaksi_Click"/>
-
-            </Grid>
-        </TabItem>
-    </TabControl>
+    </Grid>
 </Window>
     
     

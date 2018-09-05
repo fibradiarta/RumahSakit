@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3dbcadd9fa4c4a6f8af0e6ac6aaa2add" Name="Diagram1">
+      <Diagram DiagramId="3dbcadd9fa4c4a6f8af0e6ac6aaa2add" Name="Diagram1" ZoomLevel="68">
         <EntityTypeShape EntityType="DB_RS_SINGGIHModel.ADMIN" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_RS_SINGGIHModel.DOCTOR" Width="1.5" PointX="5.25" PointY="16" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_RS_SINGGIHModel.MEDICAL_RECORD" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
@@ -18,7 +18,7 @@
         <EntityTypeShape EntityType="DB_RS_SINGGIHModel.SPECIALIST" Width="1.5" PointX="3" PointY="19.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_RS_SINGGIHModel.sysdiagram" Width="1.5" PointX="7.75" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_RS_SINGGIHModel.TRANSACTION" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_RS_SINGGIHModel.TRANSACTION_DETAIL" Width="1.5" PointX="7.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RS_SINGGIHModel.TRANSACTION_DETAIL" Width="1.5" PointX="7.625" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_RS_SINGGIHModel.TYPE_MEDICINE" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_RS_SINGGIHModel.TYPE_POLY" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_RS_SINGGIHModel.TYPE_ROOM" Width="1.5" PointX="3" PointY="22.5" IsExpanded="true" />

@@ -37,6 +37,7 @@ namespace RumahSakit.View
         //windows loaded
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            txtNamaAdmin.Text = MainWindow.tempUsername;
             viewPasien(dgPasien);
             ViewPerawat(dgPerawat);
             ViewObat(dgObat);
@@ -52,11 +53,8 @@ namespace RumahSakit.View
             //cmbSpecialis.IsEnabled = false;
             viewObatTransaksi();
             viewPerawatTransaksi();
-            viewDokterTransaksi();
-            viewJenisPolyTransaksi();
+            //viewDokterTransaksi();
             viewNamaRuanganTransaksi();
-            viewJenisRuanganTransaksi();
-            viewJenisPolyTransaksi();
             viewTypePolyTransaksi();
             dtTanggalTransaksi.Text = DateTime.Today.ToString();
         }
@@ -974,6 +972,27 @@ namespace RumahSakit.View
 
         //========================================================Transaksi================================================================
 
+        private void clearTextTransaksi()
+        {
+            dtTanggalTransaksi.Text = DateTime.Today.ToString();
+            txtNamaPasienTransaksi.Clear();
+            txtIdPasienTransaksi.Clear();
+            cmbTipePoliTransaksi.SelectedIndex = -1;
+            txtJenisPoliTransaksi.Clear();
+            cmbNamaDokterTransaksi.SelectedIndex = -1;
+            cmbNamaPerawatTransaksi.SelectedIndex = -1;
+            txtBiayaPoliTransaksi.Clear();
+            dtKedatanganTransaksi.Text = DateTime.Today.ToString();
+            dtKepergianTransaksi.Text = DateTime.Today.ToString();
+            cmbNamaRuanganTransaksi.SelectedIndex = -1;
+            txtJenisRuanganTransaksi.Clear();
+            txtBiayaRuanganTransaksi.Clear();
+            txtBiayaInap.Clear();cmbNamaObatTransaksi.SelectedIndex = -1;
+            txtQtyObat.Clear();
+            txtBiayaObatTransaksi.Clear();
+            txtTotalBiayaTransaksi.Clear();
+        }
+
         private void viewBlmTransaksiPasien(DataGrid DG)
         {
             var transaksi = from p in et.PATIENTs.ToList()
@@ -1012,21 +1031,19 @@ namespace RumahSakit.View
 
             cmbTipePoliTransaksi.ItemsSource = et.TYPE_POLY.ToList();
         }
-
-        private void viewJenisPolyTransaksi()
-        {
-            cmbJenisPoliTransaksi.DisplayMemberPath = "NAME";
-            cmbJenisPoliTransaksi.SelectedValuePath = "POLY_ID";
-
-            cmbJenisPoliTransaksi.ItemsSource = et.POLies.ToList();
-        }
-
-        private void viewDokterTransaksi()
+        
+        private void viewDokterTransaksi(string nama)
         {
             cmbNamaDokterTransaksi.DisplayMemberPath = "NAME";
             cmbNamaDokterTransaksi.SelectedValuePath = "DOCTOR_ID";
 
-            cmbNamaDokterTransaksi.ItemsSource = et.DOCTORs.ToList();
+            var dokter = from d in et.DOCTORs.ToList()
+                         join p in et.POLies.ToList()
+                         on d.POLY_ID equals p.POLY_ID
+                         where p.NAME == nama
+                         select d;
+
+            cmbNamaDokterTransaksi.ItemsSource = dokter.ToList();
         }
 
         private void viewPerawatTransaksi()
@@ -1045,20 +1062,286 @@ namespace RumahSakit.View
             cmbNamaRuanganTransaksi.ItemsSource = et.ROOMs.ToList();
         }
 
-        private void viewJenisRuanganTransaksi()
-        {
-            cmbJenisRuanganTransaksi.DisplayMemberPath = "NAME";
-            cmbJenisRuanganTransaksi.SelectedValuePath = "TYPE_ROOM_ID";
-
-            cmbJenisRuanganTransaksi.ItemsSource = et.TYPE_ROOM.ToList();
-        }
-
+        
         private void viewObatTransaksi()
         {
             cmbNamaObatTransaksi.DisplayMemberPath = "NAME";
             cmbNamaObatTransaksi.SelectedValuePath = "MEDICINE_ID";
 
             cmbNamaObatTransaksi.ItemsSource = et.MEDICINEs.ToList();
+        }
+
+        private void cmbNamaRuanganTransaksi_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //var ruangan = et.ROOMs.Where(p => p.ROOM_ID == Convert.ToInt32(cmbNamaRuanganTransaksi.SelectedValue));
+            int temp_date = Convert.ToDateTime(dtKepergianTransaksi.Text).Day - Convert.ToDateTime(dtKedatanganTransaksi.Text).Day;
+
+            var ruangan = from r in et.ROOMs.ToList()
+                          join tr in et.TYPE_ROOM.ToList()
+                          on r.TYPE_ROOM_ID equals tr.TYPE_ROOM_ID
+                          where r.ROOM_ID == Convert.ToInt32(cmbNamaRuanganTransaksi.SelectedValue)
+                          select r;
+
+            foreach (var item in ruangan)
+            {
+                txtJenisRuanganTransaksi.Text = item.TYPE_ROOM.NAME;
+                txtBiayaRuanganTransaksi.Text = item.TYPE_ROOM.PRICE.ToString();
+            }
+
+
+            txtBiayaInap.Text = (Convert.ToInt32(txtBiayaRuanganTransaksi.Text) * temp_date).ToString();
+            //txtTotalBiayaTransaksi.Text = (Convert.ToDouble(txtBiayaInap.Text) - Convert.ToDouble(txtBiayaPoliTransaksi.Text)).ToString();
+
+            
+        }
+
+        private void cmbTipePoliTransaksi_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var poli = from tp in et.TYPE_POLY.ToList()
+                       join p in et.POLies.ToList()
+                       on tp.POLY_ID equals p.POLY_ID
+                       where tp.TYPE_POLY_ID == Convert.ToInt32(cmbTipePoliTransaksi.SelectedValue)
+                       select tp;
+
+            foreach (var item in poli)
+            {
+                txtJenisPoliTransaksi.Text = item.POLY.NAME;
+                txtBiayaPoliTransaksi.Text = item.PRICE.ToString();
+            }
+
+            viewDokterTransaksi(txtJenisPoliTransaksi.Text);
+            //txtTotalBiayaTransaksi.Text = txtBiayaPoliTransaksi.Text;
+
+        }
+
+        private void dgTransaksiPasien_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            object item = dgTransaksiPasien.SelectedItem;
+
+            try
+            {
+                string Id = (dgTransaksiPasien.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                txtIdPasienTransaksi.Text = Id;
+                string Nama = (dgTransaksiPasien.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text;
+                txtNamaPasienTransaksi.Text = Nama;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private PATIENT SearchByIdPasienTransaksi(int id)
+        {
+            var pasien = et.PATIENTs.Find(id);
+            if (pasien == null)
+            {
+                MessageBox.Show("ID Pasien " + id + " tidak ditemukan", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+            return pasien;
+        }
+
+        private ROOM SearchByIdRoomTransaksi(int id)
+        {
+            var ruangan = et.ROOMs.Find(id);
+            if (ruangan == null)
+            {
+                MessageBox.Show("ID Ruangan " + id + " tidak ditemukan", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+            return ruangan;
+        }
+
+        private MEDICINE SearchByIdObatTransaksi(int id)
+        {
+            var obat = et.MEDICINEs.Find(id);
+            if (obat == null)
+            {
+                MessageBox.Show("ID Obat " + id + " tidak ditemukan", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+            return obat;
+        }
+
+        private DOCTOR SearchByIdDokterTransaksi(int id)
+        {
+            var dokter = et.DOCTORs.Find(id);
+            if (dokter == null)
+            {
+                MessageBox.Show("ID Dokter " + id + " tidak ditemukan", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+            return dokter;
+        }
+
+        private NURSE SearchByIdPerawatTransaksi(int id)
+        {
+            var perawat = et.NURSEs.Find(id);
+            if (perawat == null)
+            {
+                MessageBox.Show("ID Perawat " + id + " tidak ditemukan", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+            return perawat;
+        }
+
+        private void cmbNamaObatTransaksi_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var obat = from o in et.MEDICINEs.ToList()
+                       join to in et.TYPE_MEDICINE.ToList()
+                       on o.TYPE_MEDICINE_ID equals to.TYPE_MEDICINE_ID
+                       where o.MEDICINE_ID == Convert.ToInt32(cmbNamaObatTransaksi.SelectedValue)
+                       select o;
+
+            foreach (var item in obat)
+            {
+                txtBiayaObatTransaksi.Text = item.PRICE.ToString();
+            }
+
+            //txtTotalBiayaTransaksi.Text = (Convert.ToDouble(txtBiayaPoliTransaksi.Text) + Convert.ToDouble(txtBiayaInap.Text) + Convert.ToDouble(txtBiayaObatTransaksi.Text)).ToString();
+            
+        }
+
+        private void txtQtyObat_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+            if (txtQtyObat.Text != "")
+            {
+
+                txtBiayaObatTransaksi.Text = (Convert.ToDouble(txtBiayaObatTransaksi.Text) * Convert.ToDouble(txtQtyObat.Text)).ToString();
+                //txtTotalBiayaTransaksi.Text = (Convert.ToDouble(txtBiayaPoliTransaksi.Text) + Convert.ToDouble(txtBiayaInap.Text) + Convert.ToDouble(txtBiayaObatTransaksi.Text)).ToString();
+            }
+            else
+            {
+                txtBiayaObatTransaksi.Clear();
+            }
+        }
+
+        private double totalPrice()
+        {
+            double total = 0;
+
+            total  = (Convert.ToDouble(txtBiayaInap.Text) + Convert.ToDouble(txtBiayaRuanganTransaksi.Text) + Convert.ToDouble(txtBiayaObatTransaksi.Text));
+           
+
+            return total;
+        }
+
+        private void btnTambahTransaksi_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                TRANSACTION transaksi = new TRANSACTION()
+                {
+                    PATIENT_ID = Convert.ToInt32(txtIdPasienTransaksi.Text),
+                    TRANSACTION_DATE = Convert.ToDateTime(dtTanggalTransaksi.Text),
+                };
+
+                et.TRANSACTIONs.Add(transaksi);
+                et.SaveChanges();
+
+                PATIENT pasien = SearchByIdPasienTransaksi(Convert.ToInt32(txtIdPasienTransaksi.Text));
+                pasien.STATUS = 1;
+
+                et.Entry(pasien).State = System.Data.Entity.EntityState.Modified;
+                et.SaveChanges();
+
+                ROOM ruangan = SearchByIdRoomTransaksi(Convert.ToInt32(cmbNamaRuanganTransaksi.SelectedValue));
+                MEDICINE obat = SearchByIdObatTransaksi(Convert.ToInt32(cmbNamaObatTransaksi.SelectedValue));
+                DOCTOR dokter = SearchByIdDokterTransaksi(Convert.ToInt32(cmbNamaDokterTransaksi.SelectedValue));
+                NURSE perawat = SearchByIdPerawatTransaksi(Convert.ToInt32(cmbNamaPerawatTransaksi.SelectedValue));
+
+                TRANSACTION_DETAIL detil_transaksi = new TRANSACTION_DETAIL()
+                {
+                    ARRIVAL_DATE = Convert.ToDateTime(dtKedatanganTransaksi.Text),
+                    LEAVING_DATE = Convert.ToDateTime(dtKepergianTransaksi.Text),
+                    ROOM_ID = Convert.ToInt32(cmbNamaRuanganTransaksi.SelectedValue),
+                    TRANSACTION_ID = Convert.ToInt32(transaksi.TRANSACTION_ID),
+                    PRICE_ROOM = Convert.ToDouble(ruangan.TYPE_ROOM.PRICE),
+                    QTY_MEDICINE = Convert.ToInt32(txtQtyObat.Text),
+                    TOTAL_PRICE = totalPrice()
+
+
+                };
+
+                et.TRANSACTION_DETAIL.Add(detil_transaksi);
+                /*detil_transaksi.MEDICINEs.Add(new MEDICINE { MEDICINE_ID = SearchByIdObatTransaksi(Convert.ToInt32(cmbNamaObatTransaksi.SelectedValue)).MEDICINE_ID });
+                detil_transaksi.DOCTORs.Add(new DOCTOR { DOCTOR_ID = SearchByIdDokterTransaksi(Convert.ToInt32(cmbNamaDokterTransaksi.SelectedValue)).DOCTOR_ID });
+                detil_transaksi.NURSEs.Add(new NURSE { NURSE_ID = SearchByIdPerawatTransaksi(Convert.ToInt32(cmbNamaPerawatTransaksi.SelectedValue)).NURSE_ID });*/
+
+                TRANSACTION_DETAIL detil_transaksi1 = new TRANSACTION_DETAIL { TRANSACTION_DETAIL_ID = detil_transaksi.TRANSACTION_DETAIL_ID };
+                et.TRANSACTION_DETAIL.Add(detil_transaksi1);
+                et.TRANSACTION_DETAIL.Attach(detil_transaksi1);
+
+                MEDICINE obat1 = new MEDICINE { MEDICINE_ID = obat.MEDICINE_ID };
+                et.MEDICINEs.Add(obat1);
+                //et.MEDICINEs.Attach(obat1);
+
+                DOCTOR dokter1 = new DOCTOR { DOCTOR_ID = dokter.DOCTOR_ID };
+                et.DOCTORs.Add(dokter1);
+                //et.DOCTORs.Attach(dokter1);
+
+                NURSE perawat1 = new NURSE { NURSE_ID = perawat.NURSE_ID };
+                et.NURSEs.Add(perawat1);
+                //et.NURSEs.Attach(perawat1);
+
+                detil_transaksi1.MEDICINEs.Add(obat1);
+                detil_transaksi1.DOCTORs.Add(dokter1);
+                detil_transaksi1.NURSEs.Add(perawat1);
+
+                et.SaveChanges();
+
+                MEDICINE mEDICINE = SearchByIdObatTransaksi(Convert.ToInt32(cmbNamaObatTransaksi.SelectedValue));
+                mEDICINE.STOCK = obat.STOCK - detil_transaksi.QTY_MEDICINE;
+
+                et.Entry(mEDICINE).State = System.Data.Entity.EntityState.Modified;
+                et.SaveChanges();
+
+                clearTextTransaksi();
+                this.viewBlmTransaksiPasien(dgTransaksiPasien);
+                MessageBox.Show("Transaksi Berhasil !", "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
+
+
+            //TRANSACTION_DETAIL detil_transaksi1 = new TRANSACTION_DETAIL { TRANSACTION_DETAIL_ID = detil_transaksi.TRANSACTION_DETAIL_ID };
+            //detil_transaksi1.MEDICINEs.Add(new MEDICINE { MEDICINE_ID = obat.MEDICINE_ID });
+
+            //et.TRANSACTION_DETAIL.Add(detil_transaksi1);
+            //et.SaveChanges();
+
+
+        }
+
+        private void txtBiayaRuanganTransaksi_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
+
+
+        //===================================================================Detail Transaksi=========================================================
+
+        private void viewDetailTransaksi(DataGrid DG)
+        {
+            /*var detail_transaksi = from dt in et.TRANSACTION_DETAIL.ToList() join t in et.TRANSACTIONs.ToList()
+                                   on dt.TRANSACTION_ID equals t.TRANSACTION_ID join m in et.MEDICINEs.ToList()
+                                   on dt.TRANSACTION_DETAIL_ID equals m.TRANSACTION_DETAIL
+
+            DG.ItemsSource= */
+        }
+
+        private void btnLogOut_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            MainWindow login = new MainWindow();
+            login.ShowDialog();
         }
     }
 }
